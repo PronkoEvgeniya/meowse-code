@@ -1,0 +1,12 @@
+dist
+node_modules
+package
+package-lock
+webpack.config
+
+*.png
+*.gif
+*.svg
+*.jpeg
+*.jpg
+*.ico
