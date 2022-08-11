@@ -5,7 +5,7 @@ import { store } from './app/store';
 import { App } from './App';
 import './index.scss';
 
-const container = document.getElementById('root')!;
+const container = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(container);
 
 root.render(
