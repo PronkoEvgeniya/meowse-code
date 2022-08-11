@@ -10,3 +10,8 @@ export const App = (): JSX.Element => {
   }, [dispatch]);
   return <>1</>;
 };
+
+console.log(2);
+function getNothing() {
+  return 1;
+}
