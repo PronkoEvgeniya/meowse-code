@@ -6,6 +6,7 @@ import { test } from './app/store/reducers/appSlice';
 import { Footer } from './components/Footer';
 import { Header } from './components/header/Header';
 import { Sidebar } from './components/Sidebar';
+import { HomePage } from './routes/HomePage';
 import { StartPage } from './routes/StartPage';
 
 export const App = (): JSX.Element => {
@@ -20,6 +21,7 @@ export const App = (): JSX.Element => {
         <Sidebar />
         <Routes>
           <Route path="/" element={<StartPage />} />
+          <Route path="/home" element={<HomePage />} />
         </Routes>
       </main>
       <Footer />

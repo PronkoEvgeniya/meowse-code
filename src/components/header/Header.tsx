@@ -6,7 +6,7 @@ export const Header = (): JSX.Element => {
     <header>
       <ul>
         <li>
-          <Link to="/home" style={{ pointerEvents: 'none' }}>
+          <Link to="/home">
             <img src={logo} alt="logo" />
           </Link>
         </li>
