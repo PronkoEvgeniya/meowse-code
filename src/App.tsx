@@ -8,6 +8,7 @@ import { Header } from './components/header/Header';
 import { Sidebar } from './components/Sidebar';
 import { HomePage } from './routes/HomePage';
 import { StartPage } from './routes/StartPage';
+import { TranslatePage } from './routes/TranslatePage';
 
 export const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ export const App = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/translate" element={<TranslatePage />} />
         </Routes>
       </main>
       <Footer />
