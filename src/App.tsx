@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import { useAppDispatch } from './app/hooks/reduxHooks';
 import { test } from './app/store/reducers/appSlice';
+import { Footer } from './components/Footer';
+import { Header } from './components/header/Header';
+import { Sidebar } from './components/Sidebar';
+import { StartPage } from './routes/StartPage';
 
 export const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -10,9 +15,14 @@ export const App = (): JSX.Element => {
   }, [dispatch]);
   return (
     <>
-      <header></header>
-      <main></main>
-      <footer></footer>
+      <Header />
+      <main>
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<StartPage />} />
+        </Routes>
+      </main>
+      <Footer />
     </>
   );
 };
