@@ -8,5 +8,11 @@ export const App = (): JSX.Element => {
   useEffect(() => {
     dispatch(test());
   }, [dispatch]);
-  return <>1</>;
+  return (
+    <>
+      <header></header>
+      <main></main>
+      <footer></footer>
+    </>
+  );
 };
