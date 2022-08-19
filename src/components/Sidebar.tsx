@@ -2,10 +2,12 @@ import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../app/hooks/reduxHooks';
 
 export const Sidebar = (): JSX.Element => {
+  const auth = useAppSelector(({ app: { isAuthorized } }) => isAuthorized);
   const audioLesson = useAppSelector((state) => state.app.audioLesson);
+
   return (
     <aside>
-      <button>&#60;</button>
+      <button disabled={!auth}>&#60;</button>
       <nav>
         <ul>
           <li>

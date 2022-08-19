@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface IAppState {
-  value: number;
+  isAuthorized: boolean;
   audioLesson: number;
   textLesson: number;
 }
 
 const initialState: IAppState = {
-  value: 0,
+  isAuthorized: false,
   audioLesson: 1,
   textLesson: 1,
 };
@@ -16,6 +16,9 @@ export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
+    setAuthorization: (state, action) => {
+      state.isAuthorized = action.payload.auth;
+    },
     setAudioLesson: (state, action) => {
       state.audioLesson = action.payload.lesson;
     },
@@ -25,6 +28,6 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setAudioLesson, setTextLesson } = appSlice.actions;
+export const { setAuthorization, setAudioLesson, setTextLesson } = appSlice.actions;
 
 export default appSlice.reducer;

@@ -1,3 +1,7 @@
 main {
   box-sizing: border-box;
 }
+
+.disable-events {
+  pointer-events: none;
+}
