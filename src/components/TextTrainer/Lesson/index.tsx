@@ -9,7 +9,7 @@ export const Lesson = ({ lesson }: ILessonProps) => {
       const elements = symbols.map((symbol, i) => {
         return (
           <div key={`symbol${id}${i}`}>
-            {symbol}: {code[i]}
+            {symbol.toUpperCase()}: {code[i]}
           </div>
         );
       });
@@ -26,7 +26,7 @@ export const Lesson = ({ lesson }: ILessonProps) => {
     <>
       <div>{description}</div>
       {symbolElements}
-      <div>{task} ?</div>
+      <div>{task.toUpperCase()} ?</div>
       <textarea></textarea>
       <button>Готово</button>
     </>

@@ -5,11 +5,21 @@ import { ILesson } from './models/interfaces';
 
 export const TextTrainer = (): JSX.Element => {
   const [options, setOptions] = useState<[] | JSX.Element[]>([]);
-  const [lesson, setLessson] = useState(<div></div>);
+  const [lessons, setLesssons] = useState<[] | ILesson[]>([
+    {
+      id: '1',
+      description: '',
+      symbols: '',
+      code: '',
+      score: 0,
+      task: '',
+      answer: '',
+    },
+  ]);
+  const [selectedLesson, setSelectedLessson] = useState('1');
   useEffect(() => {
     setDataToLS();
     const lessons = JSON.parse(localStorage.getItem('textTrainer') as string);
-    console.log(lessons[0]);
     const newElements = lessons.map(({ id }: ILesson, i: number): JSX.Element => {
       return (
         <option key={id} value={id}>
@@ -17,18 +27,29 @@ export const TextTrainer = (): JSX.Element => {
         </option>
       );
     });
-    const newLesson = <Lesson lesson={lessons[0]} />;
+    setLesssons(lessons);
+    setSelectedLessson(lessons[0].id);
     setOptions(newElements);
-    setLessson(newLesson);
-  }, []);
+  }, [lessons]);
+
+  useEffect(() => {
+    console.log(lessons.find((lesson: ILesson) => lesson.id === selectedLesson) as ILesson);
+  }, [selectedLesson, lessons]);
+
+  const selectLesson = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedLessson(target.value);
+  };
 
   return (
     <>
       <h1>Текстовый тренажер</h1>
-      <select name="lessons" id="tt-lessons">
+      <select name="lessons" id="tt-lessons" value={selectedLesson} onChange={selectLesson}>
         {options}
       </select>
-      {lesson}
+      <Lesson
+        key="lesson"
+        lesson={lessons.find((lesson: ILesson) => lesson.id === selectedLesson) as ILesson}
+      />
       <div></div>
     </>
   );
