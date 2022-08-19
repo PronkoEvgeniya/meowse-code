@@ -1,21 +1,15 @@
-import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { useAppDispatch } from './app/hooks/reduxHooks';
-import { test } from './app/store/reducers/appSlice';
 import { Footer } from './components/Footer';
 import { Header } from './components/header/Header';
 import { Sidebar } from './components/Sidebar';
 import { AboutPage } from './routes/about/AboutPage';
+import { AudioPage } from './routes/AudioPage';
 import { HomePage } from './routes/HomePage';
 import { StartPage } from './routes/StartPage';
 import { TranslatePage } from './routes/TranslatePage';
 
 export const App = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(test());
-  }, [dispatch]);
   return (
     <>
       <Header />
@@ -24,6 +18,7 @@ export const App = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/audio/:id" element={<AudioPage />} />
           <Route path="/translate" element={<TranslatePage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>

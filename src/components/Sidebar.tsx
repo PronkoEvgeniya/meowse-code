@@ -1,13 +1,15 @@
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '../app/hooks/reduxHooks';
 
 export const Sidebar = (): JSX.Element => {
+  const audioLesson = useAppSelector((state) => state.app.audioLesson);
   return (
     <aside>
       <button>&#60;</button>
       <nav>
         <ul>
           <li>
-            <NavLink to={'/audio'}>аудио-тренажер</NavLink>
+            <NavLink to={`/audio/${audioLesson}`}>аудио-тренажер</NavLink>
           </li>
           <li>
             <NavLink to={'/text'}>текстовый тренажер</NavLink>
