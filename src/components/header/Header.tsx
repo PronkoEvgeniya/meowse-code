@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from './logo.svg';
+import { IconArrow, IconLogin, IconLogo } from '../../assets/Sprite';
 
 export const Header = (): JSX.Element => {
   return (
@@ -7,25 +7,26 @@ export const Header = (): JSX.Element => {
       <ul>
         <li>
           <Link to="/home">
-            <img src={logo} alt="logo" />
+            <IconLogo />
           </Link>
         </li>
         <li>
           <div
-            style={{ width: '55px', height: '55px', background: 'purple' }}
-            className="user-icon"
-          ></div>
-          <span>name</span>
-          <div
             style={{
-              width: '30px',
-              height: '30px',
-              borderBottom: '5px solid purple',
-              borderRight: '5px solid purple',
-              transform: 'rotate(45deg)',
+              width: '55px',
+              height: '55px',
+              background: '#9C56C7',
+              display: 'flex',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              alignItems: 'center',
             }}
-            className="user-arrow"
-          ></div>
+            className="user-icon"
+          >
+            <IconLogin />
+          </div>
+          <span>name</span>
+          <IconArrow />
         </li>
       </ul>
     </header>
