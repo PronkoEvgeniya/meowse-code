@@ -1,10 +1,4 @@
-import { Dispatch } from 'react';
-
-interface TrainResultProps {
-  answer: string;
-  setAnswer: Dispatch<React.SetStateAction<string>>;
-  setIsLessonCompleted: Dispatch<React.SetStateAction<boolean>>;
-}
+import { TrainResultProps } from '../types/interfaces';
 
 export const TrainResult = ({
   answer,
