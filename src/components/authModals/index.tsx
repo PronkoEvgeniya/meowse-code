@@ -1,5 +1,5 @@
+import { IconStep } from '../../assets/Sprite';
 import { AuthModalProps } from '../../types/interfaces';
-import paw from './paw.svg';
 
 export const AuthModal = ({ setAuth, children }: AuthModalProps): JSX.Element => {
   return (
@@ -7,7 +7,7 @@ export const AuthModal = ({ setAuth, children }: AuthModalProps): JSX.Element =>
       <div>
         {children}
         <button onClick={() => setAuth('')}>
-          <img src={paw} alt="paw" />
+          <IconStep />
           Назад
         </button>
       </div>

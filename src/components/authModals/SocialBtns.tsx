@@ -1,18 +1,16 @@
-import gg from './gg.svg';
-import fb from './fb.svg';
-import ig from './ig.svg';
+import { IconFB, IconGoogle, IconInst } from '../../assets/Sprite';
 
 export const SocialBtns = (): JSX.Element => {
   return (
     <div>
       <button>
-        <img src={gg} alt="gg" />
+        <IconGoogle />
       </button>
       <button>
-        <img src={fb} alt="fb" />
+        <IconFB />
       </button>
       <button>
-        <img src={ig} alt="ig" />
+        <IconInst />
       </button>
     </div>
   );
