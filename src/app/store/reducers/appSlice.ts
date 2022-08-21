@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ILesson } from '../../models/interfaces';
+import { ILesson } from '../../../types/interfaces';
 
 export interface IAppState {
   isAuthorized: boolean;
@@ -28,12 +28,9 @@ export const appSlice = createSlice({
     setTextLesson: (state, action) => {
       state.textLesson = action.payload.lesson;
     },
-    setTextData: (state, action) => {
-      state.textData = action.payload.data;
-    },
   },
 });
 
-export const { setAuthorization, setAudioLesson, setTextLesson, setTextData } = appSlice.actions;
+export const { setAuthorization, setAudioLesson, setTextLesson } = appSlice.actions;
 
 export default appSlice.reducer;

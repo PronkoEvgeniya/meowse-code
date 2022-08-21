@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAppSelector } from '../../app/hooks/reduxHooks';
-import { ILesson } from '../../app/models/interfaces';
+import { ILesson } from '../../types/interfaces';
 
 enum Error {
   invalidLength = '*ой, проверь длинну введенной строки',

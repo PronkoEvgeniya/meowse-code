@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../../app/hooks/reduxHooks';
 import { setTextLesson } from '../../app/store/reducers/appSlice';
+import data from '../../data/text.json';
 
 export const LessonSelect = (): JSX.Element => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
-  const lessons = useAppSelector(({ app: { textData } }) => textData);
+  const lessons = data;
   const options = lessons.map(({ id }, i: number): JSX.Element => {
     return (
       <option key={`lesson${id}`} value={id}>
