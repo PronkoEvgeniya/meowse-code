@@ -9,6 +9,7 @@ import { AudioPage } from './routes/AudioPage';
 import { HomePage } from './routes/HomePage';
 import { StartPage } from './routes/StartPage';
 import { TranslatePage } from './routes/TranslatePage';
+import { TextTrainerPage } from './routes/TextTrainerPage';
 import { TutorialPage } from './routes/TutorialPage';
 
 export const App = (): JSX.Element => {
@@ -24,6 +25,7 @@ export const App = (): JSX.Element => {
           <Route path="/tutorial" element={<TutorialPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/audio/:id" element={<AudioPage />} />
+          <Route path="/text/:id" element={<TextTrainerPage />} />
           <Route path="/translate" element={<TranslatePage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
