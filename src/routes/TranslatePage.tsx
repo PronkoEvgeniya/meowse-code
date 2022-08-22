@@ -1,18 +1,16 @@
 import { useState } from 'react';
+import { TextArea } from '../components/TextArea';
 
 export const TranslatePage = (): JSX.Element => {
   const [valueArea, setValueArea] = useState('');
+
   return (
     <div>
       <h2>Переводчик</h2>
-      <textarea
-        cols={50}
-        rows={10}
-        spellCheck={false}
-        autoCorrect="off"
+      <TextArea
         value={valueArea}
+        setValue={setValueArea}
         placeholder="Введите текст для перевода..."
-        onChange={(e) => setValueArea(e.target.value)}
       />
       <div>
         <button>Перевести</button>

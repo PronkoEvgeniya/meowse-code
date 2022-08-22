@@ -12,6 +12,17 @@ export interface TrainResultProps {
   setIsLessonCompleted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+export interface AudioBtnProps {
+  value: string;
+  src: string;
+}
+
+export interface TextAreaProps {
+  value: string;
+  placeholder: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export interface ILesson {
   id: number;
   description: string;
