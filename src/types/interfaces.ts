@@ -19,5 +19,5 @@ export interface ILesson {
   code: string[];
   score: number;
   task: string;
-  answer: string;
+  answer: string[];
 }
