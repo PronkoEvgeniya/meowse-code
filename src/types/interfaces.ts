@@ -20,6 +20,7 @@ export interface AudioBtnProps {
 export interface TextAreaProps {
   value: string;
   placeholder: string;
+  isDisabled?: boolean;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
