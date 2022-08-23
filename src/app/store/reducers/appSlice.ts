@@ -1,18 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ILesson } from '../../../types/interfaces';
 
 export interface IAppState {
   isAuthorized: boolean;
   audioLesson: number;
   textLesson: number;
-  textData: ILesson[] | [];
 }
 
 const initialState: IAppState = {
   isAuthorized: false,
   audioLesson: 1,
   textLesson: 1,
-  textData: [],
 };
 
 export const appSlice = createSlice({
