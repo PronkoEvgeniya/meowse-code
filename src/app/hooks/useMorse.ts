@@ -4,35 +4,35 @@ import { useAppSelector } from './reduxHooks';
 
 export const useMorse = () => {
   const codes = Object.keys(MORSE_TABLE);
-  const codeType = useAppSelector(({ translator: { codeType } }) => codeType);
+  const language = useAppSelector(({ translator: { language } }) => language);
 
-  const codeToMorse = (value: string): string => {
-    let letters = value.trim().toLowerCase().replace(/ё/g, 'е').split('');
+  const encode = (word: string): string => {
+    let letters = word.trim().toLowerCase().replace(/ё/g, 'е').split('');
 
     letters = letters.map((letter) => {
       const code = codes.find((code) => {
-        const values = MORSE_TABLE[code as TMorseTable];
+        const value = MORSE_TABLE[code as TMorseTable];
 
-        return typeof values === 'object'
-          ? values.ru === letter || values.en === letter
-          : values === letter;
+        return typeof value === 'object'
+          ? value.ru === letter || value.en === letter
+          : value === letter;
       });
 
-      return code ? code : letter;
+      return code || letter;
     });
 
     return letters.join(' ');
   };
 
-  const decodeMorse = (value: string): string => {
-    let letters = value.trim().split(' ');
+  const decode = (word: string): string => {
+    let letters = word.trim().split(' ');
 
     letters = letters.map((letter) => {
       const code = codes.find((code) => code === letter);
-      const values = MORSE_TABLE[code as TMorseTable];
+      const value = MORSE_TABLE[code as TMorseTable];
 
       if (code) {
-        return typeof values === 'object' ? values[codeType as TLang] : values;
+        return typeof value === 'object' ? value[language as TLang] : value;
       }
 
       return letter;
@@ -41,5 +41,5 @@ export const useMorse = () => {
     return letters.join('');
   };
 
-  return { codeToMorse, decodeMorse };
+  return { encode, decode };
 };

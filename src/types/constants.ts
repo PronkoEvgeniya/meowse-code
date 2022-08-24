@@ -4,6 +4,16 @@ export enum TextAreaMessages {
   lettersRegExp = '^[.-]{1,6}$',
 }
 
+export enum Lang {
+  ru = 'ru',
+  en = 'en',
+}
+
+export enum TranslatorMode {
+  encode = 'текст -> морзе',
+  decode = 'морзе -> текст',
+}
+
 export const tutorialContent = [
   {
     description:

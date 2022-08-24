@@ -2,14 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface ITranslatorState {
   input: string;
-  output: string;
-  codeType: string | null;
+  output: string[] | [];
+  language: string | null;
 }
 
 const initialState: ITranslatorState = {
   input: '',
-  output: '',
-  codeType: null,
+  output: [],
+  language: null,
 };
 
 export const translatorSlice = createSlice({
@@ -22,12 +22,12 @@ export const translatorSlice = createSlice({
     setOutput: (state, { payload }) => {
       state.output = payload;
     },
-    setCodeType: (state, { payload }) => {
-      state.codeType = payload;
+    setLanguage: (state, { payload }) => {
+      state.language = payload;
     },
   },
 });
 
-export const { setInput, setOutput, setCodeType } = translatorSlice.actions;
+export const { setInput, setOutput, setLanguage } = translatorSlice.actions;
 
 export default translatorSlice.reducer;
