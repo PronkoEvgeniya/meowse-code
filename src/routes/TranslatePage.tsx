@@ -1,51 +1,76 @@
-import { useState } from 'react';
-import { TextArea } from '../components/TextArea';
-import { MORSE_TABLE } from '../types/constants';
-import { TMorseTable } from '../types/types';
+import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
+import { useMorse } from '../app/hooks/useMorse';
+import { setLanguage, setInput, setOutput } from '../app/store/reducers/translatorSlice';
+import { Lang, TranslatorMode } from '../types/constants';
 
 export const TranslatePage = (): JSX.Element => {
-  const [valueArea, setValueArea] = useState('');
-  const [valueResult, setValueResult] = useState('');
+  const dispatch = useAppDispatch();
+  const { encode, decode } = useMorse();
+  const { input, output, language } = useAppSelector(({ translator }) => translator);
 
-  const codeToMorse = (value: string): string => {
-    const codes = Object.keys(MORSE_TABLE);
-    let letters = value.split('');
-    letters = letters.map((letter) =>
-      codes.find((code) => code === letter) ? MORSE_TABLE[letter as TMorseTable] : letter
-    );
-
-    return letters.join(' ');
+  const areaHandler = ({ target: { value } }: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    dispatch(setInput(value));
   };
 
-  const translateHandler = () => {
-    const result = codeToMorse(valueArea);
-    setValueResult(result);
+  const toggleMode = (): void => {
+    if (language) {
+      dispatch(setLanguage(null));
+    } else {
+      dispatch(setLanguage(Lang.ru));
+    }
+
+    clearHandler();
   };
 
-  const clearHandler = () => {
-    setValueArea('');
-    setValueResult('');
+  const changeLang = (): void => {
+    if (language === Lang.ru) {
+      dispatch(setLanguage(Lang.en));
+    } else {
+      dispatch(setLanguage(Lang.ru));
+    }
+
+    clearHandler();
+  };
+
+  const translateHandler = (): void => {
+    let result: string[];
+
+    if (language) {
+      result = input.split('  ').map(decode);
+    } else {
+      result = input.split(' ').map(encode);
+    }
+
+    dispatch(setOutput(result));
+  };
+
+  const clearHandler = (): void => {
+    dispatch(setInput(''));
+    dispatch(setOutput([]));
   };
 
   return (
     <div>
       <h2>Переводчик</h2>
-      <TextArea
-        value={valueArea}
-        setValue={setValueArea}
-        placeholder="Введите текст для перевода..."
-      />
+      <div>
+        <button onClick={toggleMode}>
+          {language ? TranslatorMode.decode : TranslatorMode.encode}
+        </button>
+        {language && <button onClick={changeLang}>{language}</button>}
+      </div>
+      <textarea value={input} placeholder="Введите текст для перевода..." onChange={areaHandler} />
       <div>
         <button onClick={translateHandler}>Перевести</button>
         <button onClick={clearHandler}>Сбросить</button>
       </div>
       <div>маскот</div>
-      <TextArea
-        value={valueResult}
-        setValue={setValueResult}
-        isDisabled={true}
-        placeholder="Ваш переведенный текст"
-      />
+      <div style={{ border: '1px solid purple', padding: '20px' }}>
+        {output.map((word, idx) => (
+          <span key={idx} style={{ border: '1px solid green', margin: '5px', padding: '5px' }}>
+            {word}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };
