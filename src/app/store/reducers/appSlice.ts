@@ -22,8 +22,8 @@ export const appSlice = createSlice({
     setAudioLesson: (state, action) => {
       state.audioLesson = action.payload.lesson;
     },
-    setTextLesson: (state, action) => {
-      state.textLesson = action.payload.lesson;
+    setTextLesson: (state, { payload }) => {
+      state.textLesson = payload.lesson;
     },
   },
 });
