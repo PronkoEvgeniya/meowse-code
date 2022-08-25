@@ -1,3 +1,4 @@
+import { Trans, useTranslation } from 'react-i18next';
 import { TrainResultProps } from '../types/interfaces';
 
 export const TrainResult = ({
@@ -5,6 +6,9 @@ export const TrainResult = ({
   setAnswer,
   setIsLessonCompleted,
 }: TrainResultProps): JSX.Element => {
+  const { t } = useTranslation();
+  const score = answer.length;
+
   const againHandler = () => {
     setAnswer('');
     setIsLessonCompleted(false);
@@ -13,18 +17,17 @@ export const TrainResult = ({
   return answer.length > 2 ? (
     <div>
       <p>
-        Дай пять, ты набрал {answer.length} очков в этом уровне! Пройти уровень ты можешь повторно,
-        я запомню только лучший результат :)
+        <Trans i18nKey={'winner.description'} values={{ score }}>
+          Дай пять, ты набрал <span style={{ color: '#9C56C7' }}>{score}</span>
+        </Trans>
       </p>
-      <button>Следующий урок!</button>
+      <button>{t('winner.nextBtn')}</button>
       <div>маскот</div>
     </div>
   ) : (
     <div>
-      <p>
-        Точность меньше 70%, придется пройти уровень еще раз. Не расстраивайся, у меня тоже лапки!
-      </p>
-      <button onClick={againHandler}>Заново!</button>
+      <p>{t('looser.description')}</p>
+      <button onClick={againHandler}>{t('looser.againBtn')}</button>
       <div>маскот</div>
     </div>
   );

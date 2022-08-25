@@ -9,11 +9,6 @@ export enum Lang {
   en = 'en',
 }
 
-export enum TranslatorMode {
-  encode = 'текст -> морзе',
-  decode = 'морзе -> текст',
-}
-
 export const tutorialContent = [
   {
     description:
