@@ -32,7 +32,7 @@
       "btn": "Hey, Meows!"
     },
     "1": {
-      "description": "В своем личном кабинете ты сможешь посмотреть свои достижения, а так же сменить информацию о себе или тему",
+      "description": "In the profile you can see your achievements, as well as change information about yourself or the theme",
       "btn": "Okay"
     },
     "2": {
@@ -49,7 +49,9 @@
     "description": "I see you are ready to test yourself! If you pass this section successfully, I will reward you. Your task is to solve the cipher: listen to the Morse code and enter the decryption into the text field below",
     "placeholder": "Enter code here...",
     "checkBtn": "Check",
-    "winner": "Congratulations, <1>{{name}}</1>, on your successful completion of the Morse code course! I award you a certificate, you can download it and print"
+    "winner": "Congratulations, <1>{{name}}</1>, on your successful completion of the Morse code course! I award you a certificate, you can download it and print",
+    "looser": "Your result is <1>{{score}}</1>, and to successfully pass the test, you need to score 100%. Try again!",
+    "againBtn": "Retry"
   },
   "winner": {
     "description": "High five, you scored <1>{{score}}</1> points at this level! You can pass the level again, I`ll only remember the best result :)",
