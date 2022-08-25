@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import { App } from './App';
 import './index.scss';
+import './i18n';
 import { BrowserRouter } from 'react-router-dom';
 
 const container = document.getElementById('root') as HTMLDivElement;

@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { AuthModal } from '../components/authModals';
 import { LogInModal } from '../components/authModals/LogInModal';
 import { SignUpModal } from '../components/authModals/SignUpModal';
 import { StartModal } from '../components/authModals/StartModal';
 
 export const StartPage = (): JSX.Element => {
+  const { t } = useTranslation();
+  const page = 'start';
   const [auth, setAuth] = useState('');
 
   const switchComponent = () => {
@@ -22,10 +25,13 @@ export const StartPage = (): JSX.Element => {
     <div>
       {auth && <AuthModal setAuth={setAuth}>{switchComponent()}</AuthModal>}
       <h1>
-        Добро пожаловать на интерактивный курс изучения азбуки <span>Морзе!</span>
+        <Trans i18nKey={`${page}.title`}>
+          Добро пожаловать на интерактивный курс изучения азбуки
+          <span style={{ color: '#9C56C7' }}>Морзе</span>!
+        </Trans>
       </h1>
-      <p>Нажмите, что бы войти или присоединиться &#129106;</p>
-      <button onClick={() => setAuth('start')}>Начать</button>
+      <p>{t(`${page}.description`)} &#129106;</p>
+      <button onClick={() => setAuth('start')}>{t(`${page}.startBtn`)}</button>
     </div>
   );
 };
