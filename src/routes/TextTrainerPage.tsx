@@ -1,4 +1,5 @@
 // import { TrainResult } from '../components/TrainResult';
+import React from 'react';
 import { LessonSelect } from '../components/lessonSelect';
 import { LessonContent } from '../components/lessonContent';
 

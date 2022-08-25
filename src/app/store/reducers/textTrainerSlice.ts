@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICompleteLessonAction, ICompletedLessons } from '../actionTypes';
+import { ICompletedLessons, ICompleteLessonAction } from '../actionTypes';
+import { getFromLS, setToLS } from '../../../helpers/localStorageService';
 
 export interface ITextLessonState {
   isAnswerValid: boolean;
@@ -12,7 +13,7 @@ const initialState: ITextLessonState = {
   isAnswerValid: false,
   isMorseCode: true,
   userAnswer: '',
-  completedLessons: null,
+  completedLessons: getFromLS<ICompletedLessons>('completedTextTrainerLessons', {}),
 };
 
 export const textTrainerSlice = createSlice({
@@ -28,21 +29,17 @@ export const textTrainerSlice = createSlice({
     setUserAnswer: (state, { payload }) => {
       state.userAnswer = payload;
     },
-    completeLesson: (state, { payload: { id, score } }: PayloadAction<ICompleteLessonAction>) => {
-      if (state.completedLessons) {
-        state.completedLessons[id] =
-          state.completedLessons[id] > score ? state.completedLessons[id] : score;
-      } else {
-        state.completedLessons = { [id]: score };
-      }
-      return state;
+    updateCompletedLessons: (
+      state,
+      { payload: { id, userScore } }: PayloadAction<ICompleteLessonAction>
+    ) => {
+      state.completedLessons = { ...state.completedLessons, [id]: userScore };
+      setToLS<ICompletedLessons>('completedTextTrainerLessons', state.completedLessons);
     },
-    setCompletedLessons: (state, { payload }: PayloadAction<ICompletedLessons>) => {
-      state.completedLessons = payload;
-    }
   },
 });
 
-export const { setAnswerValidity, setMorseValidity, setUserAnswer, completeLesson, setCompletedLessons } = textTrainerSlice.actions;
+export const { setAnswerValidity, setMorseValidity, setUserAnswer, updateCompletedLessons } =
+  textTrainerSlice.actions;
 
 export default textTrainerSlice.reducer;

@@ -6,20 +6,18 @@ import {
   setUserAnswer,
   setAnswerValidity,
   setMorseValidity,
-  completeLesson,
-  setCompletedLessons,
+  updateCompletedLessons,
 } from '../../app/store/reducers/textTrainerSlice';
 import { TextAreaMessages } from '../../types/constants';
-import { getFromLS, setToLS } from '../../helpers/localStorageService';
+import { Highlight } from '../highlight';
 
 export const LessonContent = () => {
   const dispatch = useAppDispatch();
-  const lessonID = useAppSelector(
-    ({ app: { textLesson } }) => textLesson
-  );
-  const { isAnswerValid, isMorseCode, userAnswer, completedLessons } = useAppSelector(
+  const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
+  const { isMorseCode, userAnswer, completedLessons } = useAppSelector(
     ({ textTrainer }) => textTrainer
   );
+  const completedScore = completedLessons ? completedLessons[lessonID] : -1;
 
   const currentLesson = data.length
     ? data.find((lesson) => lesson.id === lessonID)
@@ -33,7 +31,8 @@ export const LessonContent = () => {
 
   const inputHandler = ({ target: { value } }: React.ChangeEvent<HTMLTextAreaElement>) => {
     const regExp = new RegExp(TextAreaMessages.lettersRegExp);
-    const isMorse = value.split(' ').every((symbol) => {
+    const splitedAnswer = value.split(' ');
+    const isMorse = splitedAnswer.every((symbol) => {
       if (symbol) return regExp.test(symbol);
       return true;
     });
@@ -58,40 +57,39 @@ export const LessonContent = () => {
     }
   };
 
-  const handleButtonClick = () => {
-    const checkArr = [];
-    const userAnswerArr = userAnswer.trim().split(' ');
-    for (let i = 0; i < answer.length; i += 1) {
-      if (answer[i] === userAnswerArr[i]) checkArr.push(true);
-    }
-    const userPersentage = Math.round((checkArr.length / answer.length) * 100);
-    const userScore = Math.round((checkArr.length / answer.length) * score);
-    dispatch(setUserAnswer(''));
-    dispatch(completeLesson({ id: lessonID, score: userScore }));
-    alert(`${userPersentage}%`);
-  };
-
   useEffect(() => {
     dispatch(setUserAnswer(''));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lessonID]);
 
   useEffect(() => {
-    if (!completedLessons) {
-      const completedLessonsFromLS = getFromLS('completedTextTrainerLessons');
-      const completedLessons = completedLessonsFromLS
-        ? JSON.parse(completedLessonsFromLS)
-        : completedLessonsFromLS;
-      dispatch(setCompletedLessons(completedLessons));
-      return;
+    const regExp = /[.-\s]/;
+    const splitedAnswer = userAnswer.split(' ');
+    const joinedAnswer = splitedAnswer.join('');
+    const joined = answer.join('');
+    const isMorse = splitedAnswer.every((symbol) => {
+      if (symbol) return regExp.test(symbol);
+      return true;
+    });
+    if (joinedAnswer.length === joined.length && isMorse) {
+      const checkArr = [];
+      const userAnswerArr = userAnswer.trim().split(' ');
+      for (let i = 0; i < answer.length; i += 1) {
+        if (answer[i] === userAnswerArr[i]) checkArr.push(true);
+      }
+      const userPersentage = Math.round((checkArr.length / answer.length) * 100);
+      const userScore = Math.round((checkArr.length / answer.length) * score);
+      dispatch(setUserAnswer(''));
+      if (completedScore < userScore) dispatch(updateCompletedLessons({ id: lessonID, userScore }));
+      alert(`${userPersentage}%`);
     }
-    setToLS('completedTextTrainerLessons', completedLessons);
-  }, [completedLessons]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userAnswer]);
 
   return (
     <>
-      {completedLessons ? (
-        <div>{`completed (лучший счет - ${completedLessons[lessonID]})`}</div>
+      {completedScore >= 0 ? (
+        <div>{`completed (лучший счет - ${completedScore}`}</div>
       ) : (
         <div>not completed</div>
       )}
@@ -100,9 +98,18 @@ export const LessonContent = () => {
       <div>{task.toUpperCase()} ?</div>
       <textarea placeholder="Ответ" onChange={inputHandler} value={userAnswer}></textarea>
       {isMorseCode ? null : <div title={TextAreaMessages.rulesTitle}>{TextAreaMessages.error}</div>}
-      <button type="button" disabled={!isAnswerValid} onClick={handleButtonClick}>
-        Готово
-      </button>
+      <div>
+        {userAnswer.split('').map((symbol) => {
+          switch (symbol) {
+            case '.':
+            case '-':
+            case ' ':
+              return <Highlight isValid={true} symbol={symbol} />;
+            default:
+              return <Highlight isValid={false} symbol={symbol} />;
+          }
+        })}
+      </div>
     </>
   );
 };

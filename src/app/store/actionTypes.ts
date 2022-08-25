@@ -1,6 +1,6 @@
 export interface ICompleteLessonAction {
   id: number;
-  score: number;
+  userScore: number;
 }
 
 export interface ICompletedLessons {
