@@ -14,6 +14,19 @@ export enum TranslatorMode {
   decode = 'морзе -> текст',
 }
 
+export enum TextTrainerPageMode {
+  lesson = 'lesson',
+  result = 'result',
+}
+
+export enum LSParameters {
+  completedTextLessons = 'completedTextTrainerLessons',
+}
+
+export enum LessonResults {
+  min = 70,
+}
+
 export const tutorialContent = [
   {
     description:

@@ -7,8 +7,10 @@ import {
   setAnswerValidity,
   setMorseValidity,
   updateCompletedLessons,
+  toggleMode,
+  updateCurrentScore,
 } from '../../app/store/reducers/textTrainerSlice';
-import { TextAreaMessages } from '../../types/constants';
+import { TextAreaMessages, LessonResults } from '../../types/constants';
 import { Highlight } from '../highlight';
 
 export const LessonContent = () => {
@@ -17,7 +19,7 @@ export const LessonContent = () => {
   const { isMorseCode, userAnswer, completedLessons } = useAppSelector(
     ({ textTrainer }) => textTrainer
   );
-  const completedScore = completedLessons ? completedLessons[lessonID] : -1;
+  const completedScore = completedLessons ? completedLessons[lessonID] : 0;
 
   const currentLesson = data.length
     ? data.find((lesson) => lesson.id === lessonID)
@@ -63,33 +65,35 @@ export const LessonContent = () => {
   }, [lessonID]);
 
   useEffect(() => {
-    const regExp = /[.-\s]/;
-    const splitedAnswer = userAnswer.split(' ');
-    const joinedAnswer = splitedAnswer.join('');
-    const joined = answer.join('');
-    const isMorse = splitedAnswer.every((symbol) => {
+    const regExp = new RegExp(TextAreaMessages.lettersRegExp);
+    const userAnswerLetters = userAnswer.trim().split(' ');
+    const answerSymbols = answer.join('');
+    const userAnswerSymbols = userAnswerLetters.join('');
+    const isMorse = userAnswerLetters.every((symbol) => {
       if (symbol) return regExp.test(symbol);
       return true;
     });
-    if (joinedAnswer.length === joined.length && isMorse) {
+
+    if (answerSymbols.length === userAnswerSymbols.length && isMorse) {
       const checkArr = [];
-      const userAnswerArr = userAnswer.trim().split(' ');
       for (let i = 0; i < answer.length; i += 1) {
-        if (answer[i] === userAnswerArr[i]) checkArr.push(true);
+        if (answer[i] === userAnswerLetters[i]) checkArr.push(true);
       }
-      const userPersentage = Math.round((checkArr.length / answer.length) * 100);
       const userScore = Math.round((checkArr.length / answer.length) * score);
+
+      if (!completedScore || (userScore > LessonResults.min && completedScore < userScore))
+        dispatch(updateCompletedLessons({ id: lessonID, userScore }));
       dispatch(setUserAnswer(''));
-      if (completedScore < userScore) dispatch(updateCompletedLessons({ id: lessonID, userScore }));
-      alert(`${userPersentage}%`);
+      dispatch(toggleMode());
+      dispatch(updateCurrentScore(userScore));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userAnswer]);
 
   return (
     <>
-      {completedScore >= 0 ? (
-        <div>{`completed (лучший счет - ${completedScore}`}</div>
+      {completedScore ? (
+        <div>{`completed (лучший счет - ${completedScore})`}</div>
       ) : (
         <div>not completed</div>
       )}
