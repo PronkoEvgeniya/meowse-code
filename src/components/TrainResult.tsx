@@ -6,7 +6,7 @@ import { toggleMode } from '../app/store/reducers/textTrainerSlice';
 import { Trans, useTranslation } from 'react-i18next';
 
 export const TrainResult = (): JSX.Element => {
-  const lessonID = useAppSelector(({ app: { textLesson }}) => textLesson);
+  const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -15,20 +15,22 @@ export const TrainResult = (): JSX.Element => {
 
   const handleReturnToTheLesson = () => {
     dispatch(toggleMode());
-  }
+  };
 
   const handleStartNextLesson = () => {
     const lesson = Number(lessonID) + 1;
     dispatch(setTextLesson({ lesson }));
     dispatch(toggleMode());
     navigate(`/text/${lesson}`);
-  }
+  };
 
   return bestScore >= 70 ? (
     <div>
       <p>
         <Trans i18nKey={'winner.description'} values={{ lessonID, currentScore, bestScore }}>
-          {'Поздравляю, ты прошел урок {{lessonID}} Дай пять, ты набрал {{currentScore}} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - {{bestScore}}:)'}
+          {
+            'Поздравляю, ты прошел урок {{lessonID}} Дай пять, ты набрал {{currentScore}} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - {{bestScore}}:)'
+          }
         </Trans>
       </p>
       <button onClick={handleStartNextLesson}>{t('winner.nextBtn')}</button>
@@ -38,7 +40,8 @@ export const TrainResult = (): JSX.Element => {
     <div>
       <p>
         <Trans i18nKey={'looser.description'} values={{ lessonID }}>
-          Точность меньше 70%, придется пройти урок № {{lessonID}} еще раз. Не расстраивайся, у меня тоже лапки!
+          Точность меньше 70%, придется пройти урок № {{ lessonID }} еще раз. Не расстраивайся, у
+          меня тоже лапки!
         </Trans>
       </p>
       <button onClick={handleReturnToTheLesson}>{t('looser.againBtn')}</button>

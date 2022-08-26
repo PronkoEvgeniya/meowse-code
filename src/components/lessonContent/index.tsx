@@ -110,7 +110,7 @@ export const LessonContent = () => {
             case '.':
             case '-':
             case ' ':
-              return <Highlight isValid={true} symbol={symbol} key={symbol + i}/>;
+              return <Highlight isValid={true} symbol={symbol} key={symbol + i} />;
             default:
               return <Highlight isValid={false} symbol={symbol} />;
           }

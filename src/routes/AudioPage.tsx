@@ -35,9 +35,9 @@ export const AudioPage = (): JSX.Element => {
 
   return isLessonCompleted ? (
     <TrainResult
-      // answer={answer}
-      // setIsLessonCompleted={setIsLessonCompleted}
-      // setAnswer={setAnswer}
+    // answer={answer}
+    // setIsLessonCompleted={setIsLessonCompleted}
+    // setAnswer={setAnswer}
     />
   ) : (
     <div>
