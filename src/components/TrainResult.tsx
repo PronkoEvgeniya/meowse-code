@@ -27,22 +27,19 @@ export const TrainResult = (): JSX.Element => {
   return bestScore >= 70 ? (
     <div>
       <p>
-        {
-          currentScore < 70 
-            ? (
-              <Trans i18nKey={'winner.description.0'} values={{ lessonID, currentScore, bestScore }}>
-                {/* {
+        {currentScore < 70 ? (
+          <Trans i18nKey={'winner.description.0'} values={{ lessonID, currentScore, bestScore }}>
+            {/* {
                   'Поздравляю, ты прошел урок {{lessonID}} Дай пять, ты набрал {{currentScore}} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - {{bestScore}}:)'
                 } */}
-              </Trans>
-            ) : (
-              <Trans i18nKey={'winner.description.1'} values={{ lessonID, currentScore, bestScore }}>
-                {/* {
+          </Trans>
+        ) : (
+          <Trans i18nKey={'winner.description.1'} values={{ lessonID, currentScore, bestScore }}>
+            {/* {
                   'Поздравляю, ты прошел урок {{lessonID}} Дай пять, ты набрал {{currentScore}} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - {{bestScore}}:)'
                 } */}
-              </Trans>
-            )
-        }
+          </Trans>
+        )}
       </p>
       <button onClick={handleStartNextLesson}>{t('winner.nextBtn')}</button>
       <div>маскот</div>
@@ -51,7 +48,7 @@ export const TrainResult = (): JSX.Element => {
     <div>
       <p>
         <Trans i18nKey={'looser.description'} values={{ lessonID }}>
-          Точность меньше 70%, придется пройти урок № {{lessonID}} еще раз. Не расстраивайся, у
+          Точность меньше 70%, придется пройти урок № {{ lessonID }} еще раз. Не расстраивайся, у
           меня тоже лапки!
         </Trans>
       </p>
