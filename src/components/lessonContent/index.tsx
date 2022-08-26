@@ -10,7 +10,7 @@ import {
   toggleMode,
   updateCurrentScore,
 } from '../../app/store/reducers/textTrainerSlice';
-import { TextAreaMessages, LessonResults } from '../../types/constants';
+import { TextAreaMessages, LessonResults, RegExpTemplates } from '../../types/constants';
 import { Highlight } from '../highlight';
 
 export const LessonContent = () => {
@@ -32,7 +32,7 @@ export const LessonContent = () => {
   ));
 
   const inputHandler = ({ target: { value } }: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const regExp = new RegExp(TextAreaMessages.lettersRegExp);
+    const regExp = new RegExp(RegExpTemplates.morseLetters);
     const splitedAnswer = value.split(' ');
     const isMorse = splitedAnswer.every((symbol) => {
       if (symbol) return regExp.test(symbol);
@@ -65,7 +65,7 @@ export const LessonContent = () => {
   }, [lessonID]);
 
   useEffect(() => {
-    const regExp = new RegExp(TextAreaMessages.lettersRegExp);
+    const regExp = new RegExp(RegExpTemplates.morseSymbols);
     const userAnswerLetters = userAnswer.trim().split(' ');
     const answerSymbols = answer.join('');
     const userAnswerSymbols = userAnswerLetters.join('');
@@ -84,6 +84,8 @@ export const LessonContent = () => {
       if (!completedScore || (userScore > LessonResults.min && completedScore < userScore))
         dispatch(updateCompletedLessons({ id: lessonID, userScore }));
       dispatch(setUserAnswer(''));
+      dispatch(setAnswerValidity(false));
+      dispatch(setMorseValidity(true));
       dispatch(toggleMode());
       dispatch(updateCurrentScore(userScore));
     }
@@ -103,12 +105,12 @@ export const LessonContent = () => {
       <textarea placeholder="Ответ" onChange={inputHandler} value={userAnswer}></textarea>
       {isMorseCode ? null : <div title={TextAreaMessages.rulesTitle}>{TextAreaMessages.error}</div>}
       <div>
-        {userAnswer.split('').map((symbol) => {
+        {userAnswer.split('').map((symbol, i) => {
           switch (symbol) {
             case '.':
             case '-':
             case ' ':
-              return <Highlight isValid={true} symbol={symbol} />;
+              return <Highlight isValid={true} symbol={symbol} key={symbol + i}/>;
             default:
               return <Highlight isValid={false} symbol={symbol} />;
           }

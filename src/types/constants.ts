@@ -1,7 +1,6 @@
 export enum TextAreaMessages {
   error = '*упс, что-то ты не то вводишь. наведи на меня и узнай что делать',
-  rulesTitle = '1. используй только . и -\n2. длина букв от 1 до 6 символов\n3. разделяй буквы 1 пробелом',
-  lettersRegExp = '^[.-]{1,6}$',
+  rulesTitle = '1. используй только . и -\n2. длина букв от 1 до 6 символов\n3. разделяй буквы 1 пробелом',  
 }
 
 export enum Lang {
@@ -25,6 +24,11 @@ export enum LSParameters {
 
 export enum LessonResults {
   min = 70,
+}
+
+export enum RegExpTemplates {
+  morseLetters = '^[.-]{1,6}$',
+  morseSymbols = '^[.-]*$',
 }
 
 export const tutorialContent = [

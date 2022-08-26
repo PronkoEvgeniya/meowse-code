@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
 import { setTextLesson } from '../app/store/reducers/appSlice';
 import { toggleMode } from '../app/store/reducers/textTrainerSlice';
 import { Trans, useTranslation } from 'react-i18next';
-import { TrainResultProps } from '../types/interfaces';
 
 export const TrainResult = (): JSX.Element => {
   const lessonID = useAppSelector(({ app: { textLesson }}) => textLesson);
@@ -12,7 +11,7 @@ export const TrainResult = (): JSX.Element => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { completedLessons, currentScore } = useAppSelector(({ textTrainer }) => textTrainer);
-  const lessonScore = completedLessons ? completedLessons[lessonID] : 0;
+  const bestScore = completedLessons ? completedLessons[lessonID] : 0;
 
   const handleReturnToTheLesson = () => {
     dispatch(toggleMode());
@@ -25,19 +24,24 @@ export const TrainResult = (): JSX.Element => {
     navigate(`/text/${lesson}`);
   }
 
-  return lessonScore >= 70 ? (
+  return bestScore >= 70 ? (
     <div>
-      <p>{`Поздравляю, ты прошел урок №${lessonID} Дай пять, ты набрал ${currentScore} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - ${lessonScore}:\)`}
+      <p>
+        <Trans i18nKey={'winner.description'} values={{ lessonID, currentScore, bestScore }}>
+          {'Поздравляю, ты прошел урок {{lessonID}} Дай пять, ты набрал {{currentScore}} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - {{bestScore}}:)'}
+        </Trans>
       </p>
-      <button onClick={handleStartNextLesson}>Следующий урок!</button>
+      <button onClick={handleStartNextLesson}>{t('winner.nextBtn')}</button>
       <div>маскот</div>
     </div>
   ) : (
     <div>
       <p>
-        {`Точность меньше 70%, придется пройти урок № ${lessonID} еще раз. Не расстраивайся, у меня тоже лапки!`}
+        <Trans i18nKey={'looser.description'} values={{ lessonID }}>
+          Точность меньше 70%, придется пройти урок № {{lessonID}} еще раз. Не расстраивайся, у меня тоже лапки!
+        </Trans>
       </p>
-      <button onClick={handleReturnToTheLesson}>Заново!</button>
+      <button onClick={handleReturnToTheLesson}>{t('looser.againBtn')}</button>
       <div>маскот</div>
     </div>
   );

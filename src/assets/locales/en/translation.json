@@ -54,11 +54,11 @@
     "againBtn": "Retry"
   },
   "winner": {
-    "description": "High five, you scored <1>{{score}}</1> points at this level! You can pass the level again, I`ll only remember the best result :)",
+    "description": "Congratulations, you've passed lesson {{lessonID}}. Give me a high five, you've scored {{currentScore}} points! You can pass the level again, and I will remember only your best score - {{bestScore}} :)",
     "nextBtn": "Next lesson!"
   },
   "looser": {
-    "description": "The accuracy is less than 70%, you should go through the level again. Don't worry, I have paws too!",
+    "description": "The accuracy is less than 70%, you should go through the lesson {{ lessonID }} again. Don't worry, I have paws too!",
     "againBtn": "Again!"
   }
 }
