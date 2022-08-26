@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { AudioBtn } from '../components/audioButton';
 import { TextArea } from '../components/TextArea';
 
 export const TestPage = (): JSX.Element => {
+  const { t } = useTranslation();
+  const name = 'user';
   const [valueArea, setValueArea] = useState('');
   const [isTestCompleted, setIsTestCompleted] = useState(false);
 
@@ -12,30 +15,27 @@ export const TestPage = (): JSX.Element => {
 
   return (
     <div>
-      <h2>Тестирование</h2>
+      <h2>{t('test')}</h2>
       {isTestCompleted ? (
         <>
           <p>
-            Поздравляю, <span>Евгения</span>, с успешным прохождением курса по изучению азбуки
-            Морзе! Награждаю тебя сертификатом, ты можесь скачать его и распечатать
+            <Trans i18nKey={'testing.winner'} values={{ name }}>
+              Поздравляю, <span style={{ color: '#9C56C7' }}>{name}</span>
+            </Trans>
           </p>
           <div>Сертификат</div>
         </>
       ) : (
         <>
-          <p>
-            Вижу, ты уже готов испытать себя! За успешное прохождение этого раздела я тебя награжу.
-            Твоя задача разгадать шифр: прослушай код Морзе и введи расшифровку в текстовое поле
-            внизу
-          </p>
+          <p>{t('testing.description')}</p>
           <div>
             <AudioBtn value="?" src="#" />
             <TextArea
               value={valueArea}
               setValue={setValueArea}
-              placeholder="Введи сюда расшифровку..."
+              placeholder={t('testing.placeholder')}
             />
-            <button onClick={changeHandler}>Проверить</button>
+            <button onClick={changeHandler}>{t('testing.checkBtn')}</button>
           </div>
         </>
       )}

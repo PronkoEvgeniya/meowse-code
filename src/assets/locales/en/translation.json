@@ -1,0 +1,64 @@
+{
+  "audio": "Audio simulator",
+  "text": "Text Simulator",
+  "game": "Mini-game",
+  "test": "Test",
+  "translate": "Translator",
+  "about": "About the course",
+  "developers": "Developers",
+  "notFound": "Oops, something went wrong :(",
+  "decode": "morse -> text",
+  "encode": "text -> morse",
+  "start": {
+    "title": "Welcome to the interactive <1>Morse</1> code course!",
+    "description": "Click to log in / sign up",
+    "startBtn": "Start",
+    "logIn": "Log in",
+    "signUp": "Sign up",
+    "backBtn": "Back",
+    "email": "Email",
+    "name": "Name",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "remember": "Remember me"
+  },
+  "home": {
+    "question1": "How are you, <1>{{name}}</1>?",
+    "question2": "What shall we do today?"
+  },
+  "tutorial": {
+    "0": {
+      "description": "Welcome, {{name}}! My name is <3>Meows</3>, I will be happy to help you on the course",
+      "btn": "Hey, Meows!"
+    },
+    "1": {
+      "description": "In the profile you can see your achievements, as well as change information about yourself or the theme",
+      "btn": "Okay"
+    },
+    "2": {
+      "description": "I suggest you start with practice, to open the simulator, expand the panel on the left",
+      "btn": "Well"
+    }
+  },
+  "translator": {
+    "placeholder": "Enter text to translate...",
+    "translate": "Translate",
+    "reset": "Reset"
+  },
+  "testing": {
+    "description": "I see you are ready to test yourself! If you pass this section successfully, I will reward you. Your task is to solve the cipher: listen to the Morse code and enter the decryption into the text field below",
+    "placeholder": "Enter code here...",
+    "checkBtn": "Check",
+    "winner": "Congratulations, <1>{{name}}</1>, on your successful completion of the Morse code course! I award you a certificate, you can download it and print",
+    "looser": "Your result is <1>{{score}}</1>, and to successfully pass the test, you need to score 100%. Try again!",
+    "againBtn": "Retry"
+  },
+  "winner": {
+    "description": "High five, you scored <1>{{score}}</1> points at this level! You can pass the level again, I`ll only remember the best result :)",
+    "nextBtn": "Next lesson!"
+  },
+  "looser": {
+    "description": "The accuracy is less than 70%, you should go through the level again. Don't worry, I have paws too!",
+    "againBtn": "Again!"
+  }
+}
