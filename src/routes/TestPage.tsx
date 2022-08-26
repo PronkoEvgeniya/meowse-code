@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { AudioBtn } from '../components/audioButton';
 import { TextArea } from '../components/TextArea';
+import { audio } from '../assets/audio/symbols/index';
 
 export const TestPage = (): JSX.Element => {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ export const TestPage = (): JSX.Element => {
         <>
           <p>{t('testing.description')}</p>
           <div>
-            <AudioBtn value="?" src="#" />
+            <AudioBtn value={'?'} src={audio.a} />
             <TextArea
               value={valueArea}
               setValue={setValueArea}
