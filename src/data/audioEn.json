@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "description": "Congratulations on the start of learning Morse code! This is an audio simulator, your job is to study the sound of the signals - in this K and M lesson, listen to the assignment in the player below and enter the decryption. Hint, in the assignment signal for 10 letters, enter in the correct sequence.",
+    "symbols": ["k", "m"],
+    "player": ["k", "m"],
+    "task": "km",
+    "answer": ["m", "k", "k", "m", "m", "m", "k", "m", "k", "k"],
+    "score": 100
+  },
+  {
+    "id": 2,
+    "description": "In this lesson, your job is to study the sound of the signal for the letter A, to listen to the task in the player below and to decipher the recorded signal into the letters you have previously studied. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["a"],
+    "player": ["a"],
+    "task": "a",
+    "answer": ["a", "k", "m", "a", "a", "m", "k", "a", "k", "a"],
+    "score": 100
+  },
+  {
+    "id": 3,
+    "description": "In this lesson, the letter for learning - U. Listen to the task in the player below and decipher the recorded signal on the letters you have studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["u"],
+    "player": ["u"],
+    "task": "u",
+    "answer": ["k", "u", "u", "m", "a", "u", "k", "m", "a", "u"],
+    "score": 100
+  },
+  {
+    "id": 4,
+    "description": "Now learn how the letter S sounds in Morse. And then listen to the task in the player below and decipher the recorded signal on the letters you have studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["s"],
+    "player": ["s"],
+    "task": "s",
+    "answer": ["s", "k", "y", "a", "s", "k", "a", "m", "s", "s"],
+    "score": 100
+  },
+  {
+    "id": 5,
+    "description": "Next in line is the letter R. Study its sound in Morse, and then listen to the task in the player below and decode the recorded signal on the letters you have previously studied. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["r"],
+    "player": ["r"],
+    "task": "r",
+    "answer": ["r", "r", "u", "k", "r", "a", "s", "r", "m", "a"],
+    "score": 100
+  },
+  {
+    "id": 6,
+    "description": "Now in the player to learn the signal of the letter T. As you study - listen to the task in the player below and decode the recorded signal on the letters you have studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["t"],
+    "player": ["t"],
+    "task": "t",
+    "answer": ["u", "t", "t", "m", "k", "t", "s", "r", "a", "r"],
+    "score": 100
+  },
+  {
+    "id": 7,
+    "description": "It’s time you read the letter O. Listen to the task in the player below and decode the recorded signal to the letters you’ve studied before when you’re ready. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["o"],
+    "player": ["o"],
+    "task": "o",
+    "answer": ["o", "o", "k", "u", "t", "o", "m", "o", "r", "s"],
+    "score": 100
+  },
+  {
+    "id": 8,
+    "description": "Excellent tempo! Time for N! Learn the signal, and then listen to the task in the player below and decipher the recorded signal on the letters you have previously studied. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["n"],
+    "player": ["n"],
+    "task": "n",
+    "answer": ["n", "a", "k", "r", "o", "s", "m", "u", "t", "n"],
+    "score": 100
+  },
+  {
+    "id": 9,
+    "description": "Here it is - perseverance! The letter H is waiting for you when you study - listen to the task in the player below and decode the recorded signal on the letters you have studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["h"],
+    "player": ["h"],
+    "task": "h",
+    "answer": ["h", "o", "t", "k", "n", "u", "s", "r", "a", "h"],
+    "score": 100
+  },
+  {
+    "id": 10,
+    "description": "Almost missed the important letter W. First study it, and then listen to the assignment in the player below and decipher the recorded signal on the letters you studied earlier. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["w"],
+    "player": ["w"],
+    "task": "w",
+    "answer": ["w", "o", "s", "a", "u", "n", "m", "h", "h", "w"],
+    "score": 100
+  },
+  {
+    "id": 11,
+    "description": "New lesson - new letter. This time E will have to study. Then listen to the task in the player below and decode the recorded signal to the letters you have studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["e"],
+    "player": ["e"],
+    "task": "e",
+    "answer": ["e", "w", "h", "k", "m", "s", "u", "a", "w", "e"],
+    "score": 100
+  },
+  {
+    "id": 12,
+    "description": "The new letter in this lesson is I. After studying the task in the player below and decipher the recorded signal on the letters you have previously studied. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["i"],
+    "player": ["i"],
+    "task": "i",
+    "answer": ["i", "e", "r", "s", "u", "w", "h", "a", "n", "i"],
+    "score": 100
+  },
+  {
+    "id": 13,
+    "description": "After class, the letter D will appear in your arsenal. Just study it first, and then listen to the task in the player below and decode the recorded signal to the letters you have previously studied. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["d"],
+    "player": ["d"],
+    "task": "d",
+    "answer": ["d", "a", "n", "i", "w", "u", "m", "t", "s", "d"],
+    "score": 100
+  },
+  {
+    "id": 14,
+    "description": "The letter G on the screen! Remember, and then listen to the task in the player below and decode the recorded signal to the letters you have studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["g"],
+    "player": ["g"],
+    "task": "g",
+    "answer": ["g", "m", "k", "w", "g", "i", "d", "u", "h", "s"],
+    "score": 100
+  },
+  {
+    "id": 15,
+    "description": "It’s time for a new letter - L. Remember, and then listen to the assignment in the player below and decode the recorded signal to the letters you’ve studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["l"],
+    "player": ["l"],
+    "task": "l",
+    "answer": ["i", "g", "l", "h", "d", "w", "l", "i", "t", "a"],
+    "score": 100
+  },
+  {
+    "id": 16,
+    "description": "Wow, you’re halfway there! New P for you. Listen to the task in the player below and decrypt the recorded signal on the letters you have studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["p"],
+    "player": ["p"],
+    "task": "p",
+    "answer": ["h", "p", "o", "l", "s", "k", "a", "p", "g", "w"],
+    "score": 100
+  },
+  {
+    "id": 17,
+    "description": "The new letter is F. Remember it well! Decipher the recorded signal into the letters you studied earlier. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["f"],
+    "player": ["f"],
+    "task": "f",
+    "answer": ["a", "p", "f", "f", "h", "r", "l", "g", "o", "e"],
+    "score": 100
+  },
+  {
+    "id": 18,
+    "description": "The new letter is Z. Remember, and then listen to the task in the player below and decode the recorded signal to the letters you have previously studied. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["z"],
+    "player": ["z"],
+    "task": "z",
+    "answer": ["z", "m", "k", "g", "l", "u", "h", "f", "p", "z"],
+    "score": 100
+  },
+  {
+    "id": 19,
+    "description": "It’s time to get acquainted with the letter V! First study, and then listen to the task in the player below and decipher the recorded signal on the letters you have studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["v"],
+    "player": ["v"],
+    "task": "v",
+    "answer": ["e", "v", "h", "o", "r", "v", "z", "n", "f", "a"],
+    "score": 100
+  },
+  {
+    "id": 20,
+    "description": "That’s a third behind! Memorize the letter B, and then listen to the task in the player below and decipher the recorded signal on the letters you studied earlier. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["b"],
+    "player": ["b"],
+    "task": "b",
+    "answer": ["f", "h", "b", "z", "r", "m", "b", "k", "p", "v"],
+    "score": 100
+  },
+  {
+    "id": 21,
+    "description": "The letter Q! You will definitely be able to study it, and then listen to the task in the player below and decipher the recorded signal on the previously studied letters. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["q"],
+    "player": ["q"],
+    "task": "q",
+    "answer": ["b", "z", "u", "q", "a", "p", "s", "v", "q", "f"],
+    "score": 100
+  },
+  {
+    "id": 22,
+    "description": "In this lesson, your job is to study the sound of the signal for the letter C, to listen to the task in the player below and to decipher the recorded signal for the letters you have previously studied. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["c"],
+    "player": ["c"],
+    "task": "c",
+    "answer": ["c", "c", "m", "k", "q", "r", "h", "v", "b", "p"],
+    "score": 100
+  },
+  {
+    "id": 23,
+    "description": "Next in line is the letter Y. Study its sound in Morse, and then listen to the task in the player below and decode the recorded signal on the letters you have studied previously. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["y"],
+    "player": ["y"],
+    "task": "y",
+    "answer": ["e", "c", "h", "y", "v", "w", "y", "i", "s", "d"],
+    "score": 100
+  },
+  {
+    "id": 24,
+    "description": "After class, even the letter J will appear in your arsenal. Just study it first, and then listen to the task in the player below and decode the recorded signal to the letters you have previously studied. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["j"],
+    "player": ["j"],
+    "task": "j",
+    "answer": ["q", "h", "j", "u", "j", "w", "n", "k", "y", "i"],
+    "score": 100
+  },
+  {
+    "id": 25,
+    "description": "We’re at the finish line, which means it’s time to recognize the letter X. After listening to the task in the player below and decipher the recorded signal on the letters you studied earlier. Hint: in the assignment signal for 10 letters.",
+    "symbols": ["x"],
+    "player": ["x"],
+    "task": "x",
+    "answer": ["x", "j", "b", "d", "o", "x", "t", "h", "c", "y"],
+    "score": 100
+  }
+]
