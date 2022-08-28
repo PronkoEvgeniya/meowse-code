@@ -4,13 +4,13 @@ import { SocialBtns } from './SocialBtns';
 
 export const StartModal = ({ setAuth }: ModalProps): JSX.Element => {
   const { t } = useTranslation();
-  const changeModal = (value: string) => setAuth(value);
+  const changeModal = (value: string) => () => setAuth(value);
 
   return (
     <>
-      <button onClick={() => changeModal('login')}>{t('start.logIn')}</button>
+      <button onClick={changeModal('login')}>{t('start.logIn')}</button>
       <SocialBtns />
-      <button onClick={() => changeModal('signup')}>{t('start.signUp')}</button>
+      <button onClick={changeModal('signup')}>{t('start.signUp')}</button>
       <SocialBtns />
     </>
   );
