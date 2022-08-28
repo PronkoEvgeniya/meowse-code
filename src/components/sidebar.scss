@@ -1,0 +1,50 @@
+@import "../index.scss";
+@import "../routes/startPage.scss";
+
+aside {
+    padding-top: 200px;
+    background-color: $violent;
+    border-radius: 0 40px 40px 0;
+    font-size: 3.2rem;
+    order: -1;
+    button {
+        position: absolute;
+        display: none;
+    }
+    nav {
+        height: 100%;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        height: 100%;
+    }
+
+    li:nth-child(6) {
+        margin: auto 0 40px 0;
+    }
+    li {
+        list-style: none;
+        text-align: center;
+        a {
+            display: block;
+            text-decoration: none;
+            color: $white;
+            padding: 10px 5px 10px 10px;
+            margin-right: 20px;
+        }
+        a:hover,
+        a:focus {
+            color: $grayText;
+            background-color: $white;
+            border-radius: 0 20px 20px 0;
+        }
+    }
+}
+
+@media (min-height: 945px) {
+    aside {
+        max-height: 945px;
+    }
+}

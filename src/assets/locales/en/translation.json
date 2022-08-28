@@ -10,7 +10,7 @@
   "decode": "morse -> text",
   "encode": "text -> morse",
   "start": {
-    "title": "Welcome to the interactive <1>Morse</1> code course!",
+    "title": "Welcome to the <1 /> interactive <3>Morse</3> code course!",
     "description": "Click to log in / sign up",
     "startBtn": "Start",
     "logIn": "Log in",

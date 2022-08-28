@@ -2,14 +2,14 @@ import { IconFB, IconGoogle, IconInst } from '../../assets/Sprite';
 
 export const SocialBtns = (): JSX.Element => {
   return (
-    <div>
-      <button>
+    <div className="socio-btns">
+      <button className="soc-btn">
         <IconGoogle />
       </button>
-      <button>
+      <button className="soc-btn">
         <IconFB />
       </button>
-      <button>
+      <button className="soc-btn">
         <IconInst />
       </button>
     </div>

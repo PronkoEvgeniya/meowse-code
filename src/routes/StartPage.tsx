@@ -4,6 +4,7 @@ import { AuthModal } from '../components/authModals';
 import { LogInModal } from '../components/authModals/LogInModal';
 import { SignUpModal } from '../components/authModals/SignUpModal';
 import { StartModal } from '../components/authModals/StartModal';
+import './startPage.scss';
 
 export const StartPage = (): JSX.Element => {
   const { t } = useTranslation();
@@ -22,16 +23,18 @@ export const StartPage = (): JSX.Element => {
   };
 
   return (
-    <div>
+    <div className="start-page">
       {auth && <AuthModal setAuth={setAuth}>{switchComponent()}</AuthModal>}
       <h1>
         <Trans i18nKey={`${page}.title`}>
-          Добро пожаловать на интерактивный курс изучения азбуки
+          Добро пожаловать <br /> на интерактивный курс изучения азбуки
           <span style={{ color: '#9C56C7' }}>Морзе</span>!
         </Trans>
       </h1>
       <p>{t(`${page}.description`)} &#129106;</p>
-      <button onClick={() => setAuth('start')}>{t(`${page}.startBtn`)}</button>
+      <button className="start-btn" onClick={() => setAuth('start')}>
+        {t(`${page}.startBtn`)}
+      </button>
     </div>
   );
 };
