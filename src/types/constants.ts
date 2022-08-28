@@ -1,12 +1,34 @@
 export enum TextAreaMessages {
   error = '*упс, что-то ты не то вводишь. наведи на меня и узнай что делать',
   rulesTitle = '1. используй только . и -\n2. длина букв от 1 до 6 символов\n3. разделяй буквы 1 пробелом',
-  lettersRegExp = '^[.-]{1,6}$',
 }
 
 export enum Lang {
   ru = 'ru',
   en = 'en',
+}
+
+export enum TranslatorMode {
+  encode = 'текст -> морзе',
+  decode = 'морзе -> текст',
+}
+
+export enum TextTrainerPageMode {
+  lesson = 'lesson',
+  result = 'result',
+}
+
+export enum LSParameters {
+  completedTextLessons = 'completedTextTrainerLessons',
+}
+
+export enum LessonResults {
+  min = 70,
+}
+
+export enum RegExpTemplates {
+  morseLetters = '^[.-]{1,6}$',
+  morseSymbols = '^[.-]*$',
 }
 
 export const MORSE_TABLE = {

@@ -1,33 +1,58 @@
+import React from 'react';
+import { useNavigate } from 'react-router';
+import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
+import { setTextLesson } from '../app/store/reducers/appSlice';
+import { toggleMode } from '../app/store/reducers/textTrainerSlice';
 import { Trans, useTranslation } from 'react-i18next';
-import { TrainResultProps } from '../types/interfaces';
 
-export const TrainResult = ({
-  answer,
-  setAnswer,
-  setIsLessonCompleted,
-}: TrainResultProps): JSX.Element => {
+export const TrainResult = (): JSX.Element => {
+  const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { t } = useTranslation();
-  const score = answer.length;
+  const { completedLessons, currentScore } = useAppSelector(({ textTrainer }) => textTrainer);
+  const bestScore = completedLessons ? completedLessons[lessonID] : 0;
 
-  const againHandler = () => {
-    setAnswer('');
-    setIsLessonCompleted(false);
+  const handleReturnToTheLesson = () => {
+    dispatch(toggleMode());
   };
 
-  return answer.length > 2 ? (
+  const handleStartNextLesson = () => {
+    const lesson = Number(lessonID) + 1;
+    dispatch(setTextLesson({ lesson }));
+    dispatch(toggleMode());
+    navigate(`/text/${lesson}`);
+  };
+
+  return bestScore >= 70 ? (
     <div>
       <p>
-        <Trans i18nKey={'winner.description'} values={{ score }}>
-          Дай пять, ты набрал <span style={{ color: '#9C56C7' }}>{score}</span>
-        </Trans>
+        {currentScore < 70 ? (
+          <Trans i18nKey={'winner.description.0'} values={{ lessonID, currentScore, bestScore }}>
+            {/* {
+                  'Поздравляю, ты прошел урок {{lessonID}} Дай пять, ты набрал {{currentScore}} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - {{bestScore}}:)'
+                } */}
+          </Trans>
+        ) : (
+          <Trans i18nKey={'winner.description.1'} values={{ lessonID, currentScore, bestScore }}>
+            {/* {
+                  'Поздравляю, ты прошел урок {{lessonID}} Дай пять, ты набрал {{currentScore}} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - {{bestScore}}:)'
+                } */}
+          </Trans>
+        )}
       </p>
-      <button>{t('winner.nextBtn')}</button>
+      <button onClick={handleStartNextLesson}>{t('winner.nextBtn')}</button>
       <div>маскот</div>
     </div>
   ) : (
     <div>
-      <p>{t('looser.description')}</p>
-      <button onClick={againHandler}>{t('looser.againBtn')}</button>
+      <p>
+        <Trans i18nKey={'looser.description'} values={{ lessonID }}>
+          Точность меньше 70%, придется пройти урок № {{ lessonID }} еще раз. Не расстраивайся, у
+          меня тоже лапки!
+        </Trans>
+      </p>
+      <button onClick={handleReturnToTheLesson}>{t('looser.againBtn')}</button>
       <div>маскот</div>
     </div>
   );
