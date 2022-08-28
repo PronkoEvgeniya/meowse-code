@@ -9,8 +9,7 @@ export const LessonSelect = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
-  const lessons = data;
-  const options = lessons.map(({ id }, i: number): JSX.Element => {
+  const options = data.map(({ id }, i: number): JSX.Element => {
     return (
       <option key={`lesson${id}`} value={id}>
         Урок {i + 1}
