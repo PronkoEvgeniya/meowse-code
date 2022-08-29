@@ -33,3 +33,8 @@ export interface ILesson {
   task: string;
   answer: string[];
 }
+
+export interface ITest {
+  task: number;
+  answer: string[];
+}

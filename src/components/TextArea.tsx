@@ -1,19 +1,24 @@
-import { TextAreaProps } from '../types/interfaces';
+import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
+import { setAnswer } from '../app/store/reducers/testingSlice';
 
-export const TextArea = ({
-  value,
-  placeholder,
-  setValue,
-  isDisabled = false,
-}: TextAreaProps): JSX.Element => {
+export const TextArea = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+  const { userAnswer } = useAppSelector(({ testing }) => testing);
+
+  const areaHandler = ({ target: { value } }: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    const regexp = new RegExp('/^[a-z]+$/i');
+    regexp.test(value);
+    dispatch(setAnswer(value));
+  };
   return (
     <textarea
       spellCheck={false}
       autoCorrect="off"
-      value={value}
-      placeholder={placeholder}
-      disabled={isDisabled}
-      onChange={(e) => setValue(e.target.value)}
+      value={userAnswer}
+      placeholder={t('testing.placeholder')}
+      onChange={areaHandler}
     />
   );
 };
