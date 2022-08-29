@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
 import { setTextLesson } from '../app/store/reducers/appSlice';
 import { toggleMode } from '../app/store/reducers/textTrainerSlice';
 import { Trans, useTranslation } from 'react-i18next';
+import dataRu from '../data/textRu.json';
 
 export const TrainResult = (): JSX.Element => {
   const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
@@ -18,7 +19,10 @@ export const TrainResult = (): JSX.Element => {
   };
 
   const handleStartNextLesson = () => {
-    const lesson = Number(lessonID) + 1;
+    let lesson = 1;
+    if (lessonID < dataRu.length) {
+      lesson = Number(lessonID) + 1;
+    }
     dispatch(setTextLesson({ lesson }));
     dispatch(toggleMode());
     navigate(`/text/${lesson}`);
@@ -27,30 +31,23 @@ export const TrainResult = (): JSX.Element => {
   return bestScore >= 70 ? (
     <div>
       <p>
-        {currentScore < 70 ? (
-          <Trans i18nKey={'winner.description.0'} values={{ lessonID, currentScore, bestScore }}>
-            {/* {
-                  'Поздравляю, ты прошел урок {{lessonID}} Дай пять, ты набрал {{currentScore}} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - {{bestScore}}:)'
-                } */}
-          </Trans>
-        ) : (
-          <Trans i18nKey={'winner.description.1'} values={{ lessonID, currentScore, bestScore }}>
-            {/* {
-                  'Поздравляю, ты прошел урок {{lessonID}} Дай пять, ты набрал {{currentScore}} очков! Пройти уровень ты можешь повторно, а я запомню только твой лучший результат - {{bestScore}}:)'
-                } */}
-          </Trans>
-        )}
+        <Trans
+          i18nKey={`winner.description.${currentScore < 70 ? '0' : '1'}`}
+          values={{ lessonID, currentScore, bestScore }}
+        />
       </p>
-      <button onClick={handleStartNextLesson}>{t('winner.nextBtn')}</button>
+      <button onClick={handleStartNextLesson}>
+        <Trans
+          i18nKey={`winner.nextBtn.${lessonID === dataRu.length ? 'lastLesson' : 'usual'}`}
+          values={{ lessonID, currentScore, bestScore }}
+        />
+      </button>
       <div>маскот</div>
     </div>
   ) : (
     <div>
       <p>
-        <Trans i18nKey={'looser.description'} values={{ lessonID }}>
-          Точность меньше 70%, придется пройти урок № {{ lessonID }} еще раз. Не расстраивайся, у
-          меня тоже лапки!
-        </Trans>
+        <Trans i18nKey={'looser.description'} values={{ lessonID }} />
       </p>
       <button onClick={handleReturnToTheLesson}>{t('looser.againBtn')}</button>
       <div>маскот</div>

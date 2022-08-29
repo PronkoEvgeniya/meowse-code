@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, createRef, useMemo } from 'react';
+import React, { useEffect, createRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks/reduxHooks';
 import {
   addToFilledInputs,
@@ -18,25 +18,23 @@ interface IMorseField {
 }
 
 export const MorseField = ({ answer, score }: IMorseField): JSX.Element => {
-  const { filledInputs, isFieldsValid, userAnswer, currentInput } = useAppSelector(
-    ({ textTrainer }) => textTrainer
-  );
+  const { filledInputs, isFieldsValid, userAnswer, currentInput, completedLessons } =
+    useAppSelector(({ textTrainer }) => textTrainer);
   const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
   const dispatch = useAppDispatch();
   const redStyle = { border: '5px solid red' };
   const greenStyle = { border: '5px solid green' };
-  const { completedLessons } = useAppSelector(({ textTrainer }) => textTrainer);
   const completedScore = completedLessons ? completedLessons[lessonID] : 0;
-  const formRef = useRef(null);
   const handleFieldChange = ({ target: { value, id } }: React.ChangeEvent<HTMLInputElement>) => {
     const trimedValue = value.trim();
+    dispatch(setUserAnswer({ [id]: trimedValue }));
     if (trimedValue.length === answer[Number(id)].length) {
       dispatch(setFieldValidity({ [id]: answer[Number(id)] === trimedValue }));
-      dispatch(setUserAnswer({ [id]: trimedValue }));
       dispatch(addToFilledInputs(answer[Number(id)] === trimedValue));
       dispatch(setCurrentInput(Number(id) + 1));
     }
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const inputsRefs: React.RefObject<HTMLInputElement>[] = [];
   const inputs = answer.map((letter, i) => {
     const ref: React.RefObject<HTMLInputElement> = createRef();
@@ -55,7 +53,8 @@ export const MorseField = ({ answer, score }: IMorseField): JSX.Element => {
             ? {}
             : redStyle
         }
-        readOnly={!!userAnswer[String(i)]}
+        value={userAnswer[i] ? userAnswer[i] : ''}
+        readOnly={userAnswer[i] ? userAnswer[i].length === letter.length : false}
         onChange={handleFieldChange}
         autoComplete="off"
       />
@@ -71,7 +70,6 @@ export const MorseField = ({ answer, score }: IMorseField): JSX.Element => {
     ) {
       const ref = currentInputRef.current as HTMLInputElement;
       ref.focus();
-      ref.select();
     }
   }, [currentInput, inputsRefs]);
 
@@ -79,7 +77,7 @@ export const MorseField = ({ answer, score }: IMorseField): JSX.Element => {
     if (filledInputs.length === answer.length) {
       const rightAnswers = filledInputs.filter((answer) => answer);
       const userScore = Math.round((rightAnswers.length / answer.length) * score);
-      if (!completedScore && userScore > LessonResults.min && completedScore < userScore) {
+      if (userScore > LessonResults.min || (completedScore && completedScore < userScore)) {
         dispatch(updateCompletedLessons({ id: lessonID, userScore }));
       }
       dispatch(toggleMode());
@@ -88,5 +86,5 @@ export const MorseField = ({ answer, score }: IMorseField): JSX.Element => {
     }
   });
 
-  return <form ref={formRef}>{inputs}</form>;
+  return <form>{inputs}</form>;
 };

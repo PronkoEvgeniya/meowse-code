@@ -4,9 +4,6 @@ import { getFromLS, setToLS } from '../../../helpers/localStorageService';
 import { TextTrainerPageMode, LSParameters } from '../../../types/constants';
 
 export interface ITextLessonState {
-  // isAnswerValid: boolean;
-  // isMorseCode: boolean | null;
-  // userAnswer: string;
   completedLessons: null | ICompletedLessons;
   mode: TextTrainerPageMode.lesson | TextTrainerPageMode.result;
   currentScore: number;
@@ -25,9 +22,6 @@ interface IUserAnswer {
 }
 
 const initialState: ITextLessonState = {
-  // isAnswerValid: false,
-  // isMorseCode: true,
-  // userAnswer: '',
   completedLessons: getFromLS<ICompletedLessons>(LSParameters.completedTextLessons, {}),
   mode: TextTrainerPageMode.lesson,
   currentScore: 0,
@@ -41,12 +35,6 @@ export const textTrainerSlice = createSlice({
   name: 'textTrainer',
   initialState,
   reducers: {
-    // setAnswerValidity: (state, { payload }) => {
-    //   state.isAnswerValid = payload;
-    // },
-    // setMorseValidity: (state, { payload }) => {
-    //   state.isMorseCode = payload;
-    // },
     setUserAnswer: (state, { payload }) => {
       state.userAnswer = { ...state.userAnswer, ...payload };
     },

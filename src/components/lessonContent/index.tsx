@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppSelector } from '../../app/hooks/reduxHooks';
 import { ILesson } from '../../types/interfaces';
-import data from '../../data/text.json';
+import dataRu from '../../data/textRu.json';
 import { MorseField } from './morseField';
 
 export const LessonContent = () => {
@@ -9,8 +9,8 @@ export const LessonContent = () => {
   const { completedLessons } = useAppSelector(({ textTrainer }) => textTrainer);
   const completedScore = completedLessons ? completedLessons[lessonID] : 0;
 
-  const currentLesson = data.length
-    ? data.find((lesson) => lesson.id === lessonID)
+  const currentLesson = dataRu.length
+    ? dataRu.find((lesson) => lesson.id === lessonID)
     : { description: '', symbols: [''], code: [''], task: '', id: 0, answer: '' };
   const { description, symbols, code, task, answer, score } = currentLesson as ILesson;
   const symbolsElements = symbols.map((symbol, i) => (
