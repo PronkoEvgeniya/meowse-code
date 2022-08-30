@@ -29,24 +29,13 @@ export enum LessonResults {
 export enum RegExpTemplates {
   morseLetters = '^[.-]{1,6}$',
   morseSymbols = '^[.-]*$',
+  iFlag = 'i',
+  'ru' = '^[а-я$]*$',
+  'en' = '^[a-z$]*$',
 }
 
-export const tutorialContent = [
-  {
-    description:
-      'Добро пожаловать, Евгения! Меня зовут <span>Мяус</span>, я буду рад помогать тебе на курсе',
-    btnContent: 'Привет, Мяус!',
-  },
-  {
-    description:
-      'В своем личном кабинете ты сможешь узнать подробности о курсе, свои достижения, а так же сменить пароль',
-    btnContent: 'Хорошо',
-  },
-  {
-    description: 'Предлагаю начать с практики, что бы открыть тренажер разверни панель слева',
-    btnContent: 'Хорошо',
-  },
-];
+export const testPercent = 100;
+export const enterKey = 'Enter';
 
 export const MORSE_TABLE = {
   '.-': {
@@ -155,7 +144,7 @@ export const MORSE_TABLE = {
   },
   '---.': 'ч',
   '----': 'ш',
-  '--.--': 'ъ',
+  '.--.-.': 'ъ',
   '..-..': 'э',
   '..--': 'ю',
   '.-.-': 'я',

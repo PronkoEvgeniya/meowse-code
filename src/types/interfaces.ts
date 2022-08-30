@@ -18,10 +18,7 @@ export interface AudioBtnProps {
 }
 
 export interface TextAreaProps {
-  value: string;
-  placeholder: string;
-  isDisabled?: boolean;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  answer: string[];
 }
 
 export interface ILesson {
@@ -32,4 +29,16 @@ export interface ILesson {
   score: number;
   task: string;
   answer: string[];
+}
+
+export interface ITest {
+  task: number;
+  answer: string[];
+}
+
+export interface InputLoginProps {
+  value: string | number;
+  type: string;
+  placeholder: string;
+  setValue: (value: string | number) => void;
 }
