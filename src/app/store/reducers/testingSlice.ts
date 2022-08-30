@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export interface ITestingState {
   userAnswer: string;
   isCompleted: boolean;
+  isHandleSubmit: boolean;
   isAnswerValid: boolean;
   result: number;
 }
@@ -10,6 +11,7 @@ export interface ITestingState {
 const initialState: ITestingState = {
   userAnswer: '',
   isCompleted: false,
+  isHandleSubmit: false,
   isAnswerValid: true,
   result: 0,
 };
@@ -30,9 +32,13 @@ export const testingSlice = createSlice({
     setResult: (state, { payload }) => {
       state.result = payload;
     },
+    setHandleSubmit: (state, { payload }) => {
+      state.isHandleSubmit = payload;
+    },
   },
 });
 
-export const { setAnswer, setAnswerValidity, setCompleteness, setResult } = testingSlice.actions;
+export const { setAnswer, setAnswerValidity, setCompleteness, setResult, setHandleSubmit } =
+  testingSlice.actions;
 
 export default testingSlice.reducer;

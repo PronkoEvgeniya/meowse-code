@@ -29,7 +29,13 @@ export enum LessonResults {
 export enum RegExpTemplates {
   morseLetters = '^[.-]{1,6}$',
   morseSymbols = '^[.-]*$',
+  iFlag = 'i',
+  'ru' = '^[а-я$]*$',
+  'en' = '^[a-z$]*$',
 }
+
+export const testPercent = 100;
+export const enterKey = 'Enter';
 
 export const MORSE_TABLE = {
   '.-': {
