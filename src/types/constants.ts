@@ -1,3 +1,6 @@
+export const testPercent = 100;
+export const enterKey = 'Enter';
+
 export enum TextAreaMessages {
   error = '*упс, что-то ты не то вводишь. наведи на меня и узнай что делать',
   rulesTitle = '1. используй только . и -\n2. длина букв от 1 до 6 символов\n3. разделяй буквы 1 пробелом',
@@ -30,6 +33,9 @@ export enum LessonResults {
 export enum RegExpTemplates {
   morseLetters = '^[.-]{1,6}$',
   morseSymbols = '^[.-]*$',
+  iFlag = 'i',
+  'ru' = '^[а-я$]*$',
+  'en' = '^[a-z$]*$',
 }
 
 export const tutorialContent = [
