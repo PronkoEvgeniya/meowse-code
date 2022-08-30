@@ -1,31 +1,46 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../../app/hooks/reduxHooks';
-import { setTextLesson } from '../../app/store/reducers/appSlice';
-import { resetLessonState } from '../../app/store/reducers/textTrainerSlice';
-import dataRu from '../../data/textRu.json';
+import { setLesson } from '../../app/store/reducers/appSlice';
+import { resetLessonState } from '../../app/store/reducers/trainerSlice';
+import { ILessonProps } from '../../types/interfaces';
 
-export const LessonSelect = (): JSX.Element => {
+export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
   const { id } = useParams();
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
-  const options = dataRu.map(({ id }, i: number): JSX.Element => {
+  const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
+    textLesson,
+    audioLesson,
+  }));
+  const options = data.map(({ id }, i: number): JSX.Element => {
     return (
       <option key={`lesson${id}`} value={id}>
-        Урок {i + 1}
+        {`${t('select')} ${i + 1}`}
       </option>
     );
   });
 
+  let lessonID: number;
+
+  switch (type) {
+    case 'text':
+      lessonID = textLesson;
+      break;
+    case 'audio':
+      lessonID = audioLesson;
+  }
+
   const selectLesson = ({ target: { value } }: React.ChangeEvent<HTMLSelectElement>) => {
-    const lesson = Number(value);
-    dispatch(setTextLesson({ lesson }));
+    const id = Number(value);
+    dispatch(setLesson({ id, type }));
     dispatch(resetLessonState());
   };
 
   useEffect(() => {
-    navigate(`/text/${lessonID}`);
+    navigate(`/${type}/${lessonID}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lessonID]);
 

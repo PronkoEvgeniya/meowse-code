@@ -1,31 +1,52 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
-import { setTextLesson } from '../app/store/reducers/appSlice';
-import { toggleMode } from '../app/store/reducers/textTrainerSlice';
+import { setLesson } from '../app/store/reducers/appSlice';
+import { toggleMode } from '../app/store/reducers/trainerSlice';
 import { Trans, useTranslation } from 'react-i18next';
-import dataRu from '../data/textRu.json';
+import { ITrainResultProps } from '../types/interfaces';
 
-export const TrainResult = (): JSX.Element => {
-  const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
+export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
+  const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
+    textLesson,
+    audioLesson,
+  }));
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { completedLessons, currentScore } = useAppSelector(({ textTrainer }) => textTrainer);
-  const bestScore = completedLessons ? completedLessons[lessonID] : 0;
+  const { completedTextLessons, currentScore, completedAudioLessons } = useAppSelector(
+    ({ trainer: { completedAudioLessons, completedTextLessons, currentScore } }) => ({
+      completedAudioLessons,
+      completedTextLessons,
+      currentScore,
+    })
+  );
+
+  let bestScore = 0;
+  let lessonID: number;
+
+  switch (type) {
+    case 'text':
+      lessonID = textLesson;
+      bestScore = completedTextLessons ? completedTextLessons[lessonID] : 0;
+      break;
+    case 'audio':
+      lessonID = audioLesson;
+      bestScore = completedAudioLessons ? completedAudioLessons[lessonID] : 0;
+  }
 
   const handleReturnToTheLesson = () => {
     dispatch(toggleMode());
   };
 
   const handleStartNextLesson = () => {
-    let lesson = 1;
-    if (lessonID < dataRu.length) {
-      lesson = Number(lessonID) + 1;
+    let id = 1;
+    if (lessonID < data.length) {
+      id = Number(lessonID) + 1;
     }
-    dispatch(setTextLesson({ lesson }));
+    dispatch(setLesson({ id, type }));
     dispatch(toggleMode());
-    navigate(`/text/${lesson}`);
+    navigate(`/${type}/${id}`);
   };
 
   return bestScore >= 70 ? (
@@ -38,7 +59,7 @@ export const TrainResult = (): JSX.Element => {
       </p>
       <button onClick={handleStartNextLesson}>
         <Trans
-          i18nKey={`winner.nextBtn.${lessonID === dataRu.length ? 'lastLesson' : 'usual'}`}
+          i18nKey={`winner.nextBtn.${lessonID === data.length ? 'lastLesson' : 'usual'}`}
           values={{ lessonID, currentScore, bestScore }}
         />
       </button>

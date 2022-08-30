@@ -53,10 +53,11 @@
     "looser": "Your result is {{score}}%, and to successfully pass the test, you need to score 100%. Try our simulators to prepare better and come back again!",
     "againBtn": "Retry"
   },
+  "select": "Lesson",
   "winner": {
     "description": {
       "0": "Oops... :( You've failed this time, but I remember only your best score as I promised - {{bestScore}}! Sometimes you can try again and you will definitely succeed! But now let's try to pass next lesson :)",
-      "1": "Congratulations, you've passed lesson {{lessonID}}. Give me a high five, you've scored {{currentScore}} points! You can pass the level again, and I will remember only your best score - {{bestScore}} :)"
+      "1": "Congratulations, you've passed lesson {{lessonID}}. Give me a high five, you've just scored {{currentScore}} points! You can train the level again, but I will remember only your best score - {{bestScore}} :)"
     },
     "nextBtn": {
       "usual": "Next lesson!",
