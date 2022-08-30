@@ -1,6 +1,6 @@
 [
   {
-    "task": "first",
+    "task": 0,
     "answer": [
       "н",
       "и",
@@ -64,7 +64,7 @@
     ]
   },
   {
-    "task": "second",
+    "task": 1,
     "answer": [
       "в",
       "с",
@@ -124,7 +124,7 @@
     ]
   },
   {
-    "task": "third",
+    "task": 2,
     "answer": [
       "ч",
       "е",
@@ -182,7 +182,7 @@
     ]
   },
   {
-    "task": "fourth",
+    "task": 3,
     "answer": [
       "к",
       "о",
@@ -232,7 +232,7 @@
     ]
   },
   {
-    "task": "fifth",
+    "task": 4,
     "answer": [
       "с",
       "о",

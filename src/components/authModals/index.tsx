@@ -4,12 +4,13 @@ import { AuthModalProps } from '../../types/interfaces';
 
 export const AuthModal = ({ setAuth, children }: AuthModalProps): JSX.Element => {
   const { t } = useTranslation();
+  const changeModal = (value: string) => () => setAuth(value);
 
   return (
     <div>
       <div>
         {children}
-        <button onClick={() => setAuth('')}>
+        <button onClick={changeModal('')}>
           <IconStep />
           {t('start.backBtn')}
         </button>
