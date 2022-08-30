@@ -46,11 +46,11 @@
     "reset": "Reset"
   },
   "testing": {
-    "description": "I see you are ready to test yourself! If you pass this section successfully, I will reward you. Your task is to solve the cipher: listen to the Morse code and enter the decryption into the text field below",
+    "description": "I see you are ready to test yourself! If you pass this section successfully, I will reward you. Your task is to solve the cipher: listen to the Morse code (each letter is separated by a small pause) and enter the decryption (letters without spaces) into the text field below",
     "placeholder": "Enter code here...",
-    "checkBtn": "Check",
+    "error": "*enter only latin characters (a-z)",
     "winner": "Congratulations, <1>{{name}}</1>, on your successful completion of the Morse code course! I award you a certificate, you can download it and print",
-    "looser": "Your result is <1>{{score}}</1>, and to successfully pass the test, you need to score 100%. Try again!",
+    "looser": "Your result is {{score}}%, and to successfully pass the test, you need to score 100%. Try our simulators to prepare better and come back again!",
     "againBtn": "Retry"
   },
   "select": "Lesson",

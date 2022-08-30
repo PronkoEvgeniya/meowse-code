@@ -20,10 +20,7 @@ export interface AudioBtnProps {
 }
 
 export interface TextAreaProps {
-  value: string;
-  placeholder: string;
-  isDisabled?: boolean;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  answer: string[];
 }
 
 interface ITypeProps {
@@ -54,4 +51,9 @@ export interface ITextLesson extends ILesson {
 
 export interface IAudioLesson extends ILesson {
   player: string[];
+}
+
+export interface ITest {
+  task: number;
+  answer: string[];
 }

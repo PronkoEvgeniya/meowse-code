@@ -1,6 +1,6 @@
 [
   {
-    "task": "sixth",
+    "task": 0,
     "answer": [
       "t",
       "h",
@@ -62,7 +62,7 @@
     ]
   },
   {
-    "task": "seventh",
+    "task": 1,
     "answer": [
       "i",
       "n",
@@ -129,7 +129,7 @@
     ]
   },
   {
-    "task": "eighth",
+    "task": 2,
     "answer": [
       "n",
       "o",
@@ -192,7 +192,7 @@
     ]
   },
   {
-    "task": "ninth",
+    "task": 3,
     "answer": [
       "c",
       "a",
@@ -262,7 +262,7 @@
     ]
   },
   {
-    "task": "tenth",
+    "task": 4,
     "answer": [
       "c",
       "a",
