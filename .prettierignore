@@ -10,3 +10,4 @@ webpack.config
 *.jpeg
 *.jpg
 *.ico
+*.mp3
