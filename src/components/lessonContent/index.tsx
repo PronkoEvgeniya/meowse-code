@@ -4,6 +4,7 @@ import { IAudioLesson, ILesson, ILessonProps, ITextLesson } from '../../types/in
 import { AnswerField } from './answerField';
 import { tasks } from '../../assets/audio/tasks';
 import { audio } from '../../assets/audio/symbols';
+import { useTranslation, Trans } from 'react-i18next';
 
 export const LessonContent = ({ data, type }: ILessonProps) => {
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
@@ -16,6 +17,7 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
       completedAudioLessons,
     })
   );
+  const { t } = useTranslation();
 
   let lessonID: number;
   let completedScore = 0;
@@ -52,7 +54,7 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
     completedScore = completedAudioLessons ? completedAudioLessons[lessonID] : 0;
     taskElement = [
       <div key={task + lessonID}>
-        <span>Задание:</span>
+        <span>{t('lesson.task')}</span>
         {/* <Sound label={task} mp3={tasks[task]}/> */}
         <audio key={task} controls src={tasks[task]}></audio>
       </div>,
@@ -63,11 +65,9 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
 
   return (
     <>
-      {completedScore ? (
-        <div>{`completed (лучший счет - ${completedScore})`}</div>
-      ) : (
-        <div>not completed</div>
-      )}
+      <div>
+        <Trans i18nKey={`lesson.status.${completedScore ? '1' : '0'}`} values={{ completedScore }} />
+      </div>
       <div>{description}</div>
       {symbolsElements}
       {taskElement}
