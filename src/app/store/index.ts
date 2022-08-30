@@ -1,13 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import appReducer from './reducers/appSlice';
 import translatorReducer from './reducers/translatorSlice';
-import textTrainerReducer from './reducers/textTrainerSlice';
+import trainerReducer from './reducers/trainerSlice';
 
 export const store = configureStore({
   reducer: {
     app: appReducer,
     translator: translatorReducer,
-    textTrainer: textTrainerReducer,
+    trainer: trainerReducer,
   },
 });
 

@@ -1,3 +1,5 @@
+import { TTrainers } from './types';
+
 export interface ModalProps {
   setAuth: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -24,12 +26,32 @@ export interface TextAreaProps {
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
+interface ITypeProps {
+  type: TTrainers;
+  data: (ITextLesson | IAudioLesson)[];
+}
+
+export type ITrainResultProps = ITypeProps;
+
+export type ILessonProps = ITypeProps;
+
+export interface IAudioSrc {
+  [key: string]: string;
+}
+
 export interface ILesson {
   id: number;
   description: string;
   symbols: string[];
-  code: string[];
   score: number;
   task: string;
   answer: string[];
+}
+
+export interface ITextLesson extends ILesson {
+  code: string[];
+}
+
+export interface IAudioLesson extends ILesson {
+  player: string[];
 }

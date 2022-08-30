@@ -53,6 +53,7 @@
     "looser": "Your result is <1>{{score}}</1>, and to successfully pass the test, you need to score 100%. Try again!",
     "againBtn": "Retry"
   },
+  "select": "Lesson",
   "winner": {
     "description": {
       "0": "Oops... :( You've failed this time, but I remember only your best score as I promised - {{bestScore}}! Sometimes you can try again and you will definitely succeed! But now let's try to pass next lesson :)",

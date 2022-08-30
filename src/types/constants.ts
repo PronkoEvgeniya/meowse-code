@@ -20,6 +20,7 @@ export enum TextTrainerPageMode {
 
 export enum LSParameters {
   completedTextLessons = 'completedTextTrainerLessons',
+  completedAudioLessons = 'completedAudioTrainerLessons',
 }
 
 export enum LessonResults {
@@ -29,6 +30,8 @@ export enum LessonResults {
 export enum RegExpTemplates {
   morseLetters = '^[.-]{1,6}$',
   morseSymbols = '^[.-]*$',
+  ruLetters = '^[А-Яа-я]$',
+  enLetters = '^[A-Za-z]$',
 }
 
 export const tutorialContent = [
