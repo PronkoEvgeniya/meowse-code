@@ -9,24 +9,37 @@ import {
   updateCurrentScore,
   setFieldValidity,
   setCurrentInput,
-} from '../../../app/store/reducers/textTrainerSlice';
+} from '../../../app/store/reducers/trainerSlice';
 import { LessonResults } from '../../../types/constants';
 
-interface IMorseField {
+interface IAnswerFieldProps {
   answer: string[];
   score: number;
+  type: 'text' | 'audio';
 }
 
-export const MorseField = ({ answer, score }: IMorseField): JSX.Element => {
-  const { filledInputs, isFieldsValid, userAnswer, currentInput, completedLessons } =
-    useAppSelector(({ textTrainer }) => textTrainer);
-  const lessonID = useAppSelector(({ app: { textLesson } }) => textLesson);
+export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Element => {
+  const {
+    filledInputs,
+    isFieldsValid,
+    userAnswer,
+    currentInput,
+    completedTextLessons,
+    completedAudioLessons,
+  } = useAppSelector(({ trainer }) => trainer);
+  const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
+    textLesson,
+    audioLesson,
+  }));
   const dispatch = useAppDispatch();
   const redStyle = { border: '5px solid red' };
   const greenStyle = { border: '5px solid green' };
-  const completedScore = completedLessons ? completedLessons[lessonID] : 0;
+
+  let completedScore: number;
+  let lessonID: number;
+
   const handleFieldChange = ({ target: { value, id } }: React.ChangeEvent<HTMLInputElement>) => {
-    const trimedValue = value.trim();
+    const trimedValue = value.trim().toLowerCase();
     dispatch(setUserAnswer({ [id]: trimedValue }));
     if (trimedValue.length === answer[Number(id)].length) {
       dispatch(setFieldValidity({ [id]: answer[Number(id)] === trimedValue }));
@@ -61,6 +74,16 @@ export const MorseField = ({ answer, score }: IMorseField): JSX.Element => {
     );
   });
 
+  switch (type) {
+    case 'audio':
+      lessonID = audioLesson;
+      completedScore = completedAudioLessons ? completedAudioLessons[lessonID] : 0;
+      break;
+    case 'text':
+      lessonID = textLesson;
+      completedScore = completedTextLessons ? completedTextLessons[lessonID] : 0;
+  }
+
   useEffect(() => {
     const currentInputRef = inputsRefs[currentInput];
     if (
@@ -77,8 +100,11 @@ export const MorseField = ({ answer, score }: IMorseField): JSX.Element => {
     if (filledInputs.length === answer.length) {
       const rightAnswers = filledInputs.filter((answer) => answer);
       const userScore = Math.round((rightAnswers.length / answer.length) * score);
-      if (userScore > LessonResults.min || (completedScore && completedScore < userScore)) {
-        dispatch(updateCompletedLessons({ id: lessonID, userScore }));
+      if (
+        (!completedScore && userScore >= LessonResults.min) ||
+        (completedScore && completedScore < userScore)
+      ) {
+        dispatch(updateCompletedLessons({ id: lessonID, userScore, type }));
       }
       dispatch(toggleMode());
       dispatch(updateCurrentScore(userScore));

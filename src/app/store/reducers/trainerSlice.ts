@@ -4,7 +4,8 @@ import { getFromLS, setToLS } from '../../../helpers/localStorageService';
 import { TextTrainerPageMode, LSParameters } from '../../../types/constants';
 
 export interface ITextLessonState {
-  completedLessons: null | ICompletedLessons;
+  completedTextLessons: null | ICompletedLessons;
+  completedAudioLessons: null | ICompletedLessons;
   mode: TextTrainerPageMode.lesson | TextTrainerPageMode.result;
   currentScore: number;
   currentInput: number;
@@ -22,7 +23,8 @@ interface IUserAnswer {
 }
 
 const initialState: ITextLessonState = {
-  completedLessons: getFromLS<ICompletedLessons>(LSParameters.completedTextLessons, {}),
+  completedTextLessons: getFromLS<ICompletedLessons>(LSParameters.completedTextLessons, {}),
+  completedAudioLessons: getFromLS<ICompletedLessons>(LSParameters.completedAudioLessons, {}),
   mode: TextTrainerPageMode.lesson,
   currentScore: 0,
   currentInput: 0,
@@ -31,8 +33,8 @@ const initialState: ITextLessonState = {
   userAnswer: {},
 };
 
-export const textTrainerSlice = createSlice({
-  name: 'textTrainer',
+export const trainerSlice = createSlice({
+  name: 'trainer',
   initialState,
   reducers: {
     setUserAnswer: (state, { payload }) => {
@@ -40,10 +42,21 @@ export const textTrainerSlice = createSlice({
     },
     updateCompletedLessons: (
       state,
-      { payload: { id, userScore } }: PayloadAction<ICompleteLessonAction>
+      { payload: { id, userScore, type } }: PayloadAction<ICompleteLessonAction>
     ) => {
-      state.completedLessons = { ...state.completedLessons, [id]: userScore };
-      setToLS<ICompletedLessons>(LSParameters.completedTextLessons, state.completedLessons);
+      switch (type) {
+        case 'text':
+          state.completedTextLessons = { ...state.completedTextLessons, [id]: userScore };
+          setToLS<ICompletedLessons>(LSParameters.completedTextLessons, state.completedTextLessons);
+          break;
+        case 'audio':
+          state.completedAudioLessons = { ...state.completedAudioLessons, [id]: userScore };
+          setToLS<ICompletedLessons>(
+            LSParameters.completedAudioLessons,
+            state.completedAudioLessons
+          );
+          break;
+      }
     },
     toggleMode: (state) => {
       state.mode =
@@ -73,8 +86,6 @@ export const textTrainerSlice = createSlice({
 });
 
 export const {
-  // setAnswerValidity,
-  // setMorseValidity,
   setUserAnswer,
   updateCompletedLessons,
   toggleMode,
@@ -83,6 +94,6 @@ export const {
   addToFilledInputs,
   setFieldValidity,
   resetLessonState,
-} = textTrainerSlice.actions;
+} = trainerSlice.actions;
 
-export default textTrainerSlice.reducer;
+export default trainerSlice.reducer;

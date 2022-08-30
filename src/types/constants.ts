@@ -1,3 +1,6 @@
+export const testPercent = 100;
+export const enterKey = 'Enter';
+
 export enum TextAreaMessages {
   error = '*упс, что-то ты не то вводишь. наведи на меня и узнай что делать',
   rulesTitle = '1. используй только . и -\n2. длина букв от 1 до 6 символов\n3. разделяй буквы 1 пробелом',
@@ -20,6 +23,7 @@ export enum TextTrainerPageMode {
 
 export enum LSParameters {
   completedTextLessons = 'completedTextTrainerLessons',
+  completedAudioLessons = 'completedAudioTrainerLessons',
 }
 
 export enum LessonResults {
@@ -34,8 +38,22 @@ export enum RegExpTemplates {
   'en' = '^[a-z$]*$',
 }
 
-export const testPercent = 100;
-export const enterKey = 'Enter';
+export const tutorialContent = [
+  {
+    description:
+      'Добро пожаловать, Евгения! Меня зовут <span>Мяус</span>, я буду рад помогать тебе на курсе',
+    btnContent: 'Привет, Мяус!',
+  },
+  {
+    description:
+      'В своем личном кабинете ты сможешь узнать подробности о курсе, свои достижения, а так же сменить пароль',
+    btnContent: 'Хорошо',
+  },
+  {
+    description: 'Предлагаю начать с практики, что бы открыть тренажер разверни панель слева',
+    btnContent: 'Хорошо',
+  },
+];
 
 export const MORSE_TABLE = {
   '.-': {

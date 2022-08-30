@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ISetLessonAction } from '../actionTypes';
 
 export interface IAppState {
   isAuthorized: boolean;
@@ -19,15 +20,18 @@ export const appSlice = createSlice({
     setAuthorization: (state, action) => {
       state.isAuthorized = action.payload.auth;
     },
-    setAudioLesson: (state, action) => {
-      state.audioLesson = action.payload.lesson;
-    },
-    setTextLesson: (state, { payload: { lesson } }) => {
-      state.textLesson = lesson;
+    setLesson: (state, { payload: { id, type } }: PayloadAction<ISetLessonAction>) => {
+      switch (type) {
+        case 'text':
+          state.textLesson = id;
+          break;
+        case 'audio':
+          state.audioLesson = id;
+      }
     },
   },
 });
 
-export const { setAuthorization, setAudioLesson, setTextLesson } = appSlice.actions;
+export const { setAuthorization, setLesson } = appSlice.actions;
 
 export default appSlice.reducer;

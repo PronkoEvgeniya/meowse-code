@@ -1,4 +1,6 @@
-export const audio = {
+import { IAudioSrc } from '../../../types/interfaces';
+
+export const audio: IAudioSrc = {
   a: require('./a.mp3'),
   ae: require('./ae.mp3'),
   b: require('./b.mp3'),
