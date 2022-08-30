@@ -20,9 +20,8 @@ export const App = (): JSX.Element => {
   return (
     <>
       <Header />
-      <h1>{auth.toString()}</h1>
+      <h1 className="test-title">{auth.toString()}</h1>
       <main>
-        <Sidebar />
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/tutorial" element={<TutorialPage />} />
@@ -35,6 +34,7 @@ export const App = (): JSX.Element => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/account" element={<AccountPage />} />
         </Routes>
+        <Sidebar />
       </main>
       <Footer />
     </>

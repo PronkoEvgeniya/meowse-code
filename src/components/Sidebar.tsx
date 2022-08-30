@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../app/hooks/reduxHooks';
+import './sidebar.scss';
 
 export const Sidebar = (): JSX.Element => {
   const { t } = useTranslation();

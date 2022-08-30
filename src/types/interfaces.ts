@@ -57,3 +57,10 @@ export interface ITest {
   task: number;
   answer: string[];
 }
+
+export interface InputLoginProps {
+  value: string | number;
+  type: string;
+  placeholder: string;
+  setValue: (value: string | number) => void;
+}

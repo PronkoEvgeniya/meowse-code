@@ -5,6 +5,7 @@ import { IconLogo } from '../../assets/Sprite';
 import { Lang } from '../../types/constants';
 import { User } from './User';
 import { UserIcon } from './UserIcon';
+import './header.scss';
 
 export const Header = (): JSX.Element => {
   const {
@@ -28,10 +29,10 @@ export const Header = (): JSX.Element => {
             <IconLogo />
           </Link>
         </li>
-        <li>{auth ? <User /> : <UserIcon />}</li>
-        <li>
+        <li className="toggleLang__container">
           <button onClick={toggleLang}>{language}</button>
         </li>
+        <li>{auth ? <User /> : <UserIcon />}</li>
       </ul>
     </header>
   );
