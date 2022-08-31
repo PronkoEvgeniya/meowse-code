@@ -22,8 +22,10 @@ export enum TextTrainerPageMode {
 }
 
 export enum LSParameters {
-  completedTextLessons = 'completedTextTrainerLessons',
-  completedAudioLessons = 'completedAudioTrainerLessons',
+  ruTextLessons = 'ruTextLessons',
+  enTextLessons = 'enTextLessons',
+  ruAudioLessons = 'ruAudioLessons',
+  enAudioLessons = 'enAudioLessons',
 }
 
 export enum LessonResults {

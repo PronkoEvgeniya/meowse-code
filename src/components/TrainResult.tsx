@@ -5,6 +5,7 @@ import { setLesson } from '../app/store/reducers/appSlice';
 import { toggleMode } from '../app/store/reducers/trainerSlice';
 import { Trans, useTranslation } from 'react-i18next';
 import { ITrainResultProps } from '../types/interfaces';
+import { ICompletedLessons } from '../app/store/actionTypes';
 
 export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
@@ -13,26 +14,48 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
   }));
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { t } = useTranslation();
-  const { completedTextLessons, currentScore, completedAudioLessons } = useAppSelector(
-    ({ trainer: { completedAudioLessons, completedTextLessons, currentScore } }) => ({
-      completedAudioLessons,
-      completedTextLessons,
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
+  const {
+    completedRuAudioLessons,
+    completedEnAudioLessons,
+    completedRuTextLessons,
+    completedEnTextLessons,
+    currentScore,
+  } = useAppSelector(
+    ({
+      trainer: {
+        completedRuAudioLessons,
+        completedEnAudioLessons,
+        completedRuTextLessons,
+        completedEnTextLessons,
+        currentScore,
+      },
+    }) => ({
+      completedRuAudioLessons,
+      completedEnAudioLessons,
+      completedRuTextLessons,
+      completedEnTextLessons,
       currentScore,
     })
   );
 
+  let completedLessons: ICompletedLessons | null;
   let bestScore = 0;
   let lessonID: number;
 
   switch (type) {
     case 'text':
       lessonID = textLesson;
-      bestScore = completedTextLessons ? completedTextLessons[lessonID] : 0;
+      completedLessons = lang === 'ru' ? completedRuTextLessons : completedEnTextLessons;
+      bestScore = completedLessons ? completedLessons[lessonID] : 0;
       break;
     case 'audio':
       lessonID = audioLesson;
-      bestScore = completedAudioLessons ? completedAudioLessons[lessonID] : 0;
+      completedLessons = lang === 'ru' ? completedRuAudioLessons : completedEnAudioLessons;
+      bestScore = completedLessons ? completedLessons[lessonID] : 0;
   }
 
   const handleReturnToTheLesson = () => {

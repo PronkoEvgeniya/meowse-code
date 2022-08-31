@@ -1,101 +1,101 @@
-@import "../../index.scss";
+@import '../../index.scss';
 
 .modal-bg {
-    position: absolute;
-    top: -80px;
-    width: 100vw;
-    height: calc(100vh + 80px);
-    background-color: rgba(94, 94, 94, 0.7);
-    backdrop-filter: blur(4px);
+  position: absolute;
+  top: -80px;
+  width: 100vw;
+  height: calc(100vh + 80px);
+  background-color: rgba(94, 94, 94, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal-container {
+    border-radius: 20px;
+    background-color: $white;
+    width: 440px;
+    height: 520px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    .modal-container {
-        border-radius: 20px;
-        background-color: $white;
-        width: 440px;
-        height: 520px;
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px;
+    button {
+      @include btnViolent();
+      display: block;
+      padding: 0;
+      margin: 0 auto;
+    }
+    button:hover {
+      background-color: $grayText;
+      border-color: $grayText;
+    }
+    .btn-back {
+      border: none;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: $grayText;
+      background-image: linear-gradient($grayText, $grayText);
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: 0% 3px;
+      border-radius: 0%;
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+    .btn-back:hover {
+      background-color: transparent;
+      background-size: 100% 3px;
+    }
+    .socio-btns {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 33px;
+      button {
+        width: 80px;
+        height: 80px;
+        margin: 0;
+        border-radius: 50%;
         display: flex;
-        flex-direction: column;
-        padding: 20px;
-        gap: 30px;
-        button {
-            @include btnViolent();
-            display: block;
-            padding: 0;
-            margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        svg {
+          width: 50%;
+          height: 50%;
         }
-        button:hover {
-            background-color: $grayText;
-            border-color: $grayText;
-        }
-        .btn-back {
-            border: none;
-            background-color: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: $grayText;
-            background-image: linear-gradient($grayText, $grayText);
-            background-position: 0% 100%;
-            background-repeat: no-repeat;
-            background-size: 0% 3px;
-            border-radius: 0%;
-            svg {
-                transform: rotate(-90deg);
-            }
-        }
-        .btn-back:hover {
-            background-color: transparent;
-            background-size: 100% 3px;
-        }
-        .socio-btns {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 33px;
-            button {
-                width: 80px;
-                height: 80px;
-                margin: 0;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                svg {
-                    width: 50%;
-                    height: 50%;
-                }
-            }
-        }
-        .socio-btns:first-of-type {
-            max-width: 328px;
-            margin: 0 auto;
-            padding-bottom: 20px;
-            border-bottom: 3px dashed $grayText;
-            button {
-                background-color: $grayText;
-                border: 2px solid $grayText;
-            }
-            button:hover {
-                background-color: $violent;
-                border-color: $violent;
-            }
-        }
+      }
     }
-    .modal-container > button {
-        width: 328px;
-        height: 87px;
-    }
-    .modal-container > button:first-of-type {
+    .socio-btns:first-of-type {
+      max-width: 328px;
+      margin: 0 auto;
+      padding-bottom: 20px;
+      border-bottom: 3px dashed $grayText;
+      button {
         background-color: $grayText;
         border: 2px solid $grayText;
-    }
-    .modal-container > button:first-of-type:hover {
+      }
+      button:hover {
         background-color: $violent;
         border-color: $violent;
+      }
     }
+  }
+  .modal-container > button {
+    width: 328px;
+    height: 87px;
+  }
+  .modal-container > button:first-of-type {
+    background-color: $grayText;
+    border: 2px solid $grayText;
+  }
+  .modal-container > button:first-of-type:hover {
+    background-color: $violent;
+    border-color: $violent;
+  }
 }
 // btn-back
 // socio-btns

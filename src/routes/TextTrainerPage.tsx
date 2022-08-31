@@ -10,7 +10,10 @@ import { Lang } from '../types/constants';
 
 export const TextTrainerPage = (): JSX.Element => {
   const mode = useAppSelector(({ trainer: { mode } }) => mode);
-  const { t, i18n: { language: lang } } = useTranslation();
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
   const data = lang === Lang.ru ? dataRu : dataEn;
   return mode === 'lesson' ? (
     <div>

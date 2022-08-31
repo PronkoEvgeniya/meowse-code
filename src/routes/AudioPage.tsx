@@ -9,11 +9,14 @@ import { Lang } from '../types/constants';
 
 export const AudioPage = (): JSX.Element => {
   const mode = useAppSelector(({ trainer: { mode } }) => mode);
-  const { t, i18n: { language: lang } } = useTranslation();
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
   const data = lang === Lang.ru ? dataRu : dataEn;
   return mode === 'lesson' ? (
     <div>
-      <h2>{t('text')}</h2>
+      <h2>{t('audio')}</h2>
       <LessonSelect data={data} type="audio" />
       <LessonContent data={data} type="audio" />
     </div>

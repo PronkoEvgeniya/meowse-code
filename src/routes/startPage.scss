@@ -1,32 +1,32 @@
-@import "../index.scss";
+@import '../index.scss';
 
 .start-page ~ aside {
-    display: none;
+  display: none;
 }
 .start-page {
-    width: 100%;
-    grid-column: 1/ 3;
-    padding-left: 0;
-    padding-right: 0;
-    color: $grayText;
-    text-align: center;
-    h1 {
-        max-width: 780px;
-        margin: 120px auto 40px;
-        font-size: 6.4rem;
-    }
-    p {
-        max-width: 780px;
-        margin: 0 auto 40px;
-        font-size: 3.2rem;
-        color: $grayLightText;
-    }
-    .start-btn {
-        @include btnViolent();
-        margin-bottom: 120px;
-        padding: 15px 90px;
-    }
-    .start-btn:hover {
-        @include btnViolentHover();
-    }
+  width: 100%;
+  grid-column: 1/ 3;
+  padding-left: 0;
+  padding-right: 0;
+  color: $grayText;
+  text-align: center;
+  h1 {
+    max-width: 780px;
+    margin: 120px auto 40px;
+    font-size: 6.4rem;
+  }
+  p {
+    max-width: 780px;
+    margin: 0 auto 40px;
+    font-size: 3.2rem;
+    color: $grayLightText;
+  }
+  .start-btn {
+    @include btnViolent();
+    margin-bottom: 120px;
+    padding: 15px 90px;
+  }
+  .start-btn:hover {
+    @include btnViolentHover();
+  }
 }
