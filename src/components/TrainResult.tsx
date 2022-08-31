@@ -5,6 +5,8 @@ import { setLesson } from '../app/store/reducers/appSlice';
 import { toggleMode } from '../app/store/reducers/trainerSlice';
 import { Trans, useTranslation } from 'react-i18next';
 import { ITrainResultProps } from '../types/interfaces';
+import imgwin from '../assets/images/win-meows.png';
+import imgloose from '../assets/images/lasy.png';
 
 export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
@@ -63,7 +65,9 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
           values={{ lessonID, currentScore, bestScore }}
         />
       </button>
-      <div>маскот</div>
+      <div>
+        <img src={imgwin} alt="" />
+      </div>
     </div>
   ) : (
     <div>
@@ -71,7 +75,9 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
         <Trans i18nKey={'looser.description'} values={{ lessonID }} />
       </p>
       <button onClick={handleReturnToTheLesson}>{t('looser.againBtn')}</button>
-      <div>маскот</div>
+      <div>
+        <img src={imgloose} alt="" />
+      </div>
     </div>
   );
 };
