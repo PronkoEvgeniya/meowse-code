@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../../app/hooks/reduxHooks';
 import { setLesson } from '../../app/store/reducers/appSlice';
@@ -8,7 +8,6 @@ import { ILessonProps } from '../../types/interfaces';
 
 export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
   const { id } = useParams();
-  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
@@ -16,9 +15,10 @@ export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
     audioLesson,
   }));
   const options = data.map(({ id }, i: number): JSX.Element => {
+    const number = i + 1;
     return (
       <option key={`lesson${id}`} value={id}>
-        {`${t('select')} ${i + 1}`}
+        <Trans i18nKey={'lesson.select'} values={{ number }} />
       </option>
     );
   });

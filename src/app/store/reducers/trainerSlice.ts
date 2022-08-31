@@ -4,8 +4,10 @@ import { getFromLS, setToLS } from '../../../helpers/localStorageService';
 import { TextTrainerPageMode, LSParameters } from '../../../types/constants';
 
 export interface ITextLessonState {
-  completedTextLessons: null | ICompletedLessons;
-  completedAudioLessons: null | ICompletedLessons;
+  completedRuTextLessons: null | ICompletedLessons;
+  completedEnTextLessons: null | ICompletedLessons;
+  completedRuAudioLessons: null | ICompletedLessons;
+  completedEnAudioLessons: null | ICompletedLessons;
   mode: TextTrainerPageMode.lesson | TextTrainerPageMode.result;
   currentScore: number;
   currentInput: number;
@@ -23,8 +25,10 @@ interface IUserAnswer {
 }
 
 const initialState: ITextLessonState = {
-  completedTextLessons: getFromLS<ICompletedLessons>(LSParameters.completedTextLessons, {}),
-  completedAudioLessons: getFromLS<ICompletedLessons>(LSParameters.completedAudioLessons, {}),
+  completedRuTextLessons: getFromLS<ICompletedLessons>(LSParameters.ruTextLessons, {}),
+  completedEnTextLessons: getFromLS<ICompletedLessons>(LSParameters.enTextLessons, {}),
+  completedRuAudioLessons: getFromLS<ICompletedLessons>(LSParameters.ruAudioLessons, {}),
+  completedEnAudioLessons: getFromLS<ICompletedLessons>(LSParameters.enAudioLessons, {}),
   mode: TextTrainerPageMode.lesson,
   currentScore: 0,
   currentInput: 0,
@@ -42,20 +46,23 @@ export const trainerSlice = createSlice({
     },
     updateCompletedLessons: (
       state,
-      { payload: { id, userScore, type } }: PayloadAction<ICompleteLessonAction>
+      { payload: { id, userScore, type, lang } }: PayloadAction<ICompleteLessonAction>
     ) => {
-      switch (type) {
-        case 'text':
-          state.completedTextLessons = { ...state.completedTextLessons, [id]: userScore };
-          setToLS<ICompletedLessons>(LSParameters.completedTextLessons, state.completedTextLessons);
-          break;
-        case 'audio':
-          state.completedAudioLessons = { ...state.completedAudioLessons, [id]: userScore };
-          setToLS<ICompletedLessons>(
-            LSParameters.completedAudioLessons,
-            state.completedAudioLessons
-          );
-          break;
+      if (type === 'text' && lang === 'ru') {
+        state.completedRuTextLessons = { ...state.completedRuTextLessons, [id]: userScore };
+        setToLS<ICompletedLessons>(LSParameters.ruTextLessons, state.completedRuTextLessons);
+      }
+      if (type === 'text' && lang === 'en') {
+        state.completedEnTextLessons = { ...state.completedEnTextLessons, [id]: userScore };
+        setToLS<ICompletedLessons>(LSParameters.enTextLessons, state.completedEnTextLessons);
+      }
+      if (type === 'audio' && lang === 'ru') {
+        state.completedRuAudioLessons = { ...state.completedRuAudioLessons, [id]: userScore };
+        setToLS<ICompletedLessons>(LSParameters.ruAudioLessons, state.completedRuAudioLessons);
+      }
+      if (type === 'audio' && lang === 'en') {
+        state.completedEnAudioLessons = { ...state.completedEnAudioLessons, [id]: userScore };
+        setToLS<ICompletedLessons>(LSParameters.enAudioLessons, state.completedEnAudioLessons);
       }
     },
     toggleMode: (state) => {

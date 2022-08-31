@@ -1,5 +1,7 @@
 import React, { useEffect, createRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks/reduxHooks';
+import { ICompletedLessons } from '../../../app/store/actionTypes';
 import {
   addToFilledInputs,
   setUserAnswer,
@@ -24,8 +26,10 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
     isFieldsValid,
     userAnswer,
     currentInput,
-    completedTextLessons,
-    completedAudioLessons,
+    completedRuTextLessons,
+    completedEnTextLessons,
+    completedRuAudioLessons,
+    completedEnAudioLessons,
   } = useAppSelector(({ trainer }) => trainer);
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
     textLesson,
@@ -34,7 +38,11 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
   const dispatch = useAppDispatch();
   const redStyle = { border: '5px solid red' };
   const greenStyle = { border: '5px solid green' };
+  const {
+    i18n: { language: lang },
+  } = useTranslation();
 
+  let completedLessons: ICompletedLessons | null;
   let completedScore: number;
   let lessonID: number;
 
@@ -77,11 +85,13 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
   switch (type) {
     case 'audio':
       lessonID = audioLesson;
-      completedScore = completedAudioLessons ? completedAudioLessons[lessonID] : 0;
+      completedLessons = lang === 'ru' ? completedRuTextLessons : completedEnTextLessons;
+      completedScore = completedLessons ? completedLessons[lessonID] : 0;
       break;
     case 'text':
       lessonID = textLesson;
-      completedScore = completedTextLessons ? completedTextLessons[lessonID] : 0;
+      completedLessons = lang === 'ru' ? completedRuAudioLessons : completedEnAudioLessons;
+      completedScore = completedLessons ? completedLessons[lessonID] : 0;
   }
 
   useEffect(() => {
@@ -104,7 +114,7 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
         (!completedScore && userScore >= LessonResults.min) ||
         (completedScore && completedScore < userScore)
       ) {
-        dispatch(updateCompletedLessons({ id: lessonID, userScore, type }));
+        dispatch(updateCompletedLessons({ id: lessonID, userScore, type, lang }));
       }
       dispatch(toggleMode());
       dispatch(updateCurrentScore(userScore));
