@@ -6,6 +6,7 @@ import { tasks } from '../../assets/audio/tasks';
 import { audio } from '../../assets/audio/symbols';
 import { useTranslation, Trans } from 'react-i18next';
 import { ICompletedLessons } from '../../app/store/actionTypes';
+import { AudioBtn } from '../audioButton';
 
 export const LessonContent = ({ data, type }: ILessonProps) => {
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
@@ -66,20 +67,11 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
       : { description: '', symbols: [''], player: [''], task: '', id: 0, answer: '' };
     const { symbols, player, task } = currentLesson as IAudioLesson;
     symbolsElements = symbols.map((symbol, i) => (
-      <div key={symbol + i}>
-        <span>{symbol}:</span>
-        <audio controls src={audio[player[i]]}></audio>
-      </div>
+      <AudioBtn key={symbol + i} value={symbol} src={audio[player[i]]} />
     ));
     completedLessons = lang === 'ru' ? completedRuAudioLessons : completedEnAudioLessons;
     completedScore = completedLessons ? completedLessons[lessonID] : 0;
-    taskElement = [
-      <div key={task + lessonID}>
-        <span>{t('lesson.task')}</span>
-        {/* <Sound label={task} mp3={tasks[task]}/> */}
-        <audio key={task} controls src={tasks[task]}></audio>
-      </div>,
-    ];
+    taskElement = [<AudioBtn key={task + lessonID} value={t('lesson.task')} src={tasks[task]} />];
   }
 
   const { description, answer, score } = currentLesson as ILesson;
