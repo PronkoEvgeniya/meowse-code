@@ -12,7 +12,7 @@ export const TestResult = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const result = useAppSelector(({ testing }) => testing.result);
-  const name = 'user';
+  const name = useAppSelector(({ app }) => app.name);
 
   const againHandler = () => {
     dispatch(setAnswer(''));

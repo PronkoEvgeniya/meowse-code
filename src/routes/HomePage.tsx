@@ -1,8 +1,9 @@
 import { Trans, useTranslation } from 'react-i18next';
+import { useAppSelector } from '../app/hooks/reduxHooks';
 
 export const HomePage = (): JSX.Element => {
   const { t } = useTranslation();
-  const name = 'user';
+  const name = useAppSelector(({ app }) => app.name);
 
   return (
     <div>
