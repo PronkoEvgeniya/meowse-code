@@ -1,51 +1,100 @@
-@import "../index.scss";
+@import "../constants.scss";
 @import "../routes/startPage.scss";
 
 aside {
-    padding-top: 200px;
-    background-color: $violent;
-    border-radius: 0 40px 40px 0;
-    font-size: 3.2rem;
-    order: -1;
-    button {
-        position: absolute;
-        display: none;
-    }
-    nav {
-        height: 100%;
-    }
-    ul {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        height: 100%;
-    }
+  padding-top: 200px;
+  background-color: $violent;
+  border-radius: 0 40px 40px 0;
+  font-size: 3.2rem;
+  order: -1;
+  button {
+    position: absolute;
+    display: none;
+  }
+  nav {
+    height: 100%;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    height: 100%;
+  }
 
-    li:nth-child(6) {
-        margin: auto 0 40px 0;
+  li:nth-child(6) {
+    margin: auto 0 40px 0;
+  }
+  li {
+    list-style: none;
+    text-align: center;
+    a {
+      display: block;
+      text-decoration: none;
+      color: $white;
+      padding: 10px 5px 10px 10px;
+      margin-right: 20px;
     }
-    li {
-        list-style: none;
-        text-align: center;
-        a {
-            display: block;
-            text-decoration: none;
-            color: $white;
-            padding: 10px 5px 10px 10px;
-            margin-right: 20px;
-        }
-        a:hover,
-        a:focus {
-            color: $grayText;
-            background-color: $white;
-            border-radius: 0 20px 20px 0;
-        }
+    a:hover,
+    a:focus {
+      color: $grayText;
+      background-color: $white;
+      border-radius: 0 20px 20px 0;
     }
+  }
 }
 
 @media (min-height: 945px) {
-    aside {
-        max-height: 945px;
-    }
+  aside {
+    max-height: 945px;
+  }
 }
 
+@media (max-width: 768px) {
+  header {
+    ul li:first-of-type {
+      width: 300px;
+    }
+  }
+  main {
+    display: flex;
+  }
+  aside {
+    position: absolute;
+    width: 300px;
+    font-size: 3.2rem;
+    padding-top: 120px;
+    animation-name: sidebarOn;
+    animation-duration: 3s;
+    button {
+      position: absolute;
+      top: 100px;
+      right: -20px;
+      display: block;
+      background-color: $violent;
+      width: 20px;
+      height: 35px;
+      border: 0;
+      border-radius: 0 10px 10px 0;
+      color: $white;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes sidebarOn {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes sidebarOf {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}

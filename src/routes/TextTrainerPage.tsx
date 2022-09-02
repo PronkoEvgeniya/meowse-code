@@ -5,17 +5,23 @@ import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../app/hooks/reduxHooks';
 import { TrainResult } from '../components/TrainResult';
 import dataRu from '../data/textRu.json';
+import dataEn from '../data/textEn.json';
+import { Lang } from '../types/constants';
 
 export const TextTrainerPage = (): JSX.Element => {
   const mode = useAppSelector(({ trainer: { mode } }) => mode);
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
+  const data = lang === Lang.ru ? dataRu : dataEn;
   return mode === 'lesson' ? (
     <div>
       <h2>{t('text')}</h2>
-      <LessonSelect data={dataRu} type="text" />
-      <LessonContent data={dataRu} type="text" />
+      <LessonSelect data={data} type="text" />
+      <LessonContent data={data} type="text" />
     </div>
   ) : (
-    <TrainResult type="text" data={dataRu} />
+    <TrainResult type="text" data={data} />
   );
 };
