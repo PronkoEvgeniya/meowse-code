@@ -5,7 +5,7 @@ import { IconLogo, IconLightTheme } from '../../assets/Sprite';
 import { Lang } from '../../types/constants';
 import { User } from './User';
 import { UserIcon } from './UserIcon';
-// , IconDarkTheme
+// , IconDarkTheme name icon for darc theme
 
 import './header.scss';
 
