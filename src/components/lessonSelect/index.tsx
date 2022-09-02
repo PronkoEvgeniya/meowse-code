@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router';
 import { useAppSelector, useAppDispatch } from '../../app/hooks/reduxHooks';
 import { setLesson } from '../../app/store/reducers/appSlice';
 import { resetLessonState } from '../../app/store/reducers/trainerSlice';
+import { Trainers } from '../../types/constants';
 import { ILessonProps } from '../../types/interfaces';
 
 export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
@@ -23,13 +24,13 @@ export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
     );
   });
 
-  let lessonID: number;
+  let lessonID = 1;
 
   switch (type) {
-    case 'text':
+    case Trainers.text:
       lessonID = textLesson;
       break;
-    case 'audio':
+    case Trainers.audio:
       lessonID = audioLesson;
   }
 

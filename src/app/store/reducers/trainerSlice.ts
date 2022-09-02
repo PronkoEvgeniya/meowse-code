@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICompletedLessons, ICompleteLessonAction } from '../actionTypes';
 import { getFromLS, setToLS } from '../../../helpers/localStorageService';
-import { TextTrainerPageMode, LSParameters } from '../../../types/constants';
+import { Modes, LSParameters } from '../../../types/constants';
 
 export interface ITextLessonState {
   completedRuTextLessons: null | ICompletedLessons;
   completedEnTextLessons: null | ICompletedLessons;
   completedRuAudioLessons: null | ICompletedLessons;
   completedEnAudioLessons: null | ICompletedLessons;
-  mode: TextTrainerPageMode.lesson | TextTrainerPageMode.result;
+  mode: Modes.lesson | Modes.result;
   currentScore: number;
   currentInput: number;
   filledInputs: string[];
@@ -29,7 +29,7 @@ const initialState: ITextLessonState = {
   completedEnTextLessons: getFromLS<ICompletedLessons>(LSParameters.enTextLessons, {}),
   completedRuAudioLessons: getFromLS<ICompletedLessons>(LSParameters.ruAudioLessons, {}),
   completedEnAudioLessons: getFromLS<ICompletedLessons>(LSParameters.enAudioLessons, {}),
-  mode: TextTrainerPageMode.lesson,
+  mode: Modes.lesson,
   currentScore: 0,
   currentInput: 0,
   filledInputs: [],
@@ -66,10 +66,7 @@ export const trainerSlice = createSlice({
       }
     },
     toggleMode: (state) => {
-      state.mode =
-        state.mode === TextTrainerPageMode.lesson
-          ? TextTrainerPageMode.result
-          : TextTrainerPageMode.lesson;
+      state.mode = state.mode === Modes.lesson ? Modes.result : Modes.lesson;
     },
     updateCurrentScore: (state, { payload }) => {
       state.currentScore = payload;

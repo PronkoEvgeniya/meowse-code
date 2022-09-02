@@ -23,7 +23,7 @@ export const Sidebar = (): JSX.Element => {
             <NavLink to={`/text/${textLesson}`}>{T('text')}</NavLink>
           </li>
           <li>
-            <NavLink to={'/game'}>{T('game')}</NavLink>
+            <NavLink to={'/game'}>{T('game.title')}</NavLink>
           </li>
           <li>
             <NavLink to={'/test'}>{T('test')}</NavLink>
