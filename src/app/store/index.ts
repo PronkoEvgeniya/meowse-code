@@ -3,6 +3,7 @@ import appReducer from './reducers/appSlice';
 import translatorReducer from './reducers/translatorSlice';
 import trainerReducer from './reducers/trainerSlice';
 import testingReducer from './reducers/testingSlice';
+import gameReducer from './reducers/gameSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     translator: translatorReducer,
     trainer: trainerReducer,
     testing: testingReducer,
+    game: gameReducer,
   },
 });
 

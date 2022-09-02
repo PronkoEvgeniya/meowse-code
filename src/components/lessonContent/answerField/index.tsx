@@ -13,12 +13,7 @@ import {
   setCurrentInput,
 } from '../../../app/store/reducers/trainerSlice';
 import { LessonResults } from '../../../types/constants';
-
-interface IAnswerFieldProps {
-  answer: string[];
-  score: number;
-  type: 'text' | 'audio';
-}
+import { IAnswerFieldProps } from '../../../types/interfaces';
 
 export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Element => {
   const {
