@@ -1,43 +1,81 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks/reduxHooks';
-import { setAuthorization } from '../../app/store/reducers/appSlice';
-import Input from './Input';
-import { registration } from '../../actions/registration';
+import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
+import {
+  registerUser,
+  setConfirmPassword,
+  setEmail,
+  setName,
+  setPassword,
+} from '../../app/store/reducers/appSlice';
 
 export const SignUpModal = (): JSX.Element => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { name, email, password, confirmPassword, error, isAuthorized } = useAppSelector(
+    ({ app }) => app
+  );
 
-  const navigateHandler = () => {
-    registration(email, password, name);
-    dispatch(setAuthorization({ auth: true }));
-    navigate('/tutorial');
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (password === confirmPassword) {
+      dispatch(registerUser({ name, email, password }));
+    }
   };
 
-  const [email, setEmail] = useState<number | string>('');
-  const [password, setPassword] = useState<number | string>('');
-  const [name, setName] = useState<number | string>('');
+  const putName = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+    dispatch(setName(value));
+
+  const putEmail = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+    dispatch(setEmail(value));
+
+  const putPassword = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+    dispatch(setPassword(value));
+
+  const putConfirmPass = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+    dispatch(setConfirmPassword(value));
+
+  useEffect(() => {
+    if (isAuthorized) navigate('/tutorial');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthorized]);
 
   return (
     <>
-      <Input value={email} setValue={setEmail} type="text" placeholder={t('start.email')} />
-      <Input value={name} setValue={setName} type="text" placeholder={t('start.name')} />
-      <Input
-        value={password}
-        setValue={setPassword}
-        type="password"
-        placeholder={t('start.password')}
-      />
-      <Input
-        value={password}
-        setValue={setPassword}
-        type="password"
-        placeholder={t('start.confirmPassword')}
-      />
-      <button onClick={navigateHandler}>{t('start.signUp')}</button>
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          autoComplete="email"
+          placeholder={t('start.email')}
+          value={email}
+          onChange={putEmail}
+        />
+        <input
+          type="text"
+          autoComplete="username"
+          placeholder={t('start.name')}
+          value={name}
+          onChange={putName}
+        />
+        <input
+          type="password"
+          autoComplete="new-password"
+          placeholder={t('start.password')}
+          value={password}
+          onChange={putPassword}
+        />
+        <input
+          type="password"
+          autoComplete="new-password"
+          placeholder={t('start.confirmPassword')}
+          value={confirmPassword}
+          onChange={putConfirmPass}
+        />
+        <button type="submit">{t('start.signUp')}</button>
+      </form>
+      {error && <span>{error}</span>}
     </>
   );
 };

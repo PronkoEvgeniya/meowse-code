@@ -58,9 +58,26 @@ export interface ITest {
   answer: string[];
 }
 
-export interface InputLoginProps {
-  value: string | number;
-  type: string;
-  placeholder: string;
-  setValue: (value: string | number) => void;
+export interface IAuthorization {
+  email: string;
+  password: string;
+}
+
+export interface IRegistration extends IAuthorization {
+  name: string;
+}
+
+export interface IUser {
+  token: string;
+  user: {
+    name: string;
+  };
+}
+
+export interface IAuthError {
+  response: {
+    data: {
+      message: string;
+    };
+  };
 }

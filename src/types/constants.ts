@@ -26,6 +26,7 @@ export enum LSParameters {
   enTextLessons = 'enTextLessons',
   ruAudioLessons = 'ruAudioLessons',
   enAudioLessons = 'enAudioLessons',
+  token = 'token',
 }
 
 export enum LessonResults {
@@ -40,22 +41,15 @@ export enum RegExpTemplates {
   'en' = '^[a-z$]*$',
 }
 
-export const tutorialContent = [
-  {
-    description:
-      'Добро пожаловать, Евгения! Меня зовут <span>Мяус</span>, я буду рад помогать тебе на курсе',
-    btnContent: 'Привет, Мяус!',
-  },
-  {
-    description:
-      'В своем личном кабинете ты сможешь узнать подробности о курсе, свои достижения, а так же сменить пароль',
-    btnContent: 'Хорошо',
-  },
-  {
-    description: 'Предлагаю начать с практики, что бы открыть тренажер разверни панель слева',
-    btnContent: 'Хорошо',
-  },
-];
+export enum URL {
+  registration = 'https://ancient-spire-30393.herokuapp.com/api/auth/registration',
+  authorization = 'https://ancient-spire-30393.herokuapp.com/api/auth/authorization',
+}
+
+export enum ActionTypes {
+  registration = 'app/registration',
+  authorization = 'app/authorization',
+}
 
 export const MORSE_TABLE = {
   '.-': {
