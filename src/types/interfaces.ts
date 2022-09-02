@@ -19,6 +19,28 @@ export interface AudioBtnProps {
   src: string;
 }
 
+export interface ITimerProps {
+  initialDate: number;
+  targetMinutes: number;
+  handleTimerEnd: () => void;
+}
+
+export interface IGameQuestionProps {
+  questions: IQuestion[];
+  date: number;
+}
+
+interface IQuestion {
+  task: string;
+  answers: string[];
+}
+
+export interface IAnswerFieldProps {
+  answer: string[];
+  score: number;
+  type: TTrainers;
+}
+
 export interface TextAreaProps {
   answer: string[];
 }

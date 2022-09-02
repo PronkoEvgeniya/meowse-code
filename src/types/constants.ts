@@ -1,5 +1,7 @@
 export const testPercent = 100;
 export const enterKey = 'Enter';
+export const nullTextLesson = { description: '', symbols: [''], code: [''], task: '', id: 0, answer: '' };
+export const nullAudioLesson = { description: '', symbols: [''], player: [''], task: '', id: 0, answer: '' };
 
 export enum TextAreaMessages {
   error = '*упс, что-то ты не то вводишь. наведи на меня и узнай что делать',
@@ -11,14 +13,16 @@ export enum Lang {
   en = 'en',
 }
 
-export enum TranslatorMode {
-  encode = 'текст -> морзе',
-  decode = 'морзе -> текст',
-}
-
-export enum TextTrainerPageMode {
+export enum Modes {
   lesson = 'lesson',
   result = 'result',
+  task = 'task',
+  rules = 'rules',
+}
+
+export enum Trainers {
+  audio = 'audio',
+  text = 'text',
 }
 
 export enum LSParameters {
@@ -32,6 +36,10 @@ export enum LessonResults {
   min = 70,
 }
 
+export enum Game {
+  questionAmount = 15,
+}
+
 export enum RegExpTemplates {
   morseLetters = '^[.-]{1,6}$',
   morseSymbols = '^[.-]*$',
@@ -39,23 +47,6 @@ export enum RegExpTemplates {
   'ru' = '^[а-я$]*$',
   'en' = '^[a-z$]*$',
 }
-
-export const tutorialContent = [
-  {
-    description:
-      'Добро пожаловать, Евгения! Меня зовут <span>Мяус</span>, я буду рад помогать тебе на курсе',
-    btnContent: 'Привет, Мяус!',
-  },
-  {
-    description:
-      'В своем личном кабинете ты сможешь узнать подробности о курсе, свои достижения, а так же сменить пароль',
-    btnContent: 'Хорошо',
-  },
-  {
-    description: 'Предлагаю начать с практики, что бы открыть тренажер разверни панель слева',
-    btnContent: 'Хорошо',
-  },
-];
 
 export const MORSE_TABLE = {
   '.-': {

@@ -7,6 +7,7 @@ import { audio } from '../../assets/audio/symbols';
 import { useTranslation, Trans } from 'react-i18next';
 import { ICompletedLessons } from '../../app/store/actionTypes';
 import { AudioBtn } from '../audioButton';
+import { Lang, nullAudioLesson, nullTextLesson, Trainers } from '../../types/constants';
 
 export const LessonContent = ({ data, type }: ILessonProps) => {
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
@@ -45,31 +46,31 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
   let symbolsElements: JSX.Element[] = [];
   let taskElement: JSX.Element[] = [];
 
-  if (type === 'text') {
+  if (type === Trainers.text) {
     lessonID = textLesson;
     currentLesson = data.length
       ? data.find((lesson) => lesson.id === lessonID)
-      : { description: '', symbols: [''], code: [''], task: '', id: 0, answer: '' };
+      : nullTextLesson;
     const { symbols, code, task } = currentLesson as ITextLesson;
     symbolsElements = symbols.map((symbol, i) => (
       <div key={symbol}>
         {symbol}: {code[i]}
       </div>
     ));
-    completedLessons = lang === 'ru' ? completedRuTextLessons : completedEnTextLessons;
+    completedLessons = lang === Lang.ru ? completedRuTextLessons : completedEnTextLessons;
     completedScore = completedLessons ? completedLessons[lessonID] : 0;
     taskElement = [<div key={task + lessonID}>{task.toUpperCase()} ?</div>];
   }
-  if (type === 'audio') {
+  if (type === Trainers.audio) {
     lessonID = audioLesson;
     currentLesson = data.length
       ? data.find((lesson) => lesson.id === lessonID)
-      : { description: '', symbols: [''], player: [''], task: '', id: 0, answer: '' };
+      : nullAudioLesson;
     const { symbols, player, task } = currentLesson as IAudioLesson;
     symbolsElements = symbols.map((symbol, i) => (
       <AudioBtn key={symbol + i} value={symbol} src={audio[player[i]]} />
     ));
-    completedLessons = lang === 'ru' ? completedRuAudioLessons : completedEnAudioLessons;
+    completedLessons = lang === Lang.ru ? completedRuAudioLessons : completedEnAudioLessons;
     completedScore = completedLessons ? completedLessons[lessonID] : 0;
     taskElement = [<AudioBtn key={task + lessonID} value={t('lesson.task')} src={tasks[task]} />];
   }
