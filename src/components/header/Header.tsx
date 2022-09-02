@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks/reduxHooks';
-import { IconLogo } from '../../assets/Sprite';
+import { IconLogo, IconLightTheme } from '../../assets/Sprite';
 import { Lang } from '../../types/constants';
 import { User } from './User';
 import { UserIcon } from './UserIcon';
+// , IconDarkTheme name icon for darc theme
+
 import './header.scss';
 
 export const Header = (): JSX.Element => {
@@ -29,10 +31,15 @@ export const Header = (): JSX.Element => {
             <IconLogo />
           </Link>
         </li>
-        <li className="toggleLang__container">
-          <button onClick={toggleLang}>{language}</button>
-        </li>
         <li>{auth ? <User /> : <UserIcon />}</li>
+        <div className="toggle__container">
+          <li className="toggleLang__container">
+            <button onClick={toggleLang}>{language}</button>
+          </li>
+          <li className="toggleTheme__container">
+            <button>{IconLightTheme()}</button>
+          </li>
+        </div>
       </ul>
     </header>
   );
