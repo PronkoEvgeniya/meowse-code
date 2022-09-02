@@ -20,7 +20,6 @@ import { NotFound } from './routes/NotFound';
 
 export const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const auth = useAppSelector(({ app: { isAuthorized } }) => isAuthorized);
   const token = useAppSelector(({ app }) => app.token);
 
   useEffect(() => {
@@ -32,7 +31,6 @@ export const App = (): JSX.Element => {
   return (
     <>
       <Header />
-      <h1 className="test-title">{auth.toString()}</h1>
       <main>
         <Routes>
           <Route path="/" element={<StartPage />} />
