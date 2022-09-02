@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +24,6 @@ export const LogInModal = (): JSX.Element => {
 
   useEffect(() => {
     if (isAuthorized) navigate('/home');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthorized]);
 
   return (

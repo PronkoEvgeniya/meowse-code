@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { Trans } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router';
@@ -41,7 +42,6 @@ export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
 
   useEffect(() => {
     navigate(`/${type}/${lessonID}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lessonID]);
 
   return (

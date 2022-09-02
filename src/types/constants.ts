@@ -11,6 +11,12 @@ export enum Lang {
   en = 'en',
 }
 
+export enum Modals {
+  start = 'start',
+  login = 'login',
+  signup = 'signup',
+}
+
 export enum TranslatorMode {
   encode = 'текст -> морзе',
   decode = 'морзе -> текст',

@@ -10,9 +10,7 @@ export const registerUser = createAsyncThunk(
     try {
       await axios.post(URL.registration, userInfo);
     } catch (err) {
-      if (typeof err === 'object') {
-        return rejectWithValue((err as IAuthError).response.data.message);
-      }
+      return rejectWithValue((err as IAuthError).response.data.message);
     }
   }
 );
@@ -21,14 +19,16 @@ export const authorizeUser = createAsyncThunk(
   ActionTypes.authorization,
   async (userInfo: IAuthorization, { rejectWithValue }) => {
     try {
-      const res = await axios.post(URL.authorization, userInfo);
-      const data = (await res.data) as IUser;
-      localStorage.setItem(LSParameters.token, data.token);
-      return data.user.name;
+      const {
+        data: {
+          token,
+          user: { name },
+        },
+      } = (await axios.post(URL.authorization, userInfo)) as IUser;
+      localStorage.setItem(LSParameters.token, token);
+      return name;
     } catch (err) {
-      if (typeof err === 'object') {
-        return rejectWithValue((err as IAuthError).response.data.message);
-      }
+      return rejectWithValue((err as IAuthError).response.data.message);
     }
   }
 );
@@ -90,30 +90,28 @@ export const appSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(registerUser.fulfilled, (state) => {
-      state.error = null;
-      state.isAuthorized = true;
-    });
-
-    builder.addCase(registerUser.rejected, (state, { payload }) => {
-      state.error = payload as string;
-      state.name = '';
-      state.email = '';
-      state.password = '';
-      state.confirmPassword = '';
-    });
-
-    builder.addCase(authorizeUser.fulfilled, (state, { payload }) => {
-      state.error = null;
-      state.name = payload as string;
-      state.isAuthorized = true;
-    });
-
-    builder.addCase(authorizeUser.rejected, (state, { payload }) => {
-      state.error = payload as string;
-      state.email = '';
-      state.password = '';
-    });
+    builder
+      .addCase(registerUser.fulfilled, (state) => {
+        state.error = null;
+        state.isAuthorized = true;
+      })
+      .addCase(registerUser.rejected, (state, { payload }) => {
+        state.error = payload as string;
+        state.name = '';
+        state.email = '';
+        state.password = '';
+        state.confirmPassword = '';
+      })
+      .addCase(authorizeUser.fulfilled, (state, { payload }) => {
+        state.error = null;
+        state.name = payload as string;
+        state.isAuthorized = true;
+      })
+      .addCase(authorizeUser.rejected, (state, { payload }) => {
+        state.error = payload as string;
+        state.email = '';
+        state.password = '';
+      });
   },
 });
 

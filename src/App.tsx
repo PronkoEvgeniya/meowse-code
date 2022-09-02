@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import { useAppDispatch, useAppSelector } from './app/hooks/reduxHooks';
 import { setAuthorization } from './app/store/reducers/appSlice';
@@ -45,7 +45,8 @@ export const App = (): JSX.Element => {
           <Route path="/translate" element={<TranslatePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/account" element={<AccountPage />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to={'/404'} />} />
         </Routes>
         <Sidebar />
       </main>

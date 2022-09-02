@@ -68,9 +68,11 @@ export interface IRegistration extends IAuthorization {
 }
 
 export interface IUser {
-  token: string;
-  user: {
-    name: string;
+  data: {
+    token: string;
+    user: {
+      name: string;
+    };
   };
 }
 

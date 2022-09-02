@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, createRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks/reduxHooks';
@@ -55,7 +56,6 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
       dispatch(setCurrentInput(Number(id) + 1));
     }
   };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const inputsRefs: React.RefObject<HTMLInputElement>[] = [];
   const inputs = answer.map((letter, i) => {
     const ref: React.RefObject<HTMLInputElement> = createRef();

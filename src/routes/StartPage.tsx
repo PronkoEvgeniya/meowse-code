@@ -6,6 +6,7 @@ import { AuthModal } from '../components/authModals';
 import { LogInModal } from '../components/authModals/LogInModal';
 import { SignUpModal } from '../components/authModals/SignUpModal';
 import { StartModal } from '../components/authModals/StartModal';
+import { Modals } from '../types/constants';
 import './startPage.scss';
 
 export const StartPage = (): JSX.Element => {
@@ -43,7 +44,7 @@ export const StartPage = (): JSX.Element => {
         </Trans>
       </h1>
       <p>{t('start.description')} &#129106;</p>
-      <button className="start-btn" onClick={changeModal('start')}>
+      <button className="start-btn" onClick={changeModal(Modals.start)}>
         {t('start.startBtn')}
       </button>
     </div>
