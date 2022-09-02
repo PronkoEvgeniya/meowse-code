@@ -259,6 +259,156 @@ export function IconFB() {
   );
 }
 
+export function IconLightTheme() {
+  return (
+    <svg
+      className="icon-light"
+      width="27"
+      height="26"
+      viewBox="0 0 27 26"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="13.4996"
+        cy="12.4999"
+        r="6.5"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        x1="11.654"
+        y1="21.167"
+        x2="10.9859"
+        y2="25.1108"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        x1="7.58354"
+        y1="18.7232"
+        x2="4.6906"
+        y2="21.4856"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        x1="5.09299"
+        y1="14.9338"
+        x2="1.35777"
+        y2="16.365"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        x1="4.8342"
+        y1="10.6712"
+        x2="0.853236"
+        y2="10.2815"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        x1="6.87947"
+        y1="6.66966"
+        x2="4.24672"
+        y2="3.65825"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        x1="11.4198"
+        y1="4.15967"
+        x2="10.6197"
+        y2="0.240498"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        y1="-1"
+        x2="4"
+        y2="-1"
+        transform="matrix(0.167002 0.985957 0.985957 -0.167002 16.7316 20.9595)"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        y1="-1"
+        x2="4"
+        y2="-1"
+        transform="matrix(0.723237 0.6906 0.6906 -0.723237 20.5067 17.9595)"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        y1="-1"
+        x2="4"
+        y2="-1"
+        transform="matrix(0.933803 0.357788 0.357788 -0.933803 22.6644 13.9595)"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        y1="-1"
+        x2="4"
+        y2="-1"
+        transform="matrix(0.995242 -0.0974381 -0.0974381 -0.995242 22.468 9.6355)"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        y1="-1"
+        x2="4"
+        y2="-1"
+        transform="matrix(0.658188 -0.752854 -0.752854 -0.658188 19.7673 5.97101)"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <line
+        y1="-1"
+        x2="4"
+        y2="-1"
+        transform="matrix(0.200014 -0.979793 -0.979793 -0.200014 15 3.91919)"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function IconDarkTheme() {
+  return (
+    <svg
+      className="icon-dark"
+      width="11"
+      height="15"
+      viewBox="0 0 11 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9.0487 7.5C9.0487 11.0899 6.13855 14 2.5487 14C2.10518 14 1.84812 13.9553 1.71171 13.9112C1.71311 13.8982 1.71496 13.8837 1.71739 13.8675C1.74165 13.7059 1.80798 13.479 1.92978 13.1598C2.03057 12.8955 2.15246 12.6102 2.29211 12.2833C2.31962 12.2189 2.34782 12.1529 2.37668 12.0851C2.54781 11.6832 2.7351 11.2353 2.90701 10.7586C3.24991 9.80786 3.54883 8.6982 3.54883 7.5C3.54883 6.3018 3.24991 5.19214 2.90701 4.24139C2.7351 3.76475 2.54781 3.31679 2.37668 2.91491C2.34782 2.84711 2.31961 2.78109 2.2921 2.71668C2.15245 2.38977 2.03057 2.10445 1.92978 1.84025C1.80798 1.521 1.74165 1.29413 1.71739 1.13246C1.71496 1.11628 1.71311 1.10176 1.71171 1.0888C1.84812 1.04469 2.10518 1 2.5487 1C6.13855 1 9.0487 3.91015 9.0487 7.5Z"
+        stroke="#9C56C7"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function IconInst() {
   return (
     <svg

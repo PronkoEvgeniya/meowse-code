@@ -23,3 +23,11 @@ $lightBg: #f5f5f5;
     background-color: transparent;
     border: 2px solid $violent;
 }
+
+@mixin btnToggle {
+    color: $violent;
+    background-color: $lightBg;
+    border: 2px solid $violent;
+    border-radius: 20%;
+    cursor: pointer;
+}
