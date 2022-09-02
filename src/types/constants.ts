@@ -44,6 +44,7 @@ export enum LSParameters {
   enTextLessons = 'enTextLessons',
   ruAudioLessons = 'ruAudioLessons',
   enAudioLessons = 'enAudioLessons',
+  token = 'token',
 }
 
 export enum LessonResults {
@@ -60,6 +61,16 @@ export enum RegExpTemplates {
   iFlag = 'i',
   'ru' = '^[а-я$]*$',
   'en' = '^[a-z$]*$',
+}
+
+export enum URL {
+  registration = 'https://ancient-spire-30393.herokuapp.com/api/auth/registration',
+  authorization = 'https://ancient-spire-30393.herokuapp.com/api/auth/authorization',
+}
+
+export enum ActionTypes {
+  registration = 'app/registration',
+  authorization = 'app/authorization',
 }
 
 export const MORSE_TABLE = {

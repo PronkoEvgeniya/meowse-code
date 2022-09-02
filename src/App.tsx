@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { useAppSelector } from './app/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from './app/hooks/reduxHooks';
+import { setAuthorization } from './app/store/reducers/appSlice';
 import { Footer } from './components/Footer';
 import { Header } from './components/header/Header';
 import { Sidebar } from './components/Sidebar';
@@ -14,9 +16,19 @@ import { TutorialPage } from './routes/TutorialPage';
 import { TestPage } from './routes/TestPage';
 import { GamePage } from './routes/GamePage';
 import { AccountPage } from './routes/AccountPage';
+import { NotFound } from './routes/NotFound';
 
 export const App = (): JSX.Element => {
+  const dispatch = useAppDispatch();
   const auth = useAppSelector(({ app: { isAuthorized } }) => isAuthorized);
+  const token = useAppSelector(({ app }) => app.token);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(setAuthorization(true));
+    }
+  }, [dispatch, token]);
+
   return (
     <>
       <Header />
@@ -33,6 +45,7 @@ export const App = (): JSX.Element => {
           <Route path="/translate" element={<TranslatePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/account" element={<AccountPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Sidebar />
       </main>
