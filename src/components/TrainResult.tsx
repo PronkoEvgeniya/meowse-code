@@ -45,7 +45,7 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
 
   let completedLessons: ICompletedLessons | null;
   let bestScore = 0;
-  let lessonID: number = 1;
+  let lessonID = 1;
 
   switch (type) {
     case Trainers.text:

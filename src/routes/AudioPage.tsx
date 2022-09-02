@@ -17,8 +17,8 @@ export const AudioPage = (): JSX.Element => {
   return mode === Modes.lesson ? (
     <div>
       <h2>{t('audio')}</h2>
-      <LessonSelect data={data} type={Trainers.audio}/>
-      <LessonContent data={data} type={Trainers.audio}/>
+      <LessonSelect data={data} type={Trainers.audio} />
+      <LessonContent data={data} type={Trainers.audio} />
     </div>
   ) : (
     <TrainResult type={Trainers.audio} data={data} />

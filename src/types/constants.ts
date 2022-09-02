@@ -1,7 +1,21 @@
 export const testPercent = 100;
 export const enterKey = 'Enter';
-export const nullTextLesson = { description: '', symbols: [''], code: [''], task: '', id: 0, answer: '' };
-export const nullAudioLesson = { description: '', symbols: [''], player: [''], task: '', id: 0, answer: '' };
+export const nullTextLesson = {
+  description: '',
+  symbols: [''],
+  code: [''],
+  task: '',
+  id: 0,
+  answer: '',
+};
+export const nullAudioLesson = {
+  description: '',
+  symbols: [''],
+  player: [''],
+  task: '',
+  id: 0,
+  answer: '',
+};
 
 export enum TextAreaMessages {
   error = '*упс, что-то ты не то вводишь. наведи на меня и узнай что делать',

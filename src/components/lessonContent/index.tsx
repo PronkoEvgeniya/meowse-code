@@ -48,9 +48,7 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
 
   if (type === Trainers.text) {
     lessonID = textLesson;
-    currentLesson = data.length
-      ? data.find((lesson) => lesson.id === lessonID)
-      : nullTextLesson;
+    currentLesson = data.length ? data.find((lesson) => lesson.id === lessonID) : nullTextLesson;
     const { symbols, code, task } = currentLesson as ITextLesson;
     symbolsElements = symbols.map((symbol, i) => (
       <div key={symbol}>
@@ -63,9 +61,7 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
   }
   if (type === Trainers.audio) {
     lessonID = audioLesson;
-    currentLesson = data.length
-      ? data.find((lesson) => lesson.id === lessonID)
-      : nullAudioLesson;
+    currentLesson = data.length ? data.find((lesson) => lesson.id === lessonID) : nullAudioLesson;
     const { symbols, player, task } = currentLesson as IAudioLesson;
     symbolsElements = symbols.map((symbol, i) => (
       <AudioBtn key={symbol + i} value={symbol} src={audio[player[i]]} />

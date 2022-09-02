@@ -24,7 +24,7 @@ export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
     );
   });
 
-  let lessonID: number = 1;
+  let lessonID = 1;
 
   switch (type) {
     case Trainers.text:
