@@ -1,37 +1,55 @@
-import { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks/reduxHooks';
-import { setAuthorization } from '../../app/store/reducers/appSlice';
-import Input from './Input';
+import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
+import { authorizeUser, setEmail, setPassword } from '../../app/store/reducers/appSlice';
 
 export const LogInModal = (): JSX.Element => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { email, password, error, isAuthorized } = useAppSelector(({ app }) => app);
 
-  const navigateHandler = () => {
-    dispatch(setAuthorization({ auth: true }));
-    navigate('/home');
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(authorizeUser({ email, password }));
   };
 
-  const [email, setEmail] = useState<number | string>('');
-  const [password, setPassword] = useState<number | string>('');
+  const putEmail = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+    dispatch(setEmail(value));
+
+  const putPassword = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+    dispatch(setPassword(value));
+
+  useEffect(() => {
+    if (isAuthorized) navigate('/home');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthorized]);
 
   return (
     <>
-      <Input value={email} setValue={setEmail} type="text" placeholder={t('start.email')} />
-      <Input
-        value={password}
-        setValue={setPassword}
-        type="password"
-        placeholder={t('start.password')}
-      />
-      <label>
-        <input type="checkbox" />
-        {t('start.remember')}
-      </label>
-      <button onClick={navigateHandler}>{t('start.logIn')}</button>
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          autoComplete="email"
+          placeholder={t('start.email')}
+          value={email}
+          onChange={putEmail}
+        />
+        <input
+          type="password"
+          autoComplete="current-password"
+          placeholder={t('start.password')}
+          value={password}
+          onChange={putPassword}
+        />
+        <label>
+          <input type="checkbox" />
+          {t('start.remember')}
+        </label>
+        <button type="submit">{t('start.logIn')}</button>
+      </form>
+      {error && <span>{error}</span>}
     </>
   );
 };

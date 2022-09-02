@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../app/hooks/reduxHooks';
 
 export const TutorialPage = (): JSX.Element => {
   const { t } = useTranslation();
-  const name = 'user';
+  const name = useAppSelector(({ app }) => app.name);
   const navigate = useNavigate();
   const [contentId, setContentId] = useState(0);
   const content = `tutorial.${contentId}`;

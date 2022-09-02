@@ -7,12 +7,13 @@ import {
   setCompleteness,
   setHandleSubmit,
 } from '../../app/store/reducers/testingSlice';
+import win from '../../assets/images/sert-meows.png';
 
 export const TestResult = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const result = useAppSelector(({ testing }) => testing.result);
-  const name = 'user';
+  const name = useAppSelector(({ app }) => app.name);
 
   const againHandler = () => {
     dispatch(setAnswer(''));
@@ -36,6 +37,9 @@ export const TestResult = (): JSX.Element => {
         </Trans>
       </p>
       <div>Сертификат</div>
+      <div>
+        <img src={win} alt="" />
+      </div>
     </>
   );
 };

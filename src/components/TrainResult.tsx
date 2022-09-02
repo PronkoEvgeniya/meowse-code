@@ -7,7 +7,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { ITrainResultProps } from '../types/interfaces';
 import { ICompletedLessons } from '../app/store/actionTypes';
 import imgwin from '../assets/images/win-meows.png';
-import imgloose from '../assets/images/lasy.png';
+import imgloose from '../assets/images/loose-meows.png';
 
 export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
