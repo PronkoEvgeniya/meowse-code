@@ -65,7 +65,7 @@ header {
 }
 header ul > li:last-of-type {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   gap: 5px;
   font-size: 3.8rem;
   flex-direction: row-reverse;
