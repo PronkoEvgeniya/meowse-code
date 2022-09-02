@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
 import { useMorse } from '../app/hooks/useMorse';
 import { setLanguage, setInput, setOutput } from '../app/store/reducers/translatorSlice';
 import { Lang } from '../types/constants';
+import imgfr from '../assets/images/froggy.png';
 
 export const TranslatePage = (): JSX.Element => {
   const { t, i18n } = useTranslation();
@@ -63,7 +64,9 @@ export const TranslatePage = (): JSX.Element => {
         <button onClick={translateHandler}>{t('translator.translate')}</button>
         <button onClick={clearHandler}>{t('translator.reset')}</button>
       </div>
-      <div>маскот</div>
+      <div>
+        <img src={imgfr} alt="" />
+      </div>
       <div style={{ border: '1px solid purple', padding: '20px' }}>
         {output.map((word, idx) => (
           <span key={idx} style={{ border: '1px solid green', margin: '5px', padding: '5px' }}>

@@ -7,6 +7,7 @@ import {
   setCompleteness,
   setHandleSubmit,
 } from '../../app/store/reducers/testingSlice';
+import win from '../../assets/images/sert-meows.png';
 
 export const TestResult = (): JSX.Element => {
   const { t } = useTranslation();
@@ -36,6 +37,9 @@ export const TestResult = (): JSX.Element => {
         </Trans>
       </p>
       <div>Сертификат</div>
+      <div>
+        <img src={win} alt="" />
+      </div>
     </>
   );
 };

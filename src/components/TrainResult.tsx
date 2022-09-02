@@ -6,6 +6,9 @@ import { toggleMode } from '../app/store/reducers/trainerSlice';
 import { Trans, useTranslation } from 'react-i18next';
 import { ITrainResultProps } from '../types/interfaces';
 import { ICompletedLessons } from '../app/store/actionTypes';
+import imgwin from '../assets/images/win-meows.png';
+import imgloose from '../assets/images/loose-meows.png';
+import { Lang, Trainers } from '../types/constants';
 
 export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
@@ -44,17 +47,17 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
 
   let completedLessons: ICompletedLessons | null;
   let bestScore = 0;
-  let lessonID: number;
+  let lessonID = 1;
 
   switch (type) {
-    case 'text':
+    case Trainers.text:
       lessonID = textLesson;
-      completedLessons = lang === 'ru' ? completedRuTextLessons : completedEnTextLessons;
+      completedLessons = lang === Lang.ru ? completedRuTextLessons : completedEnTextLessons;
       bestScore = completedLessons ? completedLessons[lessonID] : 0;
       break;
-    case 'audio':
+    case Trainers.audio:
       lessonID = audioLesson;
-      completedLessons = lang === 'ru' ? completedRuAudioLessons : completedEnAudioLessons;
+      completedLessons = lang === Lang.ru ? completedRuAudioLessons : completedEnAudioLessons;
       bestScore = completedLessons ? completedLessons[lessonID] : 0;
   }
 
@@ -86,7 +89,9 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
           values={{ lessonID, currentScore, bestScore }}
         />
       </button>
-      <div>маскот</div>
+      <div>
+        <img src={imgwin} alt="" />
+      </div>
     </div>
   ) : (
     <div>
@@ -94,7 +99,9 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
         <Trans i18nKey={'looser.description'} values={{ lessonID }} />
       </p>
       <button onClick={handleReturnToTheLesson}>{t('looser.againBtn')}</button>
-      <div>маскот</div>
+      <div>
+        <img src={imgloose} alt="" />
+      </div>
     </div>
   );
 };

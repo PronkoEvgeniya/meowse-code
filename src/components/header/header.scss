@@ -1,9 +1,10 @@
-@import '../../index.scss';
+@import "../../constants.scss";
 
 header {
   position: absolute;
   width: 100%;
   height: 80px;
+  z-index: 100;
   ul {
     display: flex;
     justify-content: space-between;
