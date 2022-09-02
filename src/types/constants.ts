@@ -1,5 +1,21 @@
 export const testPercent = 100;
 export const enterKey = 'Enter';
+export const nullTextLesson = {
+  description: '',
+  symbols: [''],
+  code: [''],
+  task: '',
+  id: 0,
+  answer: '',
+};
+export const nullAudioLesson = {
+  description: '',
+  symbols: [''],
+  player: [''],
+  task: '',
+  id: 0,
+  answer: '',
+};
 
 export enum TextAreaMessages {
   error = '*упс, что-то ты не то вводишь. наведи на меня и узнай что делать',
@@ -11,14 +27,16 @@ export enum Lang {
   en = 'en',
 }
 
-export enum TranslatorMode {
-  encode = 'текст -> морзе',
-  decode = 'морзе -> текст',
-}
-
-export enum TextTrainerPageMode {
+export enum Modes {
   lesson = 'lesson',
   result = 'result',
+  task = 'task',
+  rules = 'rules',
+}
+
+export enum Trainers {
+  audio = 'audio',
+  text = 'text',
 }
 
 export enum LSParameters {
@@ -31,6 +49,10 @@ export enum LSParameters {
 
 export enum LessonResults {
   min = 70,
+}
+
+export enum Game {
+  questionAmount = 15,
 }
 
 export enum RegExpTemplates {

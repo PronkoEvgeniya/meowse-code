@@ -1,7 +1,6 @@
 {
   "audio": "Audio simulator",
   "text": "Text Simulator",
-  "game": "Mini-game",
   "test": "Test",
   "translate": "Translator",
   "about": "About the course",
@@ -60,6 +59,19 @@
       "1": "lesson completed (best score - {{completedScore}})"
     },
     "task": "Task:"
+  },
+  "game": {
+    "title": "Mini-game",
+    "score": "Score: {{score}}",
+    "end": "You've passed the game",
+    "again": "Try again!",
+    "warning": "Let me explain some rules to you, before you start.",
+    "rules": {
+      "0": "You will be asked several questions, your task is to choose the correct answer.",
+      "1": "Each correct answer gives you 10 points, incorrect answers give you nothing.",
+      "2": "You only have 4 minutes to answer all the questions, so hurry up!"
+    },
+    "start": "Let's start!"
   },
   "winner": {
     "description": {
