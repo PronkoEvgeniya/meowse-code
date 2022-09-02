@@ -1,5 +1,6 @@
 import { Trans, useTranslation } from 'react-i18next';
 import { useAppSelector } from '../app/hooks/reduxHooks';
+import img from '../assets/images/greet-meowsWHITE.png';
 
 export const HomePage = (): JSX.Element => {
   const { t } = useTranslation();
@@ -15,7 +16,9 @@ export const HomePage = (): JSX.Element => {
         </h2>
         <h2>{t('home.question2')}</h2>
       </div>
-      <div>маскот</div>
+      <div>
+        <img src={img} alt="" />
+      </div>
     </div>
   );
 };
