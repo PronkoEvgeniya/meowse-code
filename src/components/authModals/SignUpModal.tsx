@@ -4,19 +4,19 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
 import {
-  registerUser,
   setConfirmPassword,
   setEmail,
   setName,
   setPassword,
-} from '../../app/store/reducers/appSlice';
+} from '../../app/store/reducers/userSlice';
+import { registerUser } from '../../app/store/userRequests';
 
 export const SignUpModal = (): JSX.Element => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { name, email, password, confirmPassword, error, isAuthorized } = useAppSelector(
-    ({ app }) => app
+    ({ user }) => user
   );
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {

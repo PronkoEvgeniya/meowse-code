@@ -5,9 +5,11 @@ import './sidebar.scss';
 
 export const Sidebar = (): JSX.Element => {
   const { t } = useTranslation();
-  const [textLesson, audioLesson, auth] = useAppSelector(
-    ({ app: { textLesson, audioLesson, isAuthorized } }) => [textLesson, audioLesson, isAuthorized]
-  );
+  const auth = useAppSelector(({ user }) => user.isAuthorized);
+  const [textLesson, audioLesson] = useAppSelector(({ app: { textLesson, audioLesson } }) => [
+    textLesson,
+    audioLesson,
+  ]);
 
   const T = (value: string): string => t(`${value}`).toLowerCase();
 

@@ -1,11 +1,8 @@
 import { TTrainers } from './types';
 
-export interface ModalProps {
+export interface AuthModalProps {
+  auth: string;
   setAuth: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export interface AuthModalProps extends ModalProps {
-  children: JSX.Element;
 }
 
 export interface TrainResultProps {

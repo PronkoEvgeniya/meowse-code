@@ -4,7 +4,7 @@ import img from '../assets/images/greet-meowsWHITE.png';
 
 export const HomePage = (): JSX.Element => {
   const { t } = useTranslation();
-  const name = useAppSelector(({ app }) => app.name);
+  const name = useAppSelector(({ user }) => user.name);
 
   return (
     <div>

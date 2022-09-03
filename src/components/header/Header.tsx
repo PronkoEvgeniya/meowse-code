@@ -13,7 +13,7 @@ export const Header = (): JSX.Element => {
   const {
     i18n: { language, changeLanguage },
   } = useTranslation();
-  const auth = useAppSelector(({ app: { isAuthorized } }) => isAuthorized);
+  const auth = useAppSelector(({ user: { isAuthorized } }) => isAuthorized);
 
   const toggleLang = () => {
     if (language === Lang.ru) {

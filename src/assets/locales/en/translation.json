@@ -10,16 +10,14 @@
   "encode": "text -> morse",
   "start": {
     "title": "Welcome to the <1 /> interactive <3>Morse</3> code course!",
-    "description": "Click to log in / sign up",
-    "startBtn": "Start",
+    "description": "Sign in to an existing account or register",
     "logIn": "Log in",
     "signUp": "Sign up",
     "backBtn": "Back",
     "email": "Email",
     "name": "Name",
     "password": "Password",
-    "confirmPassword": "Confirm password",
-    "remember": "Remember me"
+    "confirmPassword": "Confirm password"
   },
   "home": {
     "question1": "How are you, <1>{{name}}</1>?",

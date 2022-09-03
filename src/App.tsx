@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import { useAppDispatch, useAppSelector } from './app/hooks/reduxHooks';
-import { setAuthorization } from './app/store/reducers/appSlice';
+import { setAuthorization } from './app/store/reducers/userSlice';
 import { Footer } from './components/Footer';
 import { Header } from './components/header/Header';
 import { Sidebar } from './components/Sidebar';
@@ -20,7 +20,7 @@ import { NotFound } from './routes/NotFound';
 
 export const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const token = useAppSelector(({ app }) => app.token);
+  const token = useAppSelector(({ user }) => user.token);
 
   useEffect(() => {
     if (token) {
