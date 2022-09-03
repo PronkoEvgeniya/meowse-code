@@ -84,5 +84,11 @@
   "looser": {
     "description": "The accuracy is less than 70%, you should go through the lesson {{ lessonID }} again. Don't worry, I have paws too!",
     "againBtn": "Again!"
+  },
+  "account": {
+    "name": "Name",
+    "score": "Total score: {{score}}",
+    "sertificate": "Sertificate",
+    "signOut": "Sign Out"
   }
 }

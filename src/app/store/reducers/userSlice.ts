@@ -1,13 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { LSParameters } from '../../../types/constants';
-import { authorizeUser, registerUser } from '../userRequests';
+import { authorizeUser, getUser, registerUser, updateUser } from '../userRequests';
 
 export interface IUserState {
   name: string;
   email: string;
   token: string | null;
   password: string;
+  score: number;
+  avatar: string | null;
+  sertificate: boolean;
   confirmPassword: string;
+  isRegistrated: boolean;
   isAuthorized: boolean;
   error: string | null;
 }
@@ -17,7 +21,11 @@ const initialState: IUserState = {
   email: '',
   token: localStorage.getItem(LSParameters.token),
   password: '',
+  score: 0,
+  avatar: null,
+  sertificate: false,
   confirmPassword: '',
+  isRegistrated: false,
   isAuthorized: false,
   error: null,
 };
@@ -35,6 +43,12 @@ export const userSlice = createSlice({
     setEmail: (state, { payload }) => {
       state.email = payload;
     },
+    setAvatar: (state, { payload }) => {
+      state.avatar = payload;
+    },
+    setToken: (state, { payload }) => {
+      state.token = payload;
+    },
     setError: (state, { payload }) => {
       state.error = payload;
     },
@@ -49,7 +63,7 @@ export const userSlice = createSlice({
     builder
       .addCase(registerUser.fulfilled, (state) => {
         state.error = null;
-        state.isAuthorized = true;
+        state.isRegistrated = true;
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
         state.error = payload as string;
@@ -58,20 +72,53 @@ export const userSlice = createSlice({
         state.password = '';
         state.confirmPassword = '';
       })
-      .addCase(authorizeUser.fulfilled, (state, { payload }) => {
-        state.error = null;
-        state.name = payload as string;
-        state.isAuthorized = true;
-      })
+      .addCase(
+        authorizeUser.fulfilled,
+        (state, { payload: { email, name, avatar, score, sertificate } }) => {
+          state.error = null;
+          state.isAuthorized = true;
+          state.name = name;
+          state.email = email;
+          state.avatar = avatar ? avatar : null;
+          state.score = score ? score : 0;
+          state.sertificate = sertificate ? true : false;
+        }
+      )
       .addCase(authorizeUser.rejected, (state, { payload }) => {
         state.error = payload as string;
         state.email = '';
         state.password = '';
+      })
+      .addCase(
+        getUser.fulfilled,
+        (state, { payload: { email, name, avatar, score, sertificate } }) => {
+          state.name = name;
+          state.email = email;
+          state.avatar = avatar ? avatar : null;
+          state.score = score ? score : 0;
+          state.sertificate = sertificate ? true : false;
+        }
+      )
+      .addCase(getUser.rejected, (state, { payload }) => {
+        alert(payload);
+      })
+      // .addCase(updateUser.fulfilled, (state, { payload }) => {
+      // })
+      .addCase(updateUser.rejected, (state, { payload }) => {
+        alert(payload);
       });
   },
 });
 
-export const { setAuthorization, setName, setEmail, setPassword, setConfirmPassword, setError } =
-  userSlice.actions;
+export const {
+  setAuthorization,
+  setName,
+  setEmail,
+  setAvatar,
+  setPassword,
+  setConfirmPassword,
+  setError,
+  setToken,
+} = userSlice.actions;
 
 export default userSlice.reducer;

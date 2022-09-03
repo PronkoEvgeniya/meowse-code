@@ -3,8 +3,9 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
-import { setEmail, setPassword } from '../../app/store/reducers/userSlice';
+import { setEmail, setPassword, setToken } from '../../app/store/reducers/userSlice';
 import { authorizeUser } from '../../app/store/userRequests';
+import { LSParameters } from '../../types/constants';
 
 export const LogInModal = (): JSX.Element => {
   const { t } = useTranslation();
@@ -24,7 +25,10 @@ export const LogInModal = (): JSX.Element => {
     dispatch(setPassword(value));
 
   useEffect(() => {
-    if (isAuthorized) navigate('/home');
+    if (isAuthorized) {
+      dispatch(setToken(localStorage.getItem(LSParameters.token)));
+      navigate('/home');
+    }
   }, [isAuthorized]);
 
   return (

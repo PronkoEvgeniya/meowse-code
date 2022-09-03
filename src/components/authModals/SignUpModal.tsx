@@ -9,13 +9,13 @@ import {
   setName,
   setPassword,
 } from '../../app/store/reducers/userSlice';
-import { registerUser } from '../../app/store/userRequests';
+import { authorizeUser, registerUser } from '../../app/store/userRequests';
 
 export const SignUpModal = (): JSX.Element => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { name, email, password, confirmPassword, error, isAuthorized } = useAppSelector(
+  const { name, email, password, confirmPassword, error, isRegistrated } = useAppSelector(
     ({ user }) => user
   );
 
@@ -39,8 +39,11 @@ export const SignUpModal = (): JSX.Element => {
     dispatch(setConfirmPassword(value));
 
   useEffect(() => {
-    if (isAuthorized) navigate('/tutorial');
-  }, [isAuthorized]);
+    if (isRegistrated) {
+      dispatch(authorizeUser({ email, password }));
+      navigate('/tutorial');
+    }
+  }, [isRegistrated]);
 
   return (
     <>

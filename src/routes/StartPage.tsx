@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -9,16 +10,16 @@ import './startPage.scss';
 export const StartPage = (): JSX.Element => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const token = useAppSelector(({ user }) => user.token);
+  const isAuthorized = useAppSelector(({ user }) => user.isAuthorized);
   const [auth, setAuth] = useState('');
 
   const changeModal = (value: string) => () => setAuth(value);
 
-  useEffect(() => {
-    if (token) {
-      navigate('/home');
-    }
-  });
+  // useEffect(() => {
+  //   if (isAuthorized) {
+  //     navigate('/home');
+  //   }
+  // }, [isAuthorized]);
 
   return (
     <div className="start-page">

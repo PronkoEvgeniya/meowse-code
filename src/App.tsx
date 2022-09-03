@@ -17,6 +17,7 @@ import { TestPage } from './routes/TestPage';
 import { GamePage } from './routes/GamePage';
 import { AccountPage } from './routes/AccountPage';
 import { NotFound } from './routes/NotFound';
+import { getUser } from './app/store/userRequests';
 
 export const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -24,7 +25,10 @@ export const App = (): JSX.Element => {
 
   useEffect(() => {
     if (token) {
+      dispatch(getUser(token));
       dispatch(setAuthorization(true));
+    } else {
+      dispatch(setAuthorization(false));
     }
   }, [dispatch, token]);
 

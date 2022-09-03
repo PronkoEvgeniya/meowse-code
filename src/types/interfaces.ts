@@ -11,6 +11,12 @@ export interface TrainResultProps {
   setIsLessonCompleted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+export interface IAvatarProps {
+  image: string;
+  installedAvatar: string | null;
+  setInstalledAvatar: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
 export interface AudioBtnProps {
   value: string;
   src: string;
@@ -90,8 +96,22 @@ export interface IUser {
   data: {
     token: string;
     user: {
+      email: string;
       name: string;
+      score: number;
+      avatar: string;
+      sertificate: boolean;
     };
+  };
+}
+
+export interface IUpdateUser {
+  token: string;
+  user: {
+    name?: string;
+    avatar?: string;
+    score?: number;
+    sertificate?: boolean;
   };
 }
 

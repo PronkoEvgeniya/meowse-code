@@ -1,7 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { ActionTypes, LSParameters, URL } from '../../types/constants';
-import { IAuthorization, IRegistration, IAuthError, IUser } from '../../types/interfaces';
+import {
+  IAuthorization,
+  IRegistration,
+  IAuthError,
+  IUser,
+  IUpdateUser,
+} from '../../types/interfaces';
 
 export const registerUser = createAsyncThunk(
   ActionTypes.registration,
@@ -19,13 +25,43 @@ export const authorizeUser = createAsyncThunk(
   async (userInfo: IAuthorization, { rejectWithValue }) => {
     try {
       const {
-        data: {
-          token,
-          user: { name },
-        },
+        data: { token, user },
       } = (await axios.post(URL.authorization, userInfo)) as IUser;
       localStorage.setItem(LSParameters.token, token);
-      return name;
+      return user;
+    } catch (err) {
+      return rejectWithValue((err as IAuthError).response.data.message);
+    }
+  }
+);
+
+export const getUser = createAsyncThunk(
+  ActionTypes.getUser,
+  async (token: string, { rejectWithValue }) => {
+    try {
+      const {
+        data: { user },
+      } = (await axios.get(URL.user, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })) as IUser;
+      return user;
+    } catch (err) {
+      return rejectWithValue((err as IAuthError).response.data.message);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  ActionTypes.updateUser,
+  async ({ token, user }: IUpdateUser, { rejectWithValue }) => {
+    try {
+      await axios.put(URL.user, user, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
     } catch (err) {
       return rejectWithValue((err as IAuthError).response.data.message);
     }
