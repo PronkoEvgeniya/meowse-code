@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from './app/hooks/reduxHooks';
 import { setAuthorization } from './app/store/reducers/appSlice';
 import { Footer } from './components/Footer';
 import { Header } from './components/header/Header';
-import { Sidebar } from './components/Sidebar';
+import { Sidebar } from './components/sidebar/Sidebar';
 import { AboutPage } from './routes/about/AboutPage';
 import { AudioPage } from './routes/AudioPage';
 import { HomePage } from './routes/HomePage';

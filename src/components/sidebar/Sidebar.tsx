@@ -1,19 +1,25 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { useAppSelector } from '../app/hooks/reduxHooks';
+import { useAppSelector, useAppDispatch } from '../../app/hooks/reduxHooks';
+import { setSidebarBtnState } from '../../app/store/reducers/appSlice';
 import './sidebar.scss';
 
 export const Sidebar = (): JSX.Element => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
   const [textLesson, audioLesson, auth] = useAppSelector(
     ({ app: { textLesson, audioLesson, isAuthorized } }) => [textLesson, audioLesson, isAuthorized]
   );
+  const sidebarState = useAppSelector(({ app: { sidebarBtn } }) => sidebarBtn);
 
   const T = (value: string): string => t(`${value}`).toLowerCase();
 
   return (
-    <aside>
-      <button disabled={!auth}>&#60;</button>
+    <aside className={!sidebarState ? 'sidebar__closed' : ''}>
+      <button onClick={() => dispatch(setSidebarBtnState())} disabled={!auth}>
+        &#60;
+      </button>
       <nav>
         <ul>
           <li>
