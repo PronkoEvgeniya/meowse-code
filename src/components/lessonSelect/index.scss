@@ -1,0 +1,82 @@
+$violet: #7f619c;
+$grey: #5e5e5e;
+$white: #fff;
+
+.trainer {
+  .custom-select {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    width: max-content;
+    font-size: 2.25rem;
+    color: $violet;
+
+    .arrow {
+      width: 1rem;
+      height: 1rem;
+      border-right: 1px solid $violet;
+      border-bottom: 1px solid $violet;
+      transform: rotate(45deg);
+      justify-self: end;
+    }
+
+    &.active .arrow {
+      transform: rotate(225deg);
+    }
+
+    .custom-options {
+      display: none;
+      position: absolute;
+      top: 5rem;
+      z-index: 1;
+      width: 100%;
+      max-height: 25rem;
+      overflow-y: scroll;
+      border: 1px solid $grey;
+      border-radius: 3px;
+      background-color: $white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease-out;
+
+      .label {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem 0;
+        transition: all 0.2s ease-out;
+        cursor: pointer;
+      }
+
+      .label:hover {
+        color: $white;
+        background-color: $violet;
+      }
+
+      .input {
+        display: none;
+      }
+
+      .input:checked + label {
+        color: $white;
+        background-color: $violet;
+      }
+
+      .input:disabled + label {
+        background-color: $grey;
+        color: $white;
+      }
+
+      .input:disabled + label:hover {
+        cursor: auto;
+      }
+    }
+
+    &.active .custom-options {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
