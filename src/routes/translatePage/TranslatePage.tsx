@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
-import { useMorse } from '../app/hooks/useMorse';
-import { setLanguage, setInput, setOutput } from '../app/store/reducers/translatorSlice';
-import { Lang } from '../types/constants';
-import imgfr from '../assets/images/froggy.png';
-import './translatePage/translate.scss';
+import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
+import { useMorse } from '../../app/hooks/useMorse';
+import { setLanguage, setInput, setOutput } from '../../app/store/reducers/translatorSlice';
+import { Lang } from '../../types/constants';
+import imgfr from '../../assets/images/froggy.png';
+import './translate.scss';
 
 export const TranslatePage = (): JSX.Element => {
   const { t, i18n } = useTranslation();

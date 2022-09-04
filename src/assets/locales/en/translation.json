@@ -31,11 +31,11 @@
       "btn": "Hey, Meows!"
     },
     "1": {
-      "description": "In the profile you can see your achievements, as well as change information about yourself or the theme",
+      "description": "By clicking on your name next to the avatar you will be able to see your achievements, change your data. Be sure to try to choose an avatar!",
       "btn": "Okay"
     },
     "2": {
-      "description": "I suggest you start with practice, to open the simulator, expand the panel on the left",
+      "description": "In the panel on the left you can select a section and start learning. I suggest you start with a simulator!",
       "btn": "Well"
     }
   },
