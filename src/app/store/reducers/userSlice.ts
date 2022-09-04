@@ -5,7 +5,6 @@ import { authorizeUser, getUser, registerUser, updateUser } from '../userRequest
 export interface IUserState {
   name: string;
   email: string;
-  token: string | null;
   password: string;
   score: number;
   avatar: string | null;
@@ -19,14 +18,13 @@ export interface IUserState {
 const initialState: IUserState = {
   name: '',
   email: '',
-  token: localStorage.getItem(LSParameters.token),
   password: '',
   score: 0,
   avatar: null,
   sertificate: false,
   confirmPassword: '',
   isRegistrated: false,
-  isAuthorized: false,
+  isAuthorized: localStorage.getItem(LSParameters.token) ? true : false,
   error: null,
 };
 
@@ -45,9 +43,6 @@ export const userSlice = createSlice({
     },
     setAvatar: (state, { payload }) => {
       state.avatar = payload;
-    },
-    setToken: (state, { payload }) => {
-      state.token = payload;
     },
     setError: (state, { payload }) => {
       state.error = payload;
@@ -92,6 +87,7 @@ export const userSlice = createSlice({
       .addCase(
         getUser.fulfilled,
         (state, { payload: { email, name, avatar, score, sertificate } }) => {
+          state.isAuthorized = true;
           state.name = name;
           state.email = email;
           state.avatar = avatar ? avatar : null;
@@ -118,7 +114,6 @@ export const {
   setPassword,
   setConfirmPassword,
   setError,
-  setToken,
 } = userSlice.actions;
 
 export default userSlice.reducer;

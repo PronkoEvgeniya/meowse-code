@@ -3,14 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
 import { setName, setAvatar } from '../../app/store/reducers/userSlice';
 import { updateUser } from '../../app/store/userRequests';
-import { avatars, LSParameters } from '../../types/constants';
+import { avatars } from '../../types/constants';
 import { UserIcon } from '../header/UserIcon';
 import { Avatar } from './avatar';
 
 export const FormUpdate = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const token = localStorage.getItem(LSParameters.token);
   const [name, avatar] = useAppSelector(({ user: { name, avatar } }) => [name, avatar]);
 
   const [installedAvatar, setInstalledAvatar] = useState(avatar);
@@ -23,12 +22,7 @@ export const FormUpdate = (): JSX.Element => {
     if (isChanged || isChecked) {
       dispatch(setName(newName));
       dispatch(setAvatar(installedAvatar));
-      dispatch(
-        updateUser({
-          token: token as string,
-          user: { name: newName, avatar: installedAvatar as string },
-        })
-      );
+      dispatch(updateUser({ name: newName, avatar: installedAvatar as string }));
     }
   };
 

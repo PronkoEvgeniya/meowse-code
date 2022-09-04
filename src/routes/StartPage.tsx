@@ -15,11 +15,11 @@ export const StartPage = (): JSX.Element => {
 
   const changeModal = (value: string) => () => setAuth(value);
 
-  // useEffect(() => {
-  //   if (isAuthorized) {
-  //     navigate('/home');
-  //   }
-  // }, [isAuthorized]);
+  useEffect(() => {
+    if (isAuthorized) {
+      navigate('/home');
+    }
+  });
 
   return (
     <div className="start-page">

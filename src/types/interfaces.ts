@@ -106,13 +106,10 @@ export interface IUser {
 }
 
 export interface IUpdateUser {
-  token: string;
-  user: {
-    name?: string;
-    avatar?: string;
-    score?: number;
-    sertificate?: boolean;
-  };
+  name?: string;
+  avatar?: string;
+  score?: number;
+  sertificate?: boolean;
 }
 
 export interface IAuthError {

@@ -55,11 +55,11 @@ export const getUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   ActionTypes.updateUser,
-  async ({ token, user }: IUpdateUser, { rejectWithValue }) => {
+  async (user: IUpdateUser, { rejectWithValue }) => {
     try {
       await axios.put(URL.user, user, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${localStorage.getItem(LSParameters.token)}`,
         },
       });
     } catch (err) {
