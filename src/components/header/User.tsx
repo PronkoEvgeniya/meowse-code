@@ -1,17 +1,13 @@
 import { useAppSelector } from '../../app/hooks/reduxHooks';
-import { IconArrow } from '../../assets/Sprite';
 import { UserIcon } from './UserIcon';
 
 export const User = (): JSX.Element => {
-  const name = useAppSelector(({ app }) => app.name);
+  const [name, avatar] = useAppSelector(({ user: { name, avatar } }) => [name, avatar]);
 
   return (
     <>
-      <UserIcon />
+      {avatar ? <img src={`./avatars/${avatar}`} alt="avatar" /> : <UserIcon />}
       <span>{name}</span>
-      <div className="user-arrow">
-        <IconArrow />
-      </div>
     </>
   );
 };

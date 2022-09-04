@@ -7,7 +7,7 @@ export const Footer = (): JSX.Element => {
 
   return (
     <footer>
-      <a href="#">{t('developers')}</a>
+      <a href="/about#dev">{t('developers')}</a>
       <span>2022</span>
       <a href="https://rs.school/js/">{IconRss()}</a>
     </footer>

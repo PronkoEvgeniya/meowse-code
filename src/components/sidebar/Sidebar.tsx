@@ -8,9 +8,11 @@ export const Sidebar = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const [textLesson, audioLesson, auth] = useAppSelector(
-    ({ app: { textLesson, audioLesson, isAuthorized } }) => [textLesson, audioLesson, isAuthorized]
-  );
+  const auth = useAppSelector(({ user }) => user.isAuthorized);
+  const [textLesson, audioLesson] = useAppSelector(({ app: { textLesson, audioLesson } }) => [
+    textLesson,
+    audioLesson,
+  ]);
   const sidebarState = useAppSelector(({ app: { sidebarBtn } }) => sidebarBtn);
 
   const T = (value: string): string => t(`${value}`).toLowerCase();
