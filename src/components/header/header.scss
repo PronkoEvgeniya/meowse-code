@@ -1,26 +1,48 @@
-@import '../../index.scss';
+@import "../../constants.scss";
 
 header {
   position: absolute;
   width: 100%;
   height: 80px;
+  z-index: 100;
   ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     padding: 0 20px 0 0;
-    .toggleLang__container {
-      margin: 0 20px 0 auto;
-      button {
-        @include btnViolent;
-        padding: 5px 15px;
-        font-size: 2.8rem;
-      }
-      button:hover {
-        @include btnViolentHover;
+
+    .toggle__container {
+      display: flex;
+      gap: 15px;
+      .toggleLang__container,
+      .toggleTheme__container {
+        button {
+          @include btnToggle;
+          width: 55px;
+          height: 55px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2.8rem;
+        }
+        button:hover {
+          @include btnViolent;
+          text-align: center;
+          padding: 0;
+          svg,
+          circle,
+          line,
+          path {
+            stroke: $white;
+          }
+        }
       }
     }
+    button:hover {
+      @include btnViolentHover;
+    }
+
     li {
       list-style: none;
       cursor: pointer;
@@ -41,14 +63,29 @@ header {
     }
   }
 }
-.disable-events {
+header ul > li:last-of-type {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  font-size: 3.8rem;
+  flex-direction: row-reverse;
+  cursor: pointer;
+  margin: 0 25px 0 auto;
+}
+header ul > li:first-of-type {
   width: 25.69%;
-  padding-left: 20px;
   a {
     width: 100%;
     display: block;
+    text-align: center;
     svg {
-      width: 89%;
+      width: 92%;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  header ul > li:first-of-type {
+    width: 300px;
   }
 }

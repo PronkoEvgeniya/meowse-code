@@ -6,6 +6,7 @@ import { tasks } from '../../assets/audio/tasks';
 import { audio } from '../../assets/audio/symbols';
 import { useTranslation, Trans } from 'react-i18next';
 import { ICompletedLessons } from '../../app/store/actionTypes';
+import img from '../../assets/images/audio-meows.png';
 import { AudioBtn } from '../audioButton';
 import { Lang, nullAudioLesson, nullTextLesson, Trainers } from '../../types/constants';
 import './index.scss';
