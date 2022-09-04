@@ -5,7 +5,6 @@ import { IconLogo, IconLightTheme, IconDarkTheme } from '../../assets/Sprite';
 import { Lang } from '../../types/constants';
 import { User } from './User';
 import { UserIcon } from './UserIcon';
-
 import './header.scss';
 import { useContext } from 'react';
 import { DarkThemeContext } from '../../context/DarkModeContext';

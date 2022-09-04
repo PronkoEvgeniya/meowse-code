@@ -7,8 +7,6 @@ import './sidebar.scss';
 export const Sidebar = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-
-  const auth = useAppSelector(({ user }) => user.isAuthorized);
   const [textLesson, audioLesson] = useAppSelector(({ app: { textLesson, audioLesson } }) => [
     textLesson,
     audioLesson,
@@ -19,9 +17,7 @@ export const Sidebar = (): JSX.Element => {
 
   return (
     <aside className={!sidebarState ? 'sidebar__closed' : ''}>
-      <button onClick={() => dispatch(setSidebarBtnState())} disabled={!auth}>
-        &#60;
-      </button>
+      <button onClick={() => dispatch(setSidebarBtnState())}>&#60;</button>
       <nav>
         <ul>
           <li>
