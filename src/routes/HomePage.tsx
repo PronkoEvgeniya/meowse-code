@@ -5,7 +5,7 @@ import './HomePage/homePage.scss';
 
 export const HomePage = (): JSX.Element => {
   const { t } = useTranslation();
-  const name = useAppSelector(({ app }) => app.name);
+  const name = useAppSelector(({ user }) => user.name);
 
   return (
     <div className="homepage__container">

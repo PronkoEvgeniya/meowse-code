@@ -7,7 +7,7 @@ import maskot from '../../assets/images/greet-meowsWHITE.png';
 
 export const TutorialPage = (): JSX.Element => {
   const { t } = useTranslation();
-  const name = useAppSelector(({ app }) => app.name);
+  const name = useAppSelector(({ user }) => user.name);
   const navigate = useNavigate();
   const [contentId, setContentId] = useState(0);
   const content = `tutorial.${contentId}`;

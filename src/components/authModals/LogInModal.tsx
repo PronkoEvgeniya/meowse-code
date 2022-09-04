@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
-import { authorizeUser, setEmail, setPassword } from '../../app/store/reducers/appSlice';
+import { setEmail, setPassword } from '../../app/store/reducers/userSlice';
+import { authorizeUser } from '../../app/store/userRequests';
 
 export const LogInModal = (): JSX.Element => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { email, password, error, isAuthorized } = useAppSelector(({ app }) => app);
+  const { email, password, error } = useAppSelector(({ user }) => user);
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,11 +18,6 @@ export const LogInModal = (): JSX.Element => {
 
   const putPassword = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
     dispatch(setPassword(value));
-
-  useEffect(() => {
-    if (isAuthorized) navigate('/home');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthorized]);
 
   return (
     <>
@@ -43,10 +36,6 @@ export const LogInModal = (): JSX.Element => {
           value={password}
           onChange={putPassword}
         />
-        <label>
-          <input type="checkbox" />
-          {t('start.remember')}
-        </label>
         <button type="submit">{t('start.logIn')}</button>
       </form>
       {error && <span>{error}</span>}
