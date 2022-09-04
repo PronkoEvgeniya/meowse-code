@@ -45,6 +45,12 @@ export enum Trainers {
   text = 'text',
 }
 
+export enum Theme {
+  light = 'light',
+  dark = 'dark',
+  theme = 'theme',
+}
+
 export enum LSParameters {
   ruTextLessons = 'ruTextLessons',
   enTextLessons = 'enTextLessons',
