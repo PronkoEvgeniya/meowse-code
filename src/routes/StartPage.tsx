@@ -6,6 +6,7 @@ import { useAppSelector } from '../app/hooks/reduxHooks';
 import { AuthModal } from '../components/authModals';
 import { Modals } from '../types/constants';
 import './startPage.scss';
+import steps from '../assets/images/iconStep.png';
 
 export const StartPage = (): JSX.Element => {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ export const StartPage = (): JSX.Element => {
         </Trans>
       </h1>
       <p>{t('start.description')} &#129106;</p>
-      <div>
+      <div className="start__btns">
         <button className="start-btn" onClick={changeModal(Modals.login)}>
           {t('start.logIn')}
         </button>
@@ -39,6 +40,8 @@ export const StartPage = (): JSX.Element => {
           {t('start.signUp')}
         </button>
       </div>
+      <img className="steps__icon step__left" src={steps} alt="" />
+      <img className="steps__icon step__right" src={steps} alt="" />
     </div>
   );
 };
