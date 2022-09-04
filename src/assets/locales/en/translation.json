@@ -55,8 +55,8 @@
   "lesson": {
     "select": "Lesson {{id}}",
     "status": {
-      "0": "lesson not completed",
-      "1": "lesson completed (best score - {{completedScore}})"
+      "0": "Lesson is not completed",
+      "1": "Lesson is completed (best score - {{completedScore}})"
     },
     "task": "Task:"
   },

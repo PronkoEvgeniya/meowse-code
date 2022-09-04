@@ -12,8 +12,9 @@ import {
   setFieldValidity,
   setCurrentInput,
 } from '../../../app/store/reducers/trainerSlice';
-import { LessonResults } from '../../../types/constants';
+import { Lang, LessonResults, Trainers } from '../../../types/constants';
 import { IAnswerFieldProps } from '../../../types/interfaces';
+import './index.scss';
 
 export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Element => {
   const {
@@ -31,8 +32,6 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
     audioLesson,
   }));
   const dispatch = useAppDispatch();
-  const redStyle = { border: '5px solid red' };
-  const greenStyle = { border: '5px solid green' };
   const {
     i18n: { language: lang },
   } = useTranslation();
@@ -57,18 +56,18 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
     inputsRefs.push(ref);
     return (
       <input
+        className={`field${
+          isFieldsValid[String(i)]
+            ? ' true'
+            : isFieldsValid[String(i)] === undefined
+            ? ''
+            : ' false'
+        }`}
         ref={ref}
         key={letter + i}
         id={String(i)}
         type="text"
         required
-        style={
-          isFieldsValid[String(i)]
-            ? greenStyle
-            : isFieldsValid[String(i)] === undefined
-            ? {}
-            : redStyle
-        }
         value={userAnswer[i] ? userAnswer[i] : ''}
         readOnly={userAnswer[i] ? userAnswer[i].length === letter.length : false}
         onChange={handleFieldChange}
@@ -78,14 +77,14 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
   });
 
   switch (type) {
-    case 'audio':
+    case Trainers.audio:
       lessonID = audioLesson;
-      completedLessons = lang === 'ru' ? completedRuTextLessons : completedEnTextLessons;
+      completedLessons = lang === Lang.ru ? completedRuTextLessons : completedEnTextLessons;
       completedScore = completedLessons ? completedLessons[lessonID] : 0;
       break;
-    case 'text':
+    case Trainers.text:
       lessonID = textLesson;
-      completedLessons = lang === 'ru' ? completedRuAudioLessons : completedEnAudioLessons;
+      completedLessons = lang === Lang.ru ? completedRuAudioLessons : completedEnAudioLessons;
       completedScore = completedLessons ? completedLessons[lessonID] : 0;
   }
 
@@ -117,5 +116,5 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
     }
   });
 
-  return <form>{inputs}</form>;
+  return <form className="answer">{inputs}</form>;
 };

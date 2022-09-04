@@ -59,11 +59,6 @@ $white: #fff;
         display: none;
       }
 
-      .input:checked + label {
-        color: $white;
-        background-color: $violet;
-      }
-
       .input:disabled + label {
         background-color: $grey;
         color: $white;

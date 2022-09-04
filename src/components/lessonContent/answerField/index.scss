@@ -1,0 +1,40 @@
+$grey: #5e5e5e;
+$ligth-grey: #e2dfdf;
+$violet: #9c56c7;
+$green: rgb(114, 214, 131);
+$red: rgb(245, 135, 135);
+
+.answer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  .field {
+    max-width: 70px;
+    font-size: 2.25rem;
+    padding: 10px;
+    border: 1px solid $grey;
+    border-radius: 5px;
+    background: $ligth-grey;
+    text-align: center;
+
+    &:focus {
+      outline-color: $violet;
+    }
+
+    &.true {
+      background-color: $green;
+      border-color: $green;
+    }
+    &.false {
+      border-color: $red;
+      background-color: $red;
+    }
+
+    &.true:focus,
+    &.false:focus {
+      outline: none;
+    }
+  }
+}

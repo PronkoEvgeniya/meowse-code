@@ -1,0 +1,123 @@
+$ligth-grey: #e2dfdf;
+$grey: #5e5e5e;
+$violet: #9c56c7;
+$background-task: #f5f5f5;
+$text-color: #fff;
+$violet: #9c56c7;
+$green: rgb(114, 214, 131);
+$red: rgb(245, 135, 135);
+
+.lesson {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  .status {
+    padding: 0.5rem 2rem 2rem;
+
+    &.true {
+      color: $green;
+    }
+    &.false {
+      color: $red;
+    }
+  }
+  .description {
+    position: relative;
+    padding: 2rem;
+    text-indent: 2rem;
+    font-size: 2rem;
+    background-color: $ligth-grey;
+    border-radius: 20px;
+
+    &::after {
+      position: absolute;
+      bottom: -10px;
+      right: 50px;
+      display: block;
+      content: '';
+      background-color: $ligth-grey;
+      transform: rotate(45deg);
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .content {
+    display: grid;
+    gap: 0 20px;
+    padding: 20px 0;
+    grid-template-columns: 1fr max-content;
+    grid-template-rows: repeat(4, max-content);
+
+    .symbols,
+    .tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      padding: 20px 0;
+      align-items: stretch;
+    }
+
+    .symbols {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+    }
+
+    .symbol-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      background-color: $grey;
+      color: $text-color;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 1.25rem;
+      font-size: 2.5rem;
+      line-height: 1.2;
+
+      .code {
+        flex-grow: 2;
+        border: 2px solid $violet;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 3rem;
+        letter-spacing: 0.3rem;
+      }
+
+      &.task {
+        background-color: $violet;
+
+        .code {
+          border-color: $text-color;
+          padding: 5px;
+        }
+      }
+    }
+
+    .tasks {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    .decorative-line {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      border: none;
+      border-top: 3px dashed $violet;
+    }
+
+    .answer {
+      grid-column: 1 / 2;
+      grid-row: 4 / 5;
+    }
+
+    .mascot {
+      grid-column: 2 / 3;
+      grid-row: 1 / 5;
+      width: 500px;
+      height: 500px;
+      background-color: $grey;
+    }
+  }
+}

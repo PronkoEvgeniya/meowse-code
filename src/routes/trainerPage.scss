@@ -1,4 +1,4 @@
-$grayText: #5e5e5e;
+$grey: #5e5e5e;
 
 .trainer {
   *,
@@ -9,9 +9,6 @@ $grayText: #5e5e5e;
   .title {
     font-size: 2.5rem;
     font-weight: 400;
-    color: $grayText;
-  }
-
-  .lessons {
+    color: $grey;
   }
 }

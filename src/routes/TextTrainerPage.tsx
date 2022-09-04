@@ -6,6 +6,7 @@ import { useAppSelector } from '../app/hooks/reduxHooks';
 import { TrainResult } from '../components/TrainResult';
 import dataRu from '../data/textRu.json';
 import dataEn from '../data/textEn.json';
+import './trainerPage.scss';
 import { Lang, Modes, Trainers } from '../types/constants';
 
 export const TextTrainerPage = (): JSX.Element => {
@@ -16,8 +17,8 @@ export const TextTrainerPage = (): JSX.Element => {
   } = useTranslation();
   const data = lang === Lang.ru ? dataRu : dataEn;
   return mode === Modes.lesson ? (
-    <div>
-      <h2>{t('text')}</h2>
+    <div className="trainer">
+      <h2 className="title">{t('text')}</h2>
       <LessonSelect data={data} type={Trainers.text} />
       <LessonContent data={data} type={Trainers.text} />
     </div>
