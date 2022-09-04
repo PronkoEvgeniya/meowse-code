@@ -40,68 +40,21 @@ export const App = (): JSX.Element => {
           <Route path="/" element={<StartPage />} />
           <Route
             path="/tutorial"
-            element={
-              <GuardedRoute auth={isRegistrated}>
-                <TutorialPage />
-              </GuardedRoute>
-            }
+            element={<GuardedRoute component={TutorialPage} auth={isRegistrated} />}
           />
-          <Route
-            path="/home"
-            element={
-              <GuardedRoute auth={auth}>
-                <HomePage />
-              </GuardedRoute>
-            }
-          />
-          <Route
-            path="/audio/:id"
-            element={
-              <GuardedRoute auth={auth}>
-                <AudioPage />
-              </GuardedRoute>
-            }
-          />
+          <Route path="/home" element={<GuardedRoute component={HomePage} auth={auth} />} />
+          <Route path="/audio/:id" element={<GuardedRoute component={AudioPage} auth={auth} />} />
           <Route
             path="/text/:id"
-            element={
-              <GuardedRoute auth={auth}>
-                <TextTrainerPage />
-              </GuardedRoute>
-            }
+            element={<GuardedRoute component={TextTrainerPage} auth={auth} />}
           />
-          <Route
-            path="/game"
-            element={
-              <GuardedRoute auth={auth}>
-                <GamePage />
-              </GuardedRoute>
-            }
-          />
-          <Route
-            path="/test"
-            element={
-              <GuardedRoute auth={auth}>
-                <TestPage />
-              </GuardedRoute>
-            }
-          />
+          <Route path="/game" element={<GuardedRoute component={GamePage} auth={auth} />} />
+          <Route path="/test" element={<GuardedRoute component={TestPage} auth={auth} />} />
           <Route
             path="/translate"
-            element={
-              <GuardedRoute auth={auth}>
-                <TranslatePage />
-              </GuardedRoute>
-            }
+            element={<GuardedRoute component={TranslatePage} auth={auth} />}
           />
-          <Route
-            path="/account"
-            element={
-              <GuardedRoute auth={auth}>
-                <AccountPage />
-              </GuardedRoute>
-            }
-          />
+          <Route path="/account" element={<GuardedRoute component={AccountPage} auth={auth} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to={'/404'} />} />

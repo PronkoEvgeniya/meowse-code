@@ -2,9 +2,9 @@ import { Navigate } from 'react-router-dom';
 
 interface Props {
   auth: boolean;
-  children: JSX.Element;
+  component: () => JSX.Element;
 }
 
-export const GuardedRoute = ({ auth, children }: Props): JSX.Element => {
-  return auth ? children : <Navigate to="/" />;
+export const GuardedRoute = ({ auth, component: Component }: Props): JSX.Element => {
+  return auth ? <Component /> : <Navigate to="/" />;
 };
