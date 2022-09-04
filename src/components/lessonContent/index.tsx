@@ -6,7 +6,8 @@ import { tasks } from '../../assets/audio/tasks';
 import { audio } from '../../assets/audio/symbols';
 import { useTranslation, Trans } from 'react-i18next';
 import { ICompletedLessons } from '../../app/store/actionTypes';
-import img from '../../assets/images/audio-meows.png';
+import audioCat from '../../assets/images/audio-meows.png';
+import textCat from '../../assets/images/text-meows.png';
 import { AudioBtn } from '../audioButton';
 import { Lang, nullAudioLesson, nullTextLesson, Trainers } from '../../types/constants';
 import './index.scss';
@@ -94,7 +95,7 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
         <hr className="decorative-line" />
         <div className="tasks">{taskElement}</div>
         <AnswerField answer={answer} score={score} type={type} />
-        <div className="mascot"></div>
+        <img src={type === Trainers.audio ? audioCat : textCat} alt="cat" className="mascot"/>
       </div>
     </div>
   );

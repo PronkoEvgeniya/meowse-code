@@ -45,7 +45,7 @@ $red: rgb(245, 135, 135);
     display: grid;
     gap: 0 20px;
     padding: 20px 0;
-    grid-template-columns: 1fr max-content;
+    grid-template-columns: 1fr auto;
     grid-template-rows: repeat(4, max-content);
 
     .symbols,
@@ -115,9 +115,7 @@ $red: rgb(245, 135, 135);
     .mascot {
       grid-column: 2 / 3;
       grid-row: 1 / 5;
-      width: 500px;
-      height: 500px;
-      background-color: $grey;
+      height: auto;
     }
   }
 }
