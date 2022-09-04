@@ -1,16 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks/reduxHooks';
-import { IconLogo, IconLightTheme } from '../../assets/Sprite';
+import { IconLogo, IconLightTheme, IconDarkTheme } from '../../assets/Sprite';
 import { Lang } from '../../types/constants';
 import { User } from './User';
 import { UserIcon } from './UserIcon';
-// , IconDarkTheme name icon for darc theme
-
 import './header.scss';
+import { useContext } from 'react';
+import { DarkThemeContext } from '../../context/DarkModeContext';
 
 export const Header = (): JSX.Element => {
   const navigate = useNavigate();
+  const { darkTheme, toggleTheme } = useContext(DarkThemeContext);
   const {
     i18n: { language, changeLanguage },
   } = useTranslation();
@@ -43,8 +44,8 @@ export const Header = (): JSX.Element => {
           <li className="toggleLang__container">
             <button onClick={toggleLang}>{language}</button>
           </li>
-          <li className="toggleTheme__container">
-            <button>{IconLightTheme()}</button>
+          <li onClick={toggleTheme} className="toggleTheme__container">
+            <button>{darkTheme ? IconDarkTheme() : IconLightTheme()}</button>
           </li>
         </div>
       </ul>
