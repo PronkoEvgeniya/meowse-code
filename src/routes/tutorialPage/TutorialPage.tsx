@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../app/hooks/reduxHooks';
+import { useAppSelector } from '../../app/hooks/reduxHooks';
+import './tutorial.scss';
+import maskot from '../../assets/images/greet-meowsWHITE.png';
 
 export const TutorialPage = (): JSX.Element => {
   const { t } = useTranslation();
@@ -15,7 +17,7 @@ export const TutorialPage = (): JSX.Element => {
   };
 
   return (
-    <div>
+    <div className="tutorial__container">
       {contentId ? (
         <p>{t(`${content}.description`)}</p>
       ) : (
@@ -25,9 +27,11 @@ export const TutorialPage = (): JSX.Element => {
           </Trans>
         </p>
       )}
-      <div>
+      <div className="tutorial__content">
         <button onClick={changeHandler}>{t(`${content}.btn`)}</button>
-        <div>маскот</div>
+        <div className="mascot__container">
+          <img src={maskot} alt="" />
+        </div>
       </div>
     </div>
   );
