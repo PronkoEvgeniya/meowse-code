@@ -1,35 +1,80 @@
-import arrow1 from './about-arrow-1.svg';
-import arrow2 from './about-arrow-2.svg';
+import { ArrowAbout2, ArrowAbout1 } from '../../assets/Sprite';
+import photo from '../../assets/images/photos/dev-card.jpg';
+import './aboutPage.scss';
+import { useTranslation } from 'react-i18next';
 
 export const AboutPage = (): JSX.Element => {
+  const { t } = useTranslation();
   return (
-    <div>
-      <h2>О курсе</h2>
-      <p>
-        <h3>Что такое азбука Морзе?</h3>
-        <span>Азбука Морзе</span> (Код Морзе, Морзянка) - способ кодирования знаков
-        последовательностью звуковых сигналов по определенным правилам. Код позволяет кодировать
-        цифры, буквы, знаки пунктуации, служебные символы посредством длинных сигналов (тире) и
-        коротких (точек).
+    <div className="about__container">
+      <h2>{t('aboutPage.title-1')}</h2>
+      <p className="content__container-about">
+        <h3>{t('aboutPage.block1-title')}</h3>
+        <span>{t('aboutPage.block1-span')}</span>
       </p>
-      <img src={arrow1} alt="arrow1" />
-      <p>
-        Идея кодирования принадлежит Сэмюэлю Морзе; кодирование букв и цифр осуществил его коллега,
-        Альфред Вейлор. Позже Фридрих Герке код усовершенствовал до международного телеграфного.
-        Первое сообщение было отправлено в мае 1844 года между Вашингтоном и Балтимором с текстом
-        “Вот что творит бог”.
+      <div className="arrow__container">{ArrowAbout1()}</div>
+      <p className="content__container-about">{t('aboutPage.block2')}</p>
+      <div className="arrow__container">{ArrowAbout2()}</div>
+      <p className="content__container-about">
+        <ul>
+          <li>{t('aboutPage.block3-1')}</li>
+          <li>{t('aboutPage.block3-2')}</li>
+          <li>{t('aboutPage.block3-3')}</li>
+          <li>{t('aboutPage.block3-4')}</li>
+          <li>{t('aboutPage.block3-5')}</li>
+          <li>{t('aboutPage.block3-6')}</li>
+        </ul>
       </p>
-      <img src={arrow2} alt="arrow2" />
-      <ul>
-        <li>
-          для кодирования используются два звуковых сигнала: длинный (тире) и короткий (точка);
-        </li>
-        <li>за единицу времени принимается длительность короткого сигнала (одной точки);</li>
-        <li>длительность тире равно длительности трём точкам;</li>
-        <li>пауза между элементами одного знака — одна точка;</li>
-        <li>пауза между знаками в слове — три точки;</li>
-        <li>пауза между словами — семь точек.</li>
-      </ul>
+      <div className="arrow__container">{ArrowAbout1()}</div>
+      <p className="content__container-about">
+        <h4>{t('aboutPage.block4-title')}</h4>
+        <ul>
+          <li>{t('aboutPage.block4-1')}</li>
+          <li>{t('aboutPage.block4-2')}</li>
+          <li>{t('aboutPage.block4-3')}</li>
+        </ul>
+      </p>
+      <div className="arrow__container">{ArrowAbout2()}</div>
+      <p className="content__container-about">{t('aboutPage.block5')}</p>
+      <div className="arrow__container">{ArrowAbout1()}</div>
+      <p className="content__container-about">{t('aboutPage.block6')}</p>
+      <div className="arrow__container">{ArrowAbout2()}</div>
+      <p className="content__container-about">{t('aboutPage.block7')}</p>
+      <div className="dev__container-about">
+        <h3>{t('aboutPage.dev')}</h3>
+        <div className="dev__content-about">
+          <a
+            href="https://github.com/PronkoEvgeniya"
+            target="_blank"
+            className="dev__card"
+            rel="noreferrer"
+          >
+            <img src={photo} alt="" />
+            <span className="card-name">{t('aboutPage.jen')}</span>
+            <span>{t('aboutPage.role1')}</span>
+          </a>
+          <a
+            href="https://github.com/kr1s10"
+            target="_blank"
+            className="dev__card"
+            rel="noreferrer"
+          >
+            <img src={photo} alt="" />
+            <span className="card-name">{t('aboutPage.kris')}</span>
+            <span>{t('aboutPage.role2')}</span>
+          </a>
+          <a
+            href="https://github.com/voitehovichxenia"
+            target="_blank"
+            className="dev__card"
+            rel="noreferrer"
+          >
+            <img src={photo} alt="" />
+            <span className="card-name">{t('aboutPage.xenia')}</span>
+            <span>{t('aboutPage.role2')}</span>
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

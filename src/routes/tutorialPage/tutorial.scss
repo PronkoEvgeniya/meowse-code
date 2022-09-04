@@ -1,0 +1,32 @@
+@import "../../constants.scss";
+
+.tutorial__container {
+    color: $grayText;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    p {
+        padding: 20px;
+        background-color: $grayBg;
+        border-radius: 40px 40px 0 40px;
+        width: 80%;
+        margin: 40px auto 0;
+        font-size: 4.6rem;
+    }
+}
+.tutorial__content {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin: 40px;
+    gap: 60px;
+    button {
+        @include btnViolent;
+        width: 30%;
+        margin-top: 60px;
+    }
+    button:hover {
+        @include btnViolentHover;
+    }
+}

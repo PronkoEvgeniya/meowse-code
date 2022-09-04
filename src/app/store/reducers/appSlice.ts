@@ -39,6 +39,7 @@ export interface IAppState {
   token: string | null;
   password: string;
   confirmPassword: string;
+  sidebarBtn: boolean;
   isAuthorized: boolean;
   error: string | null;
   audioLesson: number;
@@ -51,6 +52,7 @@ const initialState: IAppState = {
   token: localStorage.getItem(LSParameters.token),
   password: '',
   confirmPassword: '',
+  sidebarBtn: false,
   isAuthorized: false,
   error: null,
   audioLesson: 1,
@@ -78,6 +80,9 @@ export const appSlice = createSlice({
     },
     setConfirmPassword: (state, { payload }) => {
       state.confirmPassword = payload;
+    },
+    setSidebarBtnState: (state) => {
+      state.sidebarBtn = !state.sidebarBtn;
     },
     setLesson: (state, { payload: { id, type } }: PayloadAction<ISetLessonAction>) => {
       switch (type) {
@@ -123,6 +128,7 @@ export const {
   setEmail,
   setPassword,
   setConfirmPassword,
+  setSidebarBtnState,
   setLesson,
   setError,
 } = appSlice.actions;
