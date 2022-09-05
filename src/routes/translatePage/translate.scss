@@ -1,8 +1,7 @@
-@import '../../constants.scss';
+@import "../../constants.scss";
 
 .translator__input,
 .translator__output {
-  width: calc(100% - 40px);
   min-height: 150px;
   border-radius: 20px;
   border: 3px solid $grayBg;
@@ -54,8 +53,8 @@
   }
 }
 .translator__output {
-    font-size: 3.6rem;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+  font-size: 3.6rem;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }

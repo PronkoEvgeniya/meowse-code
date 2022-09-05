@@ -1,4 +1,4 @@
-@import '../../constants.scss';
+@import "../../constants.scss";
 
 .modal-bg {
   position: absolute;
@@ -10,7 +10,7 @@
   background-color: rgba(94, 94, 94, 0.7);
   backdrop-filter: blur(4px);
   .modal-container {
-    margin: 300px auto 0;
+    margin: calc(50vh - 100px) auto 0;
     border-radius: 20px;
     background-color: $white;
     width: 30%;

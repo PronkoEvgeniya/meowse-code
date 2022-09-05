@@ -53,7 +53,7 @@ export const AccountPage = (): JSX.Element => {
         {isVisibleLeaders ? t('account.hideLeaders') : t('account.getLeaders')}
       </button>
       {isVisibleLeaders && (
-        <ol>
+        <ol className="leaderboard__container">
           {leaders.map(({ name, score }, idx) => (
             <li key={idx}>
               <span>{name}</span>
@@ -63,7 +63,7 @@ export const AccountPage = (): JSX.Element => {
         </ol>
       )}
       {sertificate && (
-        <div>
+        <div className="sertificate__container">
           {t('account.sertificate')}
           <div>
             <a href={pdfCert} target="_blank" rel="noreferrer">

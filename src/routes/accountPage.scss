@@ -1,8 +1,17 @@
 @import "../constants.scss";
 
 .account-page {
+    > p {
+        margin: 20px 0;
+    }
+    button {
+        @include btnViolent();
+        padding: 15px 25px;
+    }
+    button:hover {
+        @include btnViolentHover();
+    }
     form {
-        width: 90%;
         padding: 40px 0;
         border-bottom: 5px dashed $violent;
         & > div:first-child {
@@ -104,13 +113,6 @@
                 }
             }
         }
-        button {
-            @include btnViolent();
-            padding: 15px 25px;
-        }
-        button:hover {
-            @include btnViolentHover();
-        }
     }
     .logout__btn {
         position: absolute;
@@ -120,5 +122,49 @@
     }
     .logout__btn:hover {
         @include btnViolentHover();
+    }
+    .leaderboard__container {
+        margin: 20px auto;
+        display: block;
+        padding: 20px 20px 20px 40px;
+        border: 3px solid $violent;
+        border-radius: 20px;
+        li {
+            span {
+                padding-right: 20px;
+                &:last-of-type {
+                    font-weight: 700;
+                    color: $violent;
+                }
+            }
+        }
+    }
+    .sertificate__container {
+        width: 100%;
+        margin-top: 20px;
+        img {
+            width: 90%;
+            display: block;
+            margin: 20px auto 0 0;
+        }
+    }
+}
+@media (max-width: 420px) {
+    .account-page button {
+        padding: 10px 15px;
+    }
+    .account-page form > div:first-child label {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding-left: 10px;
+    }
+    .select-avatar__container {
+        > div {
+            width: 40%;
+            img {
+                width: 90%;
+            }
+        }
     }
 }
