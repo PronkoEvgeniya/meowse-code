@@ -6,6 +6,7 @@
   "about": "About the course",
   "developers": "Developers",
   "notFound": "Oops, something went wrong :(",
+  "failedToken": "The session timed out. Log in to continue",
   "decode": "morse -> text",
   "encode": "text -> morse",
   "start": {
@@ -51,17 +52,17 @@
     "againBtn": "Retry"
   },
   "lesson": {
-    "select": "Lesson {{number}}",
+    "select": "Lesson {{id}}",
     "status": {
-      "0": "lesson not completed",
-      "1": "lesson completed (best score - {{completedScore}})"
+      "0": "Lesson is not completed",
+      "1": "Lesson is completed (best score - {{completedScore}})"
     },
     "task": "Task:"
   },
   "game": {
     "title": "Mini-game",
     "score": "Score: {{score}}",
-    "end": "You've passed the game",
+    "end": "Game over",
     "again": "Try again!",
     "warning": "Let me explain some rules to you, before you start.",
     "rules": {
@@ -113,7 +114,7 @@
   "account": {
     "name": "Name",
     "score": "Total score: {{score}}",
-    "sertificate": "Sertificate",
+    "sertificate": "Certificate",
     "signOut": "Sign Out",
     "update": "Save settings"
   },

@@ -1,6 +1,6 @@
-$mulish: "Mulish", sans-serif;
-$pacifico: "Pacifico", cursive;
-$roboto: "Roboto", sans-serif;
+$mulish: 'Mulish', sans-serif;
+$pacifico: 'Pacifico', cursive;
+$roboto: 'Roboto', sans-serif;
 $violent: #9c56c7;
 $white: #ffffff;
 $darkBG: #2e2e2e;
@@ -8,28 +8,56 @@ $grayText: #5e5e5e;
 $grayLightText: #8b8989;
 $lightBg: #f5f5f5;
 $grayBg: #c5c5c5;
+$right-green: rgb(114, 214, 131);
+$wrong-red: rgb(245, 135, 135);
 
 @mixin btnViolent {
-    color: $white;
-    background-color: $violent;
-    font-family: $roboto;
-    font-size: 3.2rem;
-    padding: 15px;
-    border: 2px solid $violent;
-    border-radius: 20px;
-    cursor: pointer;
+  color: $white;
+  background-color: $violent;
+  font-family: $roboto;
+  font-size: 3.2rem;
+  padding: 15px;
+  border: 2px solid $violent;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 @mixin btnViolentHover {
-    color: $violent;
-    background-color: transparent;
-    border: 2px solid $violent;
+  color: $violent;
+  background-color: transparent;
+  border: 2px solid $violent;
 }
 
 @mixin btnToggle {
-    color: $violent;
-    background-color: $lightBg;
-    border: 2px solid $violent;
-    border-radius: 20%;
-    cursor: pointer;
+  color: $violent;
+  background-color: $lightBg;
+  border: 2px solid $violent;
+  border-radius: 20%;
+  cursor: pointer;
+}
+
+@mixin sectionTitle {
+  font-weight: 400;
+  color: $grayText;
+  margin-bottom: 2rem;
+}
+
+@mixin catReplyBlock {
+  position: relative;
+  padding: 2rem;
+  text-indent: 2rem;
+  background-color: $grayBg;
+  border-radius: 20px;
+
+  &::after {
+    position: absolute;
+    bottom: -10px;
+    right: 50px;
+    display: block;
+    content: '';
+    background-color: $grayBg;
+    transform: rotate(45deg);
+    width: 20px;
+    height: 20px;
+  }
 }

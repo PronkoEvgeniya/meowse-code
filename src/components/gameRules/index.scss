@@ -1,0 +1,35 @@
+@import '../../constants.scss';
+
+.game {
+  .title {
+    @include sectionTitle();
+  }
+
+  .rules {
+    @include catReplyBlock();
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 1rem;
+
+    .start-btn {
+      @include btnViolent();
+      grid-column: 1 / 2;
+      align-self: start;
+      justify-self: start;
+      margin: 2rem;
+
+      &:hover {
+        @include btnViolentHover();
+      }
+    }
+
+    .mascot {
+      grid-column: 2 / 3;
+    }
+  }
+}

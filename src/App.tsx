@@ -19,12 +19,16 @@ import { NotFound } from './routes/NotFound';
 import { getUser } from './app/store/userRequests';
 import { LSParameters } from './types/constants';
 import { GuardedRoute } from './components/guardedRoute';
+import { ReauthorizePopup } from './components/ReauthorizePopup';
+import { useClear } from './app/hooks/useClear';
 import { DarkThemeContext } from './context/DarkModeContext';
 
 export const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const clear = useClear();
   const token = localStorage.getItem(LSParameters.token);
   const auth = useAppSelector(({ user }) => user.isAuthorized);
+  const isFailedToken = useAppSelector(({ user }) => user.isFailedToken);
   const isRegistrated = useAppSelector(({ user }) => user.isRegistrated);
   const { darkTheme } = useContext(DarkThemeContext);
 
@@ -34,9 +38,16 @@ export const App = (): JSX.Element => {
     }
   }, [dispatch, token]);
 
+  useEffect(() => {
+    if (isFailedToken) {
+      clear();
+    }
+  }, [clear, isFailedToken]);
+
   return (
     <>
       <div className={darkTheme ? 'body dark' : 'body'}>
+        {isFailedToken && <ReauthorizePopup />}
         <Header />
         <main>
           <Routes>
