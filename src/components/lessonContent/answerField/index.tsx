@@ -76,17 +76,19 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
     );
   });
 
-  switch (type) {
-    case Trainers.audio:
-      lessonID = audioLesson;
-      completedLessons = lang === Lang.ru ? completedRuTextLessons : completedEnTextLessons;
-      completedScore = completedLessons ? completedLessons[lessonID] : 0;
-      break;
-    case Trainers.text:
-      lessonID = textLesson;
-      completedLessons = lang === Lang.ru ? completedRuAudioLessons : completedEnAudioLessons;
-      completedScore = completedLessons ? completedLessons[lessonID] : 0;
-  }
+  useEffect(() => {
+    switch (type) {
+      case Trainers.audio:
+        lessonID = audioLesson;
+        completedLessons = lang === Lang.ru ? completedRuTextLessons : completedEnTextLessons;
+        completedScore = completedLessons ? completedLessons[lessonID] : 0;
+        break;
+      case Trainers.text:
+        lessonID = textLesson;
+        completedLessons = lang === Lang.ru ? completedRuAudioLessons : completedEnAudioLessons;
+        completedScore = completedLessons ? completedLessons[lessonID] : 0;
+    }
+  }, [type, lang]);
 
   useEffect(() => {
     const currentInputRef = inputsRefs[currentInput];
