@@ -24,9 +24,7 @@ export const GameRules = (): JSX.Element => {
         <button className="start-btn" onClick={startGame}>
           {t('game.start')}
         </button>
-        <div className="mascot">
-          <img src={cat} alt="cat" />
-        </div>
+        <img src={cat} alt="cat" className="mascot" />
       </div>
     </div>
   );
