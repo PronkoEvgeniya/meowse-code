@@ -74,7 +74,9 @@ export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
 
   return (
     <div className={`custom-select ${isActive ? ' active' : ''}`} onClick={handleToggleSelect}>
-      <Trans i18nKey={'lesson.select'} values={{ id }} />
+      <div className="value">
+        <Trans i18nKey={'lesson.select'} values={{ id }} />
+      </div>
       <div className="arrow"></div>
       <div className="custom-options">{options}</div>
     </div>
