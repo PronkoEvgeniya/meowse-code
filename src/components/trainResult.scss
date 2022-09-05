@@ -39,14 +39,14 @@
       justify-items: center;
       align-items: center;
       gap: 2rem;
-  
+
       .restart {
         grid-column: 1 / 2;
         grid-row: 2 / 3;
         align-self: center;
         justify-self: center;
       }
-  
+
       .mascot {
         grid-column: 1 / 2;
         grid-row: 1 / 2;

@@ -87,7 +87,7 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
             values={{ lessonID, currentScore, bestScore }}
           />
         </button>
-        <img src={winCat} alt="cat" className="mascot"/>
+        <img src={winCat} alt="cat" className="mascot" />
       </div>
     </div>
   ) : (

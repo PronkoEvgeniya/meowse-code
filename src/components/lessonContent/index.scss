@@ -151,20 +151,17 @@
   }
 }
 
-
 @media (max-width: 480px) {
   .lesson {
     .content {
       .symbol-block {
         padding: 2rem;
         font-size: 1.5em;
-        
       }
       .symbols {
         .audio-element {
           flex-direction: column;
           .audio {
-            
             max-width: 280px;
           }
         }
