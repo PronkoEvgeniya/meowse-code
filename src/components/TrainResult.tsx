@@ -46,21 +46,17 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
     })
   );
 
-  let completedLessons: ICompletedLessons | null;
-  let bestScore = 0;
-  let lessonID = 1;
+  const completedLessons: ICompletedLessons | null =
+    lang === Lang.ru && type === Trainers.text
+      ? completedRuTextLessons
+      : lang === Lang.en && type === Trainers.text
+      ? completedEnTextLessons
+      : lang === Lang.ru && type === Trainers.audio
+      ? completedRuAudioLessons
+      : completedEnAudioLessons;
+  const lessonID: number = type === Trainers.audio ? audioLesson : textLesson;
 
-  switch (type) {
-    case Trainers.text:
-      lessonID = textLesson;
-      completedLessons = lang === Lang.ru ? completedRuTextLessons : completedEnTextLessons;
-      bestScore = completedLessons ? completedLessons[lessonID] : 0;
-      break;
-    case Trainers.audio:
-      lessonID = audioLesson;
-      completedLessons = lang === Lang.ru ? completedRuAudioLessons : completedEnAudioLessons;
-      bestScore = completedLessons ? completedLessons[lessonID] : 0;
-  }
+  const bestScore = completedLessons ? completedLessons[lessonID] : 0;
 
   const handleReturnToTheLesson = () => {
     dispatch(toggleMode());
@@ -101,11 +97,13 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
       <p className="message">
         <Trans i18nKey={'looser.description'} values={{ lessonID }} />
       </p>
-      <button className="restart" onClick={handleReturnToTheLesson}>
-        {t('looser.againBtn')}
-      </button>
-      <div>
-        <img src={looseCat} alt="cat" />
+      <div className="container">
+        <button className="restart" onClick={handleReturnToTheLesson}>
+          {t('looser.againBtn')}
+        </button>
+        <div>
+          <img src={looseCat} alt="cat" />
+        </div>
       </div>
     </div>
   );
