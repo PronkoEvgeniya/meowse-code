@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { IconRss } from '../assets/Sprite';
 import './footer.scss';
 
@@ -7,9 +8,18 @@ export const Footer = (): JSX.Element => {
 
   return (
     <footer>
-      <a href="/about#dev">{t('developers')}</a>
+      <Link
+        to={{
+          pathname: '/about',
+          hash: 'dev',
+        }}
+      >
+        {t('developers')}
+      </Link>
       <span>2022</span>
-      <a href="https://rs.school/js/">{IconRss()}</a>
+      <a target="_blank" href="https://rs.school/js/" rel="noreferrer">
+        {IconRss()}
+      </a>
     </footer>
   );
 };

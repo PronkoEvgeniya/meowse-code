@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../app/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
 import { IconLogo, IconLightTheme, IconDarkTheme } from '../../assets/Sprite';
 import { Lang } from '../../types/constants';
 import { User } from './User';
@@ -8,9 +8,11 @@ import { UserIcon } from './UserIcon';
 import './header.scss';
 import { useContext } from 'react';
 import { DarkThemeContext } from '../../context/DarkModeContext';
+import { closeSidebar } from '../../app/store/reducers/appSlice';
 
 export const Header = (): JSX.Element => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { darkTheme, toggleTheme } = useContext(DarkThemeContext);
   const {
     i18n: { language, changeLanguage },
@@ -25,8 +27,11 @@ export const Header = (): JSX.Element => {
     }
   };
 
+  const sidebarClose = () => dispatch(closeSidebar());
+
   const navigateToAccount = () => {
     if (auth) {
+      sidebarClose();
       navigate('/account');
     }
   };
@@ -35,7 +40,7 @@ export const Header = (): JSX.Element => {
     <header>
       <ul>
         <li className={!auth ? 'disable-events' : ''}>
-          <Link to="/home">
+          <Link onClick={sidebarClose} to="/home">
             <IconLogo />
           </Link>
         </li>

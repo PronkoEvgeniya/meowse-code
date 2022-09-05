@@ -2,32 +2,33 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
 import { useClear } from '../app/hooks/useClear';
-import { setAuthorization, setSertificate } from '../app/store/reducers/userSlice';
-import { updateUser } from '../app/store/userRequests';
+import { setAuthorization } from '../app/store/reducers/userSlice';
 import { FormUpdate } from '../components/accountContent/updateUser';
-import { LSParameters } from '../types/constants';
-import sert from '../assets/images/win-meows.png';
+import { Lang, LSParameters } from '../types/constants';
+import certRU from '../assets/images/certificateRU.jpg';
+import certEN from '../assets/images/certificateENG.jpg';
+import { pdf } from '../assets/certificates';
 
 export const AccountPage = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const clear = useClear();
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
   const [score, sertificate] = useAppSelector(({ user: { score, sertificate } }) => [
     score,
     sertificate,
   ]);
+  const cert = lang === Lang.ru ? certRU : certEN;
+  const pdfCert = lang === Lang.ru ? pdf.ru : pdf.en;
 
   const signOutHandler = () => {
     localStorage.removeItem(LSParameters.token);
     dispatch(setAuthorization(false));
     clear();
     navigate('/');
-  };
-
-  const Delete = () => {
-    dispatch(setSertificate(false));
-    dispatch(updateUser({ sertificate: false }));
   };
 
   return (
@@ -40,12 +41,13 @@ export const AccountPage = (): JSX.Element => {
         <div>
           {t('account.sertificate')}
           <div>
-            <img src={sert} alt="" />
+            <a href={pdfCert} target="_blank" rel="noreferrer">
+              <img src={cert} alt="certificate" />
+            </a>
           </div>
         </div>
       )}
       <button onClick={signOutHandler}>{t('account.signOut')}</button>
-      <button onClick={Delete}>delete</button>
     </div>
   );
 };

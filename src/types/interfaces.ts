@@ -102,6 +102,10 @@ export interface IUser {
       score: number;
       avatar: string;
       sertificate: boolean;
+      lessonsTextRu: string;
+      lessonsTextEn: string;
+      lessonsAudioRu: string;
+      lessonsAudioEn: string;
     };
   };
 }
@@ -111,6 +115,10 @@ export interface IUpdateUser {
   avatar?: string;
   score?: number;
   sertificate?: boolean;
+  lessonsTextRu?: string;
+  lessonsTextEn?: string;
+  lessonsAudioRu?: string;
+  lessonsAudioEn?: string;
 }
 
 export interface IAuthError {
