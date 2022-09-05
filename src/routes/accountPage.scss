@@ -27,15 +27,89 @@
                 font-size: 2.4rem;
             }
         }
-        & > div:last-child {
+        .select-avatar__container {
             margin: 30px 0;
             display: flex;
-            gap: 20px;
+            gap: 40px;
             flex-wrap: wrap;
-
+            label {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                padding: 15px 10px;
+                cursor: pointer;
+                border: 2px solid $violent;
+                border-radius: 20px;
+                span {
+                    width: 15px;
+                    height: 15px;
+                    display: block;
+                    border: 3px solid $violent;
+                    border-radius: 50%;
+                }
+            }
+            label:hover {
+                border: 2px solid $violent;
+                background-color: $violent;
+                img {
+                    transform: scale(1.1);
+                }
+                span {
+                    border-color: $white;
+                }
+            }
             input {
                 display: none;
             }
+            input#avatar1:checked ~ label {
+                background-color: $violent;
+                span {
+                    border: none;
+                    border-radius: 0%;
+                    transform: rotate(45deg);
+                    border-bottom: 3px solid $white;
+                    border-right: 3px solid $white;
+                }
+            }
+            input#avatar2:checked ~ label {
+                background-color: $violent;
+                span {
+                    border: none;
+                    border-radius: 0%;
+                    transform: rotate(45deg);
+                    border-bottom: 3px solid $white;
+                    border-right: 3px solid $white;
+                }
+            }
+            input#avatar3:checked ~ label {
+                background-color: $violent;
+                span {
+                    border: none;
+                    border-radius: 0%;
+                    transform: rotate(45deg);
+                    border-bottom: 3px solid $white;
+                    border-right: 3px solid $white;
+                }
+            }
+            input#avatar4:checked ~ label {
+                background-color: $violent;
+                span {
+                    border: none;
+                    border-radius: 0%;
+                    transform: rotate(45deg);
+                    border-bottom: 3px solid $white;
+                    border-right: 3px solid $white;
+                }
+            }
+        }
+        button {
+            @include btnViolent();
+            padding: 15px 25px;
+        }
+        button:hover {
+            @include btnViolentHover();
         }
     }
     .logout__btn {

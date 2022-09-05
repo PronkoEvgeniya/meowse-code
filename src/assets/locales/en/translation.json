@@ -114,6 +114,7 @@
     "name": "Name",
     "score": "Total score: {{score}}",
     "sertificate": "Sertificate",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "update": "Save settings"
   }
 }
