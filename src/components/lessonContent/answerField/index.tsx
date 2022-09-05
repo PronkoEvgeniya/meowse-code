@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, createRef } from 'react';
+import React, { useEffect, createRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks/reduxHooks';
 import { ICompletedLessons } from '../../../app/store/actionTypes';
@@ -38,6 +38,7 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
   const {
     i18n: { language: lang },
   } = useTranslation();
+  const [counter, setCounter] = useState(-1);
 
   const completedLessons: ICompletedLessons | null =
     lang === Lang.ru && type === Trainers.text
@@ -87,16 +88,19 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
   });
 
   useEffect(() => {
-    const currentInputRef = inputsRefs[currentInput];
-    if (
-      currentInputRef &&
-      currentInputRef.current &&
-      document.activeElement !== currentInputRef.current
-    ) {
-      const ref = currentInputRef.current as HTMLInputElement;
-      ref.focus();
+    if (counter === -1 || counter !== currentInput) {
+      const currentInputRef = inputsRefs[currentInput];
+      if (
+        currentInputRef &&
+        currentInputRef.current &&
+        document.activeElement !== currentInputRef.current
+      ) {
+        const ref = currentInputRef.current as HTMLInputElement;
+        ref.focus();
+        setCounter(currentInput);
+      }
     }
-  }, [currentInput, inputsRefs]);
+  }, [currentInput, inputsRefs, counter]);
 
   // const findCurrentObjName = () => {
   //   let name = '';
