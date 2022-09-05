@@ -87,9 +87,7 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
             values={{ lessonID, currentScore, bestScore }}
           />
         </button>
-        <div>
-          <img src={winCat} alt="cat" />
-        </div>
+        <img src={winCat} alt="cat" className="mascot"/>
       </div>
     </div>
   ) : (
@@ -101,9 +99,7 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
         <button className="restart" onClick={handleReturnToTheLesson}>
           {t('looser.againBtn')}
         </button>
-        <div>
-          <img src={looseCat} alt="cat" />
-        </div>
+        <img src={looseCat} alt="cat" className="mascot" />
       </div>
     </div>
   );
