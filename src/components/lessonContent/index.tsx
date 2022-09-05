@@ -95,7 +95,7 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
         <hr className="decorative-line" />
         <div className="tasks">{taskElement}</div>
         <AnswerField answer={answer} score={score} type={type} />
-        <img src={type === Trainers.audio ? audioCat : textCat} alt="cat" className="mascot"/>
+        <img src={type === Trainers.audio ? audioCat : textCat} alt="cat" className="mascot" />
       </div>
     </div>
   );

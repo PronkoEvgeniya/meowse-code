@@ -1,32 +1,25 @@
-$ligth-grey: #e2dfdf;
-$grey: #5e5e5e;
-$violet: #9c56c7;
-$background-task: #f5f5f5;
-$text-color: #fff;
-$violet: #9c56c7;
-$green: rgb(114, 214, 131);
-$red: rgb(245, 135, 135);
+@import '../../constants.scss';
 
 .lesson {
-  font-size: 1.5rem;
   line-height: 1.2;
   .status {
     padding: 0.5rem 2rem 2rem;
+    font-size: 0.5em;
 
     &.true {
-      color: $green;
+      color: $right-green;
     }
     &.false {
-      color: $red;
+      color: $wrong-red;
     }
   }
   .description {
     position: relative;
     padding: 2rem;
     text-indent: 2rem;
-    font-size: 2rem;
-    background-color: $ligth-grey;
+    background-color: $grayBg;
     border-radius: 20px;
+    font-size: 0.8em;
 
     &::after {
       position: absolute;
@@ -34,7 +27,7 @@ $red: rgb(245, 135, 135);
       right: 50px;
       display: block;
       content: '';
-      background-color: $ligth-grey;
+      background-color: $grayBg;
       transform: rotate(45deg);
       width: 20px;
       height: 20px;
@@ -45,8 +38,10 @@ $red: rgb(245, 135, 135);
     display: grid;
     gap: 0 20px;
     padding: 20px 0;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1.5fr 1fr;
     grid-template-rows: repeat(4, max-content);
+    align-items: center;
+    justify-items: center;
 
     .symbols,
     .tasks {
@@ -56,6 +51,8 @@ $red: rgb(245, 135, 135);
       align-items: center;
       padding: 20px 0;
       align-items: stretch;
+      width: 100%;
+      max-width: 500px;
     }
 
     .symbols {
@@ -68,28 +65,27 @@ $red: rgb(245, 135, 135);
       align-items: center;
       justify-content: center;
       gap: 1.25rem;
-      background-color: $grey;
-      color: $text-color;
+      background-color: $grayText;
+      color: $white;
       padding: 1rem 2rem;
       border: none;
       border-radius: 1.25rem;
-      font-size: 2.5rem;
       line-height: 1.2;
+      width: 100%;
 
       .code {
         flex-grow: 2;
-        border: 2px solid $violet;
+        border: 2px solid $violent;
         border-radius: 25px;
         text-align: center;
-        font-size: 3rem;
         letter-spacing: 0.3rem;
       }
 
       &.task {
-        background-color: $violet;
+        background-color: $violent;
 
         .code {
-          border-color: $text-color;
+          border-color: $white;
           padding: 5px;
         }
       }
@@ -103,8 +99,10 @@ $red: rgb(245, 135, 135);
     .decorative-line {
       grid-column: 1 / 2;
       grid-row: 2 / 3;
+      width: 100%;
+      max-width: 450px;
       border: none;
-      border-top: 3px dashed $violet;
+      border-top: 3px dashed $violent;
     }
 
     .answer {
@@ -115,6 +113,7 @@ $red: rgb(245, 135, 135);
     .mascot {
       grid-column: 2 / 3;
       grid-row: 1 / 5;
+      width: 100%;
       height: auto;
     }
   }

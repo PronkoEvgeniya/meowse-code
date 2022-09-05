@@ -1,28 +1,28 @@
-@import "../../constants.scss";
+@import '../../constants.scss';
 
 .homepage__container {
-    color: $grayText;
-    width: calc(100% - 40px);
+  color: $grayText;
+  width: calc(100% - 40px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  .content__container {
+    padding: 20px;
+    background-color: $grayBg;
+    border-radius: 40px 40px 0 40px;
+    width: 80%;
+    margin: 40px auto 0;
+    h2 {
+      font-size: 4.6rem;
+    }
+  }
+  .mascot__container {
+    width: 35%;
+    padding: 20px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: flex-end;
-    .content__container {
-        padding: 20px;
-        background-color: $grayBg;
-        border-radius: 40px 40px 0 40px;
-        width: 80%;
-        margin: 40px auto 0;
-        h2 {
-            font-size: 4.6rem;
-        }
+    img {
+      height: 100%;
     }
-    .mascot__container {
-        width: 35%;
-        padding: 20px;
-        display: flex;
-        justify-content: flex-end;
-        img {
-            height: 100%;
-        }
-    }
+  }
 }

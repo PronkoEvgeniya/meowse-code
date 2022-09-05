@@ -1,6 +1,4 @@
-$violet: #7f619c;
-$grey: #5e5e5e;
-$white: #fff;
+@import '../../constants.scss';
 
 .trainer {
   .custom-select {
@@ -11,9 +9,9 @@ $white: #fff;
     padding: 2rem;
     position: relative;
     width: max-content;
-    font-size: 2.25rem;
     height: 2.5rem;
-    color: $violet;
+    font-size: 0.8em;
+    color: $violent;
 
     .value {
       vertical-align: super;
@@ -25,14 +23,14 @@ $white: #fff;
     }
 
     &:hover .value {
-      border-bottom: 2px solid $violet;
+      border-bottom: 2px solid $violent;
     }
 
     .arrow {
       width: 1rem;
       height: 1rem;
-      border-right: 2px solid $violet;
-      border-bottom: 2px solid $violet;
+      border-right: 2px solid $violent;
+      border-bottom: 2px solid $violent;
       transform: rotate(45deg);
     }
 
@@ -49,10 +47,9 @@ $white: #fff;
       width: 100%;
       max-height: 25rem;
       overflow-y: scroll;
-      border: 1px solid $grey;
+      border: 1px solid $grayText;
       border-radius: 3px;
       background-color: $white;
-      font-size: 1.5rem;
       transition: all 0.3s ease-out;
 
       .label {
@@ -66,7 +63,7 @@ $white: #fff;
 
       .label:hover {
         color: $white;
-        background-color: $violet;
+        background-color: $violent;
       }
 
       .input {
@@ -74,7 +71,7 @@ $white: #fff;
       }
 
       .input:disabled + label {
-        background-color: $grey;
+        background-color: $grayText;
         color: $white;
       }
 
