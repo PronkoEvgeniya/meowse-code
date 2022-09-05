@@ -18,7 +18,7 @@ export const TestContent = (): JSX.Element => {
   const tests = test[lang as TLang];
   const currentTest = getRandomTest(tests.length);
   const { answer } = tasks.find((el) => el.task === currentTest) as ITest;
-
+  console.log(answer.join(''));
   return (
     <>
       <p>{t('testing.description')}</p>

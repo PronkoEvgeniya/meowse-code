@@ -8,6 +8,8 @@ import {
   setHandleSubmit,
 } from '../../app/store/reducers/testingSlice';
 import win from '../../assets/images/sert-meows.png';
+import sert from '../../assets/images/win-meows.png';
+import { testPercent } from '../../types/constants';
 
 export const TestResult = (): JSX.Element => {
   const { t } = useTranslation();
@@ -22,7 +24,7 @@ export const TestResult = (): JSX.Element => {
     dispatch(setHandleSubmit(false));
   };
 
-  return result < 100 ? (
+  return result < testPercent ? (
     <>
       <p>
         <Trans i18nKey={'testing.looser'} values={{ score: result }} />
@@ -36,7 +38,9 @@ export const TestResult = (): JSX.Element => {
           Поздравляю, <span style={{ color: '#9C56C7' }}>{name}</span>
         </Trans>
       </p>
-      <div>Сертификат</div>
+      <div>
+        <img src={sert} alt="" />
+      </div>
       <div>
         <img src={win} alt="" />
       </div>

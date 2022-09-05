@@ -51,6 +51,11 @@ export enum Theme {
   theme = 'theme',
 }
 
+export enum SidebarButtons {
+  open = '>',
+  close = '<',
+}
+
 export enum LSParameters {
   ruTextLessons = 'ruTextLessons',
   enTextLessons = 'enTextLessons',
