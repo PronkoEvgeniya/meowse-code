@@ -9,6 +9,7 @@ import {
 } from '../../app/store/reducers/testingSlice';
 import { testPercent } from '../../types/constants';
 import win from '../../assets/images/sert-meows.png';
+import loose from '../../assets/images/loose-meows.png';
 import { useNavigate } from 'react-router-dom';
 
 export const TestResult = (): JSX.Element => {
@@ -33,6 +34,9 @@ export const TestResult = (): JSX.Element => {
         <Trans i18nKey={'testing.looser'} values={{ score: result }} />
       </p>
       <button onClick={againHandler}>{t('testing.againBtn')}</button>
+      <div>
+        <img src={loose} alt="win-cat" />
+      </div>
     </>
   ) : (
     <>
