@@ -110,6 +110,15 @@ export interface IUser {
   };
 }
 
+export interface ILeaderBoard {
+  data: ILeader[];
+}
+
+export interface ILeader {
+  name: string;
+  score: number;
+}
+
 export interface IUpdateUser {
   name?: string;
   avatar?: string;

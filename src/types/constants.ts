@@ -86,6 +86,7 @@ export enum URL {
   registration = 'https://ancient-spire-30393.herokuapp.com/api/auth/registration',
   authorization = 'https://ancient-spire-30393.herokuapp.com/api/auth/authorization',
   user = 'https://ancient-spire-30393.herokuapp.com/api/auth/users',
+  liders = 'https://ancient-spire-30393.herokuapp.com/api/auth/allusers',
 }
 
 export enum ActionTypes {
@@ -93,6 +94,7 @@ export enum ActionTypes {
   authorization = 'user/authorization',
   getUser = 'user/get',
   updateUser = 'user/update',
+  getLeaders = 'app/getLeaders',
 }
 
 export const MORSE_TABLE = {
