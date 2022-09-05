@@ -1,8 +1,8 @@
-@import '../../constants.scss';
-@import '../../index.scss';
+@import "../../constants.scss";
+@import "../../index.scss";
 
 aside {
-  padding-top: 200px;
+  padding-top: 100px;
   background-color: $violent;
   border-radius: 0 40px 40px 0;
   font-size: 3.2rem;
@@ -59,6 +59,7 @@ aside {
     width: 300px;
     font-size: 3.2rem;
     padding-top: 120px;
+    z-index: 20;
     animation-name: sidebarOn;
     button {
       position: absolute;

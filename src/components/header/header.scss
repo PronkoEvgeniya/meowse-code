@@ -4,7 +4,7 @@ header {
   position: absolute;
   width: 100%;
   height: 80px;
-  z-index: 100;
+  z-index: 50;
   ul {
     display: flex;
     justify-content: space-between;
@@ -96,5 +96,28 @@ header ul > li:first-of-type {
 @media (max-width: 768px) {
   header ul > li:first-of-type {
     width: 300px;
+  }
+  header ul > li:last-of-type {
+    font-size: 2.6rem;
+    margin-right: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  header ul .toggle__container {
+    flex-direction: column;
+    gap: 5px;
+  }
+  header ul .toggle__container .toggleLang__container button,
+  header ul .toggle__container .toggleTheme__container button {
+    width: 30px;
+    height: 30px;
+    svg {
+      width: 20px;
+    }
+  }
+  header ul li img {
+    margin-left: 0;
+    height: 30px;
   }
 }
