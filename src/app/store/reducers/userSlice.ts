@@ -12,6 +12,7 @@ export interface IUserState {
   confirmPassword: string;
   isRegistrated: boolean;
   isAuthorized: boolean;
+  isFailedToken: boolean;
   error: string | null;
 }
 
@@ -25,6 +26,7 @@ const initialState: IUserState = {
   confirmPassword: '',
   isRegistrated: false,
   isAuthorized: localStorage.getItem(LSParameters.token) ? true : false,
+  isFailedToken: false,
   error: null,
 };
 
@@ -47,25 +49,28 @@ export const userSlice = createSlice({
     setError: (state, { payload }) => {
       state.error = payload;
     },
+    setFailedToken: (state) => {
+      state.isFailedToken = !state.isFailedToken;
+    },
     setPassword: (state, { payload }) => {
       state.password = payload;
     },
     setConfirmPassword: (state, { payload }) => {
       state.confirmPassword = payload;
     },
+    setSertificate: (state, { payload }) => {
+      state.sertificate = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.fulfilled, (state) => {
         state.error = null;
+        state.isFailedToken = false;
         state.isRegistrated = true;
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
         state.error = payload as string;
-        state.name = '';
-        state.email = '';
-        state.password = '';
-        state.confirmPassword = '';
       })
       .addCase(
         authorizeUser.fulfilled,
@@ -81,8 +86,6 @@ export const userSlice = createSlice({
       )
       .addCase(authorizeUser.rejected, (state, { payload }) => {
         state.error = payload as string;
-        state.email = '';
-        state.password = '';
       })
       .addCase(
         getUser.fulfilled,
@@ -95,13 +98,12 @@ export const userSlice = createSlice({
           state.sertificate = sertificate ? true : false;
         }
       )
-      .addCase(getUser.rejected, (state, { payload }) => {
-        alert(payload);
+      .addCase(getUser.rejected, (state) => {
+        state.isFailedToken = true;
+        state.avatar = null;
       })
-      // .addCase(updateUser.fulfilled, (state, { payload }) => {
-      // })
-      .addCase(updateUser.rejected, (state, { payload }) => {
-        alert(payload);
+      .addCase(updateUser.rejected, (state) => {
+        state.isFailedToken = true;
       });
   },
 });
@@ -113,7 +115,9 @@ export const {
   setAvatar,
   setPassword,
   setConfirmPassword,
+  setSertificate,
   setError,
+  setFailedToken,
 } = userSlice.actions;
 
 export default userSlice.reducer;
