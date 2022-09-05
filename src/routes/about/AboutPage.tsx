@@ -42,7 +42,7 @@ export const AboutPage = (): JSX.Element => {
       <div className="content__container-about even">{t('aboutPage.block6')}</div>
       <div className="arrow__container even">{ArrowAbout2()}</div>
       <div className="content__container-about odd">{t('aboutPage.block7')}</div>
-      <div className="dev__container-about">
+      <div className="dev__container-about" id="dev">
         <h3>{t('aboutPage.dev')}</h3>
         <div className="dev__content-about">
           <a

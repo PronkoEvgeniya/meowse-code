@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../app/hooks/reduxHooks';
-import { setSidebarBtnState } from '../../app/store/reducers/appSlice';
+import { closeSidebar, setSidebarBtnState } from '../../app/store/reducers/appSlice';
 import { SidebarButtons } from '../../types/constants';
 import './sidebar.scss';
 
@@ -17,6 +17,8 @@ export const Sidebar = (): JSX.Element => {
   const T = (value: string): string => t(`${value}`).toLowerCase();
 
   const sidebarToggleHandler = () => dispatch(setSidebarBtnState());
+  const sidebarClose = () => dispatch(closeSidebar());
+  const addActive = ({ isActive }: { isActive: boolean }) => (isActive ? 'active' : '');
 
   return (
     <aside className={!sidebarState ? 'sidebar__closed' : ''}>
@@ -26,22 +28,34 @@ export const Sidebar = (): JSX.Element => {
       <nav>
         <ul>
           <li>
-            <NavLink to={`/audio/${audioLesson}`}>{T('audio')}</NavLink>
+            <NavLink className={addActive} onClick={sidebarClose} to={`/audio/${audioLesson}`}>
+              {T('audio')}
+            </NavLink>
           </li>
           <li>
-            <NavLink to={`/text/${textLesson}`}>{T('text')}</NavLink>
+            <NavLink className={addActive} onClick={sidebarClose} to={`/text/${textLesson}`}>
+              {T('text')}
+            </NavLink>
           </li>
           <li>
-            <NavLink to={'/game'}>{T('game.title')}</NavLink>
+            <NavLink className={addActive} onClick={sidebarClose} to={'/game'}>
+              {T('game.title')}
+            </NavLink>
           </li>
           <li>
-            <NavLink to={'/test'}>{T('test')}</NavLink>
+            <NavLink className={addActive} onClick={sidebarClose} to={'/test'}>
+              {T('test')}
+            </NavLink>
           </li>
           <li>
-            <NavLink to={'/translate'}>{T('translate')}</NavLink>
+            <NavLink className={addActive} onClick={sidebarClose} to={'/translate'}>
+              {T('translate')}
+            </NavLink>
           </li>
           <li>
-            <NavLink to={'/about'}>{T('about')}</NavLink>
+            <NavLink className={addActive} onClick={sidebarClose} to={'/about'}>
+              {T('about')}
+            </NavLink>
           </li>
         </ul>
       </nav>

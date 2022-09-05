@@ -35,7 +35,8 @@ aside {
       margin-right: 20px;
     }
     a:hover,
-    a:focus {
+    a:focus,
+    a.active {
       color: $grayText;
       background-color: $white;
       border-radius: 0 20px 20px 0;

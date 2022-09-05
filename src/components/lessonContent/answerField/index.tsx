@@ -13,6 +13,8 @@ import {
   setFieldValidity,
   setCurrentInput,
 } from '../../../app/store/reducers/trainerSlice';
+// import { updateUser } from '../../../app/store/userRequests';
+// import { getFromLS } from '../../../helpers/localStorageService';
 import { Lang, LessonResults, Trainers } from '../../../types/constants';
 import { IAnswerFieldProps } from '../../../types/interfaces';
 import './index.scss';
@@ -37,9 +39,17 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
     i18n: { language: lang },
   } = useTranslation();
 
-  let completedLessons: ICompletedLessons | null;
-  let completedScore: number;
-  let lessonID: number;
+  const completedLessons: ICompletedLessons | null =
+    lang === Lang.ru && type === Trainers.text
+      ? completedRuTextLessons
+      : lang === Lang.en && type === Trainers.text
+      ? completedEnTextLessons
+      : lang === Lang.ru && type === Trainers.audio
+      ? completedRuAudioLessons
+      : completedEnAudioLessons;
+  const lessonID: number = type === Trainers.audio ? audioLesson : textLesson;
+
+  const completedScore: number = completedLessons ? completedLessons[lessonID] : 0;
 
   const handleFieldChange = ({ target: { value, id } }: React.ChangeEvent<HTMLInputElement>) => {
     const trimedValue = value.trim().toLowerCase();
@@ -77,20 +87,6 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
   });
 
   useEffect(() => {
-    switch (type) {
-      case Trainers.audio:
-        lessonID = audioLesson;
-        completedLessons = lang === Lang.ru ? completedRuTextLessons : completedEnTextLessons;
-        completedScore = completedLessons ? completedLessons[lessonID] : 0;
-        break;
-      case Trainers.text:
-        lessonID = textLesson;
-        completedLessons = lang === Lang.ru ? completedRuAudioLessons : completedEnAudioLessons;
-        completedScore = completedLessons ? completedLessons[lessonID] : 0;
-    }
-  }, [type, lang]);
-
-  useEffect(() => {
     const currentInputRef = inputsRefs[currentInput];
     if (
       currentInputRef &&
@@ -102,6 +98,23 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
     }
   }, [currentInput, inputsRefs]);
 
+  // const findCurrentObjName = () => {
+  //   let name = '';
+  //   if (lang === Lang.ru) {
+  //     name += 'ru';
+  //   } else {
+  //     name += 'en';
+  //   }
+
+  //   if (type === Trainers.text) {
+  //     name += 'TextLessons';
+  //   } else {
+  //     name += 'AudioLessons';
+  //   }
+
+  //   return name;
+  // };
+
   useEffect(() => {
     if (filledInputs.length === answer.length) {
       const rightAnswers = filledInputs.filter((answer) => answer);
@@ -111,6 +124,8 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
         (completedScore && completedScore < userScore)
       ) {
         dispatch(updateCompletedLessons({ id: lessonID, userScore, type, lang }));
+        // console.log(getFromLS<ICompletedLessons>(findCurrentObjName()));
+        // dispatch(updateUser({}))
       }
       dispatch(toggleMode());
       dispatch(updateCurrentScore(userScore));

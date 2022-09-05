@@ -8,6 +8,7 @@ import { getRandomTest } from './getRandomTest';
 import dataRU from '../../data/testingRu.json';
 import dataEN from '../../data/testingEn.json';
 import { TestTextArea } from './TextArea';
+import mascot from '../../assets/images/test-meows.png';
 
 export const TestContent = (): JSX.Element => {
   const {
@@ -18,12 +19,13 @@ export const TestContent = (): JSX.Element => {
   const tests = test[lang as TLang];
   const currentTest = getRandomTest(tests.length);
   const { answer } = tasks.find((el) => el.task === currentTest) as ITest;
-  console.log(answer.join(''));
+
   return (
     <>
       <p>{t('testing.description')}</p>
       <div>
         <AudioBtn value={'?'} src={tests[currentTest]} />
+        <img src={mascot} alt="" />
         <TestTextArea answer={answer} />
       </div>
     </>
