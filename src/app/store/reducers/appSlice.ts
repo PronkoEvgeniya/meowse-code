@@ -20,6 +20,9 @@ export const appSlice = createSlice({
     setSidebarBtnState: (state) => {
       state.sidebarBtn = !state.sidebarBtn;
     },
+    closeSidebar: (state) => {
+      state.sidebarBtn = false;
+    },
     setLesson: (state, { payload: { id, type } }: PayloadAction<ISetLessonAction>) => {
       switch (type) {
         case 'text':
@@ -32,6 +35,6 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setSidebarBtnState, setLesson } = appSlice.actions;
+export const { setSidebarBtnState, closeSidebar, setLesson } = appSlice.actions;
 
 export default appSlice.reducer;

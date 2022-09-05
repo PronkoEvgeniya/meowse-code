@@ -7,13 +7,14 @@ import {
   setCompleteness,
   setHandleSubmit,
 } from '../../app/store/reducers/testingSlice';
-import win from '../../assets/images/sert-meows.png';
-import sert from '../../assets/images/win-meows.png';
 import { testPercent } from '../../types/constants';
+import win from '../../assets/images/sert-meows.png';
+import { useNavigate } from 'react-router-dom';
 
 export const TestResult = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const result = useAppSelector(({ testing }) => testing.result);
   const name = useAppSelector(({ user }) => user.name);
 
@@ -23,6 +24,8 @@ export const TestResult = (): JSX.Element => {
     dispatch(setCompleteness(false));
     dispatch(setHandleSubmit(false));
   };
+
+  const navigateHandler = () => navigate('/account');
 
   return result < testPercent ? (
     <>
@@ -38,11 +41,9 @@ export const TestResult = (): JSX.Element => {
           Поздравляю, <span style={{ color: '#9C56C7' }}>{name}</span>
         </Trans>
       </p>
+      <button onClick={navigateHandler}>{t('testing.toProfile')}</button>
       <div>
-        <img src={sert} alt="" />
-      </div>
-      <div>
-        <img src={win} alt="" />
+        <img src={win} alt="win-cat" />
       </div>
     </>
   );

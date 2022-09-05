@@ -13,6 +13,8 @@ import {
   setFieldValidity,
   setCurrentInput,
 } from '../../../app/store/reducers/trainerSlice';
+// import { updateUser } from '../../../app/store/userRequests';
+// import { getFromLS } from '../../../helpers/localStorageService';
 import { Lang, LessonResults, Trainers } from '../../../types/constants';
 import { IAnswerFieldProps } from '../../../types/interfaces';
 import './index.scss';
@@ -96,6 +98,23 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
     }
   }, [currentInput, inputsRefs]);
 
+  // const findCurrentObjName = () => {
+  //   let name = '';
+  //   if (lang === Lang.ru) {
+  //     name += 'ru';
+  //   } else {
+  //     name += 'en';
+  //   }
+
+  //   if (type === Trainers.text) {
+  //     name += 'TextLessons';
+  //   } else {
+  //     name += 'AudioLessons';
+  //   }
+
+  //   return name;
+  // };
+
   useEffect(() => {
     if (filledInputs.length === answer.length) {
       const rightAnswers = filledInputs.filter((answer) => answer);
@@ -105,6 +124,8 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
         (completedScore && completedScore < userScore)
       ) {
         dispatch(updateCompletedLessons({ id: lessonID, userScore, type, lang }));
+        // console.log(getFromLS<ICompletedLessons>(findCurrentObjName()));
+        // dispatch(updateUser({}))
       }
       dispatch(toggleMode());
       dispatch(updateCurrentScore(userScore));
