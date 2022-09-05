@@ -6,6 +6,7 @@ import { updateUser } from '../app/store/userRequests';
 import { TestContent } from '../components/testContent';
 import { TestResult } from '../components/testResult';
 import { testPercent } from '../types/constants';
+import './test.scss';
 
 export const TestPage = (): JSX.Element => {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ export const TestPage = (): JSX.Element => {
   }, [dispatch, result, sertificate]);
 
   return (
-    <div>
+    <div className="test-page__container">
       <h2>{t('test')}</h2>
       {isCompleted ? <TestResult /> : <TestContent />}
     </div>

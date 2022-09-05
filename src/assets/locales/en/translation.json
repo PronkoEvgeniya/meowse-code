@@ -118,6 +118,8 @@
     "sertificate": "Certificate",
     "signOut": "Sign Out",
     "getLeaders": "View leaderboard",
-    "hideLeaders": "Hide leaderboard"
-  }
+    "hideLeaders": "Hide leaderboard",
+    "update": "Save settings"
+  },
+  "notfound": "Oops, something goes wrong :("
 }

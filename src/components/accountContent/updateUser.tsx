@@ -44,7 +44,7 @@ export const FormUpdate = (): JSX.Element => {
         </label>
         {avatar ? <img src={`./avatars/${avatar}`} alt="avatar" /> : <UserIcon />}
       </div>
-      <div>
+      <div className="select-avatar__container">
         {avatars.map((img, idx) => (
           <Avatar
             key={idx}
@@ -54,7 +54,7 @@ export const FormUpdate = (): JSX.Element => {
           />
         ))}
       </div>
-      {(isChanged || isChecked) && <button type="submit">update</button>}
+      {(isChanged || isChecked) && <button type="submit">{t('account.update')}</button>}
     </form>
   );
 };

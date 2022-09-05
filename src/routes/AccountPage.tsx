@@ -8,6 +8,7 @@ import { Lang, LSParameters } from '../types/constants';
 import certRU from '../assets/images/certificateRU.jpg';
 import certEN from '../assets/images/certificateENG.jpg';
 import { pdf } from '../assets/certificates';
+import './accountPage.scss';
 import { getLeaders } from '../app/store/userRequests';
 import { toggleLeadersVisibility } from '../app/store/reducers/appSlice';
 import { useEffect } from 'react';
@@ -45,7 +46,7 @@ export const AccountPage = (): JSX.Element => {
   };
 
   return (
-    <div>
+    <div className="account-page">
       <FormUpdate />
       <p>
         <Trans i18nKey={'account.score'} values={{ score }} />
@@ -54,7 +55,7 @@ export const AccountPage = (): JSX.Element => {
         {isVisibleLeaders ? t('account.hideLeaders') : t('account.getLeaders')}
       </button>
       {isVisibleLeaders && (
-        <ol>
+        <ol className="leaderboard__container">
           {leaders.map(({ name, score }, idx) => (
             <li key={idx}>
               <span>{name}</span>
@@ -64,7 +65,7 @@ export const AccountPage = (): JSX.Element => {
         </ol>
       )}
       {sertificate && (
-        <div>
+        <div className="sertificate__container">
           {t('account.sertificate')}
           <div>
             <a href={pdfCert} target="_blank" rel="noreferrer">
@@ -73,7 +74,9 @@ export const AccountPage = (): JSX.Element => {
           </div>
         </div>
       )}
-      <button onClick={signOutHandler}>{t('account.signOut')}</button>
+      <button className="logout__btn" onClick={signOutHandler}>
+        {t('account.signOut')}
+      </button>
     </div>
   );
 };

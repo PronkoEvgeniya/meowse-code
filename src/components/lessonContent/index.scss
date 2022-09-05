@@ -22,7 +22,7 @@
     display: grid;
     gap: 0 20px;
     padding: 20px 0;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(4, max-content);
     align-items: center;
     justify-items: center;
@@ -99,6 +99,44 @@
       grid-row: 1 / 5;
       width: 100%;
       height: auto;
+    }
+  }
+}
+
+@media (max-width: 980px) {
+  .lesson {
+    .status {
+      font-size: 0.7em;
+    }
+    .content {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, max-content);
+
+      .symbols {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+      }
+
+      .tasks {
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+      }
+
+      .decorative-line {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+
+      .answer {
+        grid-column: 1 / 2;
+        grid-row: 5 / 6;
+      }
+
+      .mascot {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        max-width: 400px;
+      }
     }
   }
 }
