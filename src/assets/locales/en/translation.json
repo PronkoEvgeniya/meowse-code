@@ -114,7 +114,7 @@
   "account": {
     "name": "Name",
     "score": "Total score: {{score}}",
-    "sertificate": "Sertificate",
+    "sertificate": "Certificate",
     "signOut": "Sign Out"
   }
 }
