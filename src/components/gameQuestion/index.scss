@@ -1,0 +1,119 @@
+@import '../../constants.scss';
+
+.game-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+  justify-items: center;
+
+  .question {
+    justify-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    .counter {
+      color: $grayText;
+    }
+    .score {
+      color: $grayText;
+      font-weight: bold;
+    }
+    .task {
+      max-width: 400px;
+      width: 100%;
+      border: none;
+      border-radius: 20px;
+      padding: 1rem;
+      background-color: $violent;
+      color: $white;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .current {
+      color: $violent;
+    }
+
+    .answer {
+      align-self: center;
+      max-width: 400px;
+      width: 100%;
+      border: 3px solid $violent;
+      border-radius: 20px;
+      color: $grayText;
+      transition: all 0.3s;
+      font-size: 1em;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        color: $white;
+        background-color: $violent;
+        cursor: pointer;
+      }
+
+      &.true {
+        background-color: $right-green;
+        border-color: $right-green;
+        &:hover {
+          color: $grayText;
+          background-color: $right-green;
+          cursor: auto;
+        }
+      }
+
+      &.false {
+        background-color: $wrong-red;
+        border-color: $wrong-red;
+        &:hover {
+          color: $grayText;
+          background-color: $wrong-red;
+          cursor: auto;
+        }
+      }
+    }
+  }
+
+  .mascot {
+    position: relative;
+    .timer {
+      position: absolute;
+      top: calc(30%);
+      left: calc(25%);
+      width: max-content;
+      padding: 0.6rem;
+      background-color: $lightBg;
+      border: 5px dashed $violent;
+      font-size: 0.8em;
+      border-radius: 20px;
+    }
+  }
+
+  .game-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .title {
+      padding: 2rem;
+      color: $grayText;
+    }
+
+    .score {
+      font-weight: bold;
+      color: $violent;
+    }
+
+    .reset {
+      @include btnViolent();
+      margin-top: 2rem;
+
+      &:hover {
+        @include btnViolentHover();
+      }
+    }
+  }
+}

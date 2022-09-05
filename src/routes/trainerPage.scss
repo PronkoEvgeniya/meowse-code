@@ -7,8 +7,6 @@
     box-sizing: border-box;
   }
   .title {
-    font-weight: 400;
-    color: $grayText;
-    margin-bottom: 2rem;
+    @include sectionTitle();
   }
 }

@@ -23,6 +23,7 @@ export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
   );
   const selectLesson = (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
     const { id: selectedID } = event.target as HTMLLabelElement;
+    if (selectedID === '1') dispatch(toggleSelect());
     if (selectedID !== id) {
       dispatch(toggleSelect());
       dispatch(setLesson({ id: Number(selectedID), type }));
@@ -42,7 +43,7 @@ export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
 
   const options = data.map((lesson, i: number): JSX.Element => {
     return (
-      <>
+      <div key={lesson.task + i}>
         <input
           id={`lesson${lesson.id}`}
           value={lesson.id}
@@ -60,7 +61,7 @@ export const LessonSelect = ({ data, type }: ILessonProps): JSX.Element => {
         >
           <Trans i18nKey={'lesson.select'} values={{ id: lesson.id }} />
         </label>
-      </>
+      </div>
     );
   });
 

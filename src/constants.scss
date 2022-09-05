@@ -34,3 +34,29 @@ $wrong-red: rgb(245, 135, 135);
   border-radius: 20%;
   cursor: pointer;
 }
+
+@mixin sectionTitle {
+  font-weight: 400;
+  color: $grayText;
+  margin-bottom: 2rem;
+}
+
+@mixin catReplyBlock {
+  position: relative;
+  padding: 2rem;
+  text-indent: 2rem;
+  background-color: $grayBg;
+  border-radius: 20px;
+
+  &::after {
+    position: absolute;
+    bottom: -10px;
+    right: 50px;
+    display: block;
+    content: '';
+    background-color: $grayBg;
+    transform: rotate(45deg);
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -14,24 +14,8 @@
     }
   }
   .description {
-    position: relative;
-    padding: 2rem;
-    text-indent: 2rem;
-    background-color: $grayBg;
-    border-radius: 20px;
+    @include catReplyBlock();
     font-size: 0.8em;
-
-    &::after {
-      position: absolute;
-      bottom: -10px;
-      right: 50px;
-      display: block;
-      content: '';
-      background-color: $grayBg;
-      transform: rotate(45deg);
-      width: 20px;
-      height: 20px;
-    }
   }
 
   .content {

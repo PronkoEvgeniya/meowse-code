@@ -53,7 +53,7 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
     currentLesson = data.length ? data.find((lesson) => lesson.id === lessonID) : nullTextLesson;
     const { symbols, code, task } = currentLesson as ITextLesson;
     symbolsElements = symbols.map((symbol, i) => (
-      <div className="symbol-block" key={symbol}>
+      <div key={type + symbol + i} className="symbol-block">
         <p className="letter">{symbol.toUpperCase()}:</p>
         <p className="code">{code[i]}</p>
       </div>
@@ -61,7 +61,7 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
     completedLessons = lang === Lang.ru ? completedRuTextLessons : completedEnTextLessons;
     completedScore = completedLessons ? completedLessons[lessonID] : 0;
     taskElement = [
-      <div className="symbol-block task" key={task + lessonID}>
+      <div className="symbol-block task" key={task + lessonID + type}>
         <span className="letter">?</span>
         <p className="code">{task.toUpperCase()}</p>
       </div>,
@@ -72,11 +72,13 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
     currentLesson = data.length ? data.find((lesson) => lesson.id === lessonID) : nullAudioLesson;
     const { symbols, player, task } = currentLesson as IAudioLesson;
     symbolsElements = symbols.map((symbol, i) => (
-      <AudioBtn key={symbol + i} value={symbol.toUpperCase()} src={audio[player[i]]} />
+      <AudioBtn key={type + symbol + i} value={symbol.toUpperCase()} src={audio[player[i]]} />
     ));
     completedLessons = lang === Lang.ru ? completedRuAudioLessons : completedEnAudioLessons;
     completedScore = completedLessons ? completedLessons[lessonID] : 0;
-    taskElement = [<AudioBtn key={task + lessonID} value="?" src={tasks[task]} className="task" />];
+    taskElement = [
+      <AudioBtn key={task + lessonID + type} value="?" src={tasks[task]} className="task" />,
+    ];
   }
 
   const { description, answer, score } = currentLesson as ILesson;
