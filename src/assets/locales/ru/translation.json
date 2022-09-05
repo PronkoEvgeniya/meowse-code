@@ -116,6 +116,8 @@
     "name": "Имя",
     "score": "Общий счет: {{score}}",
     "sertificate": "Сертификат",
-    "signOut": "Выйти"
+    "signOut": "Выйти",
+    "getLeaders": "Посмотреть лидеров",
+    "hideLeaders": "Скрыть лидеров"
   }
 }

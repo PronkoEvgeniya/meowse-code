@@ -116,6 +116,8 @@
     "name": "Name",
     "score": "Total score: {{score}}",
     "sertificate": "Certificate",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "getLeaders": "View leaderboard",
+    "hideLeaders": "Hide leaderboard"
   }
 }

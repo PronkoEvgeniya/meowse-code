@@ -8,6 +8,8 @@ import { Lang, LSParameters } from '../types/constants';
 import certRU from '../assets/images/certificateRU.jpg';
 import certEN from '../assets/images/certificateENG.jpg';
 import { pdf } from '../assets/certificates';
+import { getLeaders } from '../app/store/userRequests';
+import { toggleLeadersVisibility } from '../app/store/reducers/appSlice';
 
 export const AccountPage = (): JSX.Element => {
   const navigate = useNavigate();
@@ -17,12 +19,21 @@ export const AccountPage = (): JSX.Element => {
     t,
     i18n: { language: lang },
   } = useTranslation();
+  const isVisibleLeaders = useAppSelector(({ app }) => app.isVisibleLeaders);
+  const leaders = useAppSelector(({ app }) => app.leaders);
   const [score, sertificate] = useAppSelector(({ user: { score, sertificate } }) => [
     score,
     sertificate,
   ]);
   const cert = lang === Lang.ru ? certRU : certEN;
   const pdfCert = lang === Lang.ru ? pdf.ru : pdf.en;
+
+  const getLeadersHandler = () => {
+    if (!isVisibleLeaders) {
+      dispatch(getLeaders());
+    }
+    dispatch(toggleLeadersVisibility());
+  };
 
   const signOutHandler = () => {
     localStorage.removeItem(LSParameters.token);
@@ -37,6 +48,19 @@ export const AccountPage = (): JSX.Element => {
       <p>
         <Trans i18nKey={'account.score'} values={{ score }} />
       </p>
+      <button onClick={getLeadersHandler}>
+        {isVisibleLeaders ? t('account.hideLeaders') : t('account.getLeaders')}
+      </button>
+      {isVisibleLeaders && (
+        <ol>
+          {leaders.map(({ name, score }, idx) => (
+            <li key={idx}>
+              <span>{name}</span>
+              <span>{score}</span>
+            </li>
+          ))}
+        </ol>
+      )}
       {sertificate && (
         <div>
           {t('account.sertificate')}
