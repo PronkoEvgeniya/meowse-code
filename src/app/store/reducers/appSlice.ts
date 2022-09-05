@@ -58,8 +58,12 @@ export const appSlice = createSlice({
           const lang = localStorage.getItem(LSParameters.lang);
           const textLessons = lang === Lang.ru ? lessonsTextRu : lessonsTextEn;
           const audioLessons = lang === Lang.ru ? lessonsAudioRu : lessonsAudioEn;
-          state.textLesson = getSmallestUncompletedLesson(JSON.parse(textLessons));
-          state.audioLesson = getSmallestUncompletedLesson(JSON.parse(audioLessons));
+          state.textLesson = textLessons
+            ? getSmallestUncompletedLesson(JSON.parse(textLessons))
+            : 1;
+          state.audioLesson = audioLessons
+            ? getSmallestUncompletedLesson(JSON.parse(audioLessons))
+            : 1;
         }
       );
   },
