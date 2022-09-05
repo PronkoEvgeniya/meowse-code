@@ -10,3 +10,9 @@
     @include sectionTitle();
   }
 }
+
+@media (max-width: 760px) {
+  .trainer {
+    padding: 0 1em;  
+  }
+}
