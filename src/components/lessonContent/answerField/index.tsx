@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, createRef } from 'react';
+import React, { useEffect, createRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks/reduxHooks';
 import { ICompletedLessons } from '../../../app/store/actionTypes';
@@ -13,8 +13,8 @@ import {
   setFieldValidity,
   setCurrentInput,
 } from '../../../app/store/reducers/trainerSlice';
-// import { updateUser } from '../../../app/store/userRequests';
-// import { getFromLS } from '../../../helpers/localStorageService';
+import { setScore } from '../../../app/store/reducers/userSlice';
+import { updateUser } from '../../../app/store/userRequests';
 import { Lang, LessonResults, Trainers } from '../../../types/constants';
 import { IAnswerFieldProps } from '../../../types/interfaces';
 import './index.scss';
@@ -34,10 +34,12 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
     textLesson,
     audioLesson,
   }));
+  const totalScore = useAppSelector(({ user }) => user.score);
   const dispatch = useAppDispatch();
   const {
     i18n: { language: lang },
   } = useTranslation();
+  const [counter, setCounter] = useState(-1);
 
   const completedLessons: ICompletedLessons | null =
     lang === Lang.ru && type === Trainers.text
@@ -87,33 +89,37 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
   });
 
   useEffect(() => {
-    const currentInputRef = inputsRefs[currentInput];
-    if (
-      currentInputRef &&
-      currentInputRef.current &&
-      document.activeElement !== currentInputRef.current
-    ) {
-      const ref = currentInputRef.current as HTMLInputElement;
-      ref.focus();
+    if (counter === -1 || counter !== currentInput) {
+      const currentInputRef = inputsRefs[currentInput];
+      if (
+        currentInputRef &&
+        currentInputRef.current &&
+        document.activeElement !== currentInputRef.current
+      ) {
+        const ref = currentInputRef.current as HTMLInputElement;
+        ref.focus();
+        setCounter(currentInput);
+      }
     }
-  }, [currentInput, inputsRefs]);
+  }, [currentInput, inputsRefs, counter]);
 
-  // const findCurrentObjName = () => {
-  //   let name = '';
-  //   if (lang === Lang.ru) {
-  //     name += 'ru';
-  //   } else {
-  //     name += 'en';
-  //   }
+  const findCurrentObjName = () => {
+    let name = 'lessons';
 
-  //   if (type === Trainers.text) {
-  //     name += 'TextLessons';
-  //   } else {
-  //     name += 'AudioLessons';
-  //   }
+    if (type === Trainers.text) {
+      name += 'Text';
+    } else {
+      name += 'Audio';
+    }
 
-  //   return name;
-  // };
+    if (lang === Lang.ru) {
+      name += 'Ru';
+    } else {
+      name += 'En';
+    }
+
+    return name;
+  };
 
   useEffect(() => {
     if (filledInputs.length === answer.length) {
@@ -124,8 +130,11 @@ export const AnswerField = ({ answer, score, type }: IAnswerFieldProps): JSX.Ele
         (completedScore && completedScore < userScore)
       ) {
         dispatch(updateCompletedLessons({ id: lessonID, userScore, type, lang }));
-        // console.log(getFromLS<ICompletedLessons>(findCurrentObjName()));
-        // dispatch(updateUser({}))
+        const trainer = findCurrentObjName();
+        const trainerData = localStorage.getItem(trainer);
+        const newScore = totalScore + userScore;
+        dispatch(updateUser({ [trainer]: trainerData, score: newScore }));
+        dispatch(setScore(newScore));
       }
       dispatch(toggleMode());
       dispatch(updateCurrentScore(userScore));

@@ -57,11 +57,12 @@ export enum SidebarButtons {
 }
 
 export enum LSParameters {
-  ruTextLessons = 'ruTextLessons',
-  enTextLessons = 'enTextLessons',
-  ruAudioLessons = 'ruAudioLessons',
-  enAudioLessons = 'enAudioLessons',
+  ruTextLessons = 'lessonsTextRu',
+  enTextLessons = 'lessonsTextEn',
+  ruAudioLessons = 'lessonsAudioRu',
+  enAudioLessons = 'lessonsAudioEn',
   token = 'token',
+  lang = 'i18nextLng',
 }
 
 export const avatars = ['avatar1.png', 'avatar2.png', 'avatar3.png', 'avatar4.png'];

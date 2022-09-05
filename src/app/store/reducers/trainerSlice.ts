@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICompletedLessons, ICompleteLessonAction } from '../actionTypes';
 import { getFromLS, setToLS } from '../../../helpers/localStorageService';
 import { Modes, LSParameters } from '../../../types/constants';
-// import { getUser } from '../userRequests';
+import { getUser } from '../userRequests';
 
 export interface ITextLessonState {
   completedRuTextLessons: null | ICompletedLessons;
@@ -88,17 +88,17 @@ export const trainerSlice = createSlice({
       state.currentInput = 0;
     },
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(
-  //     getUser.fulfilled,
-  //     (state, { payload: { lessonsAudioEn, lessonsAudioRu, lessonsTextEn, lessonsTextRu } }) => {
-  //       state.completedEnAudioLessons = lessonsAudioEn ? JSON.parse(lessonsAudioEn) : {};
-  //       state.completedRuAudioLessons = lessonsAudioRu ? JSON.parse(lessonsAudioRu) : {};
-  //       state.completedEnTextLessons = lessonsTextEn ? JSON.parse(lessonsTextEn) : {};
-  //       state.completedRuTextLessons = lessonsTextRu ? JSON.parse(lessonsTextRu) : {};
-  //     }
-  //   );
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(
+      getUser.fulfilled,
+      (state, { payload: { lessonsAudioEn, lessonsAudioRu, lessonsTextEn, lessonsTextRu } }) => {
+        state.completedEnAudioLessons = lessonsAudioEn ? JSON.parse(lessonsAudioEn) : {};
+        state.completedRuAudioLessons = lessonsAudioRu ? JSON.parse(lessonsAudioRu) : {};
+        state.completedEnTextLessons = lessonsTextEn ? JSON.parse(lessonsTextEn) : {};
+        state.completedRuTextLessons = lessonsTextRu ? JSON.parse(lessonsTextRu) : {};
+      }
+    );
+  },
 });
 
 export const {

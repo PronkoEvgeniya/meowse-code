@@ -8,14 +8,7 @@ export const Footer = (): JSX.Element => {
 
   return (
     <footer>
-      <Link
-        to={{
-          pathname: '/about',
-          hash: 'dev',
-        }}
-      >
-        {t('developers')}
-      </Link>
+      <Link to={'/about'}>{t('developers')}</Link>
       <span>2022</span>
       <a target="_blank" href="https://rs.school/js/" rel="noreferrer">
         {IconRss()}
