@@ -116,5 +116,6 @@
     "sertificate": "Sertificate",
     "signOut": "Sign Out",
     "update": "Save settings"
-  }
+  },
+  "notfound": "Oops, something goes wrong :("
 }
