@@ -10,6 +10,8 @@ import {
 import { Game, Modes } from '../../types/constants';
 import { IGameQuestionProps } from '../../types/interfaces';
 import { Timer } from '../timer';
+import gameCat from '../../assets/images/game-meows.png';
+import './index.scss';
 
 export const GameQuestion = ({ questions, date }: IGameQuestionProps): JSX.Element => {
   const [questionID, score, mode] = useAppSelector(({ game: { index, score, mode } }) => [
@@ -33,20 +35,20 @@ export const GameQuestion = ({ questions, date }: IGameQuestionProps): JSX.Eleme
   };
 
   const handleChooseAnswer = ({ target }: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const { style, id } = target as HTMLButtonElement;
+    const { id, classList } = target as HTMLButtonElement;
 
     if (answers[0] === id) {
-      style.backgroundColor = 'lightgreen';
+      classList.add('true');
       setTimeout(() => {
         dispatch(incrementScore(10));
         dispatch(goToTheNextLesson());
       }, 1000);
       return;
     }
-    style.backgroundColor = 'red';
+    classList.add('false');
     if (rightRef && rightRef.current) {
       const ref = rightRef.current as HTMLButtonElement;
-      ref.style.backgroundColor = 'lightgreen';
+      ref.classList.add('true');
     }
     setTimeout(() => {
       dispatch(goToTheNextLesson());
@@ -57,11 +59,11 @@ export const GameQuestion = ({ questions, date }: IGameQuestionProps): JSX.Eleme
     .map((answer, i) => {
       return (
         <button
+          className="answer"
           ref={i === 0 ? rightRef : null}
           key={Math.random() + i}
           id={answer}
           onClick={handleChooseAnswer}
-          style={{ margin: '10px', minWidth: '70px', padding: '5px' }}
         >
           {answer}
         </button>
@@ -78,26 +80,40 @@ export const GameQuestion = ({ questions, date }: IGameQuestionProps): JSX.Eleme
   switch (mode) {
     case Modes.task:
       return (
-        <div>
-          <Timer initialDate={date} targetMinutes={4} handleTimerEnd={handleTimerEnd} />
-          <div>
-            {questionID + 1} / {Game.questionAmount}
+        <div className="game-container">
+          <div className="question">
+            <div className="counter">
+              <span className="current">{questionID + 1}</span> / {Game.questionAmount}
+            </div>
+            <div className="score">
+              <Trans i18nKey="game.score" values={{ score }} />
+            </div>
+            <div className="task">{task} ?</div>
+            {buttons}
           </div>
-          <div>
-            <Trans i18nKey="game.score" values={{ score }} />
+          <div className="mascot">
+            <div className="timer">
+              <Timer initialDate={date} targetMinutes={4} handleTimerEnd={handleTimerEnd} />
+            </div>
+            <img src={gameCat} alt="cat" />
           </div>
-          <div> {task} ?</div>
-          {buttons}
         </div>
       );
     case Modes.result:
       return (
-        <div>
-          <div>{t('game.end')}</div>
-          <div>
-            <Trans i18nKey="game.score" values={{ score }} />
+        <div className="game-container">
+          <div className="game-result">
+            <div className="title">{t('game.end')}</div>
+            <div className="score">
+              <Trans i18nKey="game.score" values={{ score }} />
+            </div>
+            <button className="reset" onClick={handleResetGame}>
+              {t('game.again')}
+            </button>
           </div>
-          <button onClick={handleResetGame}>{t('game.again')}</button>
+          <div className="mascot">
+            <img src={gameCat} alt="cat" />
+          </div>
         </div>
       );
   }

@@ -1,0 +1,23 @@
+@import '../constants.scss';
+
+.result {
+  .message {
+    @include catReplyBlock();
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+
+    .restart {
+      align-self: start;
+      justify-self: start;
+      @include btnViolent();
+      margin: 2rem;
+
+      &:hover {
+        @include btnViolentHover();
+      }
+    }
+  }
+}

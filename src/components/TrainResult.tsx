@@ -6,9 +6,10 @@ import { toggleMode } from '../app/store/reducers/trainerSlice';
 import { Trans, useTranslation } from 'react-i18next';
 import { ITrainResultProps } from '../types/interfaces';
 import { ICompletedLessons } from '../app/store/actionTypes';
-import imgwin from '../assets/images/win-meows.png';
-import imgloose from '../assets/images/loose-meows.png';
+import winCat from '../assets/images/win-meows.png';
+import looseCat from '../assets/images/loose-meows.png';
 import { Lang, Trainers } from '../types/constants';
+import './trainResult.scss';
 
 export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
@@ -76,31 +77,35 @@ export const TrainResult = ({ type, data }: ITrainResultProps): JSX.Element => {
   };
 
   return bestScore >= 70 ? (
-    <div>
-      <p>
+    <div className="result">
+      <p className="message">
         <Trans
           i18nKey={`winner.description.${currentScore < 70 ? '0' : '1'}`}
           values={{ lessonID, currentScore, bestScore }}
         />
       </p>
-      <button onClick={handleStartNextLesson}>
-        <Trans
-          i18nKey={`winner.nextBtn.${lessonID === data.length ? 'lastLesson' : 'usual'}`}
-          values={{ lessonID, currentScore, bestScore }}
-        />
-      </button>
-      <div>
-        <img src={imgwin} alt="" />
+      <div className="container">
+        <button onClick={handleStartNextLesson} className="restart">
+          <Trans
+            i18nKey={`winner.nextBtn.${lessonID === data.length ? 'lastLesson' : 'usual'}`}
+            values={{ lessonID, currentScore, bestScore }}
+          />
+        </button>
+        <div>
+          <img src={winCat} alt="cat" />
+        </div>
       </div>
     </div>
   ) : (
-    <div>
-      <p>
+    <div className="result">
+      <p className="message">
         <Trans i18nKey={'looser.description'} values={{ lessonID }} />
       </p>
-      <button onClick={handleReturnToTheLesson}>{t('looser.againBtn')}</button>
+      <button className="restart" onClick={handleReturnToTheLesson}>
+        {t('looser.againBtn')}
+      </button>
       <div>
-        <img src={imgloose} alt="" />
+        <img src={looseCat} alt="cat" />
       </div>
     </div>
   );

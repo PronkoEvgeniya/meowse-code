@@ -1,0 +1,12 @@
+@import '../constants.scss';
+
+.trainer {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  .title {
+    @include sectionTitle();
+  }
+}
