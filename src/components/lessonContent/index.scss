@@ -112,14 +112,22 @@
       grid-template-columns: 1fr;
       grid-template-rows: repeat(5, max-content);
 
+      .symbol-block {
+        max-width: 400px;
+      }
+
       .symbols {
         grid-row: 2 / 3;
         grid-column: 1 / 2;
+        align-items: center;
+        justify-content: center;
       }
 
       .tasks {
         grid-column: 1 / 2;
         grid-row: 4 / 5;
+        align-items: center;
+        justify-content: center;
       }
 
       .decorative-line {
@@ -138,5 +146,17 @@
         max-width: 400px;
       }
     }
+  }
+}
+
+
+@media (max-width: 480px) {
+  .lesson {
+    .content {
+  .symbol-block {
+    padding: 2rem;
+    font-size: 1.5em;
+  }
+}
   }
 }
