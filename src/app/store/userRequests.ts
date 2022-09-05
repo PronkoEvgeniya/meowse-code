@@ -47,7 +47,6 @@ export const getUser = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       })) as IUser;
-      console.log(user);
       return user;
     } catch (err) {
       return rejectWithValue((err as IAuthError).response.data.message);
@@ -59,7 +58,6 @@ export const updateUser = createAsyncThunk(
   ActionTypes.updateUser,
   async (user: IUpdateUser, { rejectWithValue }) => {
     try {
-      console.log('update', user);
       await axios.put(URL.user, user, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem(LSParameters.token)}`,
