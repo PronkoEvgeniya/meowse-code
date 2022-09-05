@@ -1,21 +1,21 @@
-@import "../constants.scss";
+@import '../constants.scss';
 
 .not-found__page {
-    display: flex;
-    font-family: $pacifico;
-    flex-direction: column;
-    gap: 40px;
-    font-size: 5.6rem;
-    text-align: center;
-    align-items: center;
-    img {
-        width: 50%;
-    }
+  display: flex;
+  font-family: $pacifico;
+  flex-direction: column;
+  gap: 40px;
+  font-size: 5.6rem;
+  text-align: center;
+  align-items: center;
+  img {
+    width: 50%;
+  }
 }
 .notfound__text {
-    color: $grayLightText;
-    max-width: 80%;
+  color: $grayLightText;
+  max-width: 80%;
 }
 .notfound__text.dark {
-    color: $white;
+  color: $white;
 }

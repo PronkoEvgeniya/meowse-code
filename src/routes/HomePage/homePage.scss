@@ -1,4 +1,4 @@
-@import "../../constants.scss";
+@import '../../constants.scss';
 
 .homepage__container {
   color: $grayText;
@@ -22,6 +22,22 @@
     justify-content: flex-end;
     img {
       height: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage__container {
+    .mascot__container {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: flex-end;
+      img {
+        max-width: 450px;
+        width: 100%;
+        height: auto;
+      }
     }
   }
 }
