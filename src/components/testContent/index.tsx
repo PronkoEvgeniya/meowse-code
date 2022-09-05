@@ -8,6 +8,7 @@ import { getRandomTest } from './getRandomTest';
 import dataRU from '../../data/testingRu.json';
 import dataEN from '../../data/testingEn.json';
 import { TestTextArea } from './TextArea';
+import mascot from '../../assets/images/test-meows.png';
 
 export const TestContent = (): JSX.Element => {
   const {
@@ -24,6 +25,7 @@ export const TestContent = (): JSX.Element => {
       <p>{t('testing.description')}</p>
       <div>
         <AudioBtn value={'?'} src={tests[currentTest]} />
+        <img src={mascot} alt="" />
         <TestTextArea answer={answer} />
       </div>
     </>

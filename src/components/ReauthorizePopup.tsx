@@ -17,7 +17,7 @@ export const ReauthorizePopup = (): JSX.Element => {
   };
 
   return (
-    <div style={{ position: 'absolute', top: '50%' }}>
+    <div className="reauthorizate__modal">
       <div>
         <span>{t('failedToken')}</span>
         <button onClick={redirectHandler}>{t('start.logIn')}</button>

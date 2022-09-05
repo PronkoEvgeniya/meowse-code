@@ -1,5 +1,7 @@
 import { ArrowAbout2, ArrowAbout1 } from '../../assets/Sprite';
-import photo from '../../assets/images/photos/dev-card.jpg';
+import xenia from '../../assets/images/photos/xenia.jpg';
+import jen from '../../assets/images/photos/jen.jpg';
+import kris from '../../assets/images/photos/kris.jpg';
 import './aboutPage.scss';
 import { useTranslation } from 'react-i18next';
 
@@ -8,14 +10,14 @@ export const AboutPage = (): JSX.Element => {
   return (
     <div className="about__container">
       <h2>{t('aboutPage.title-1')}</h2>
-      <p className="content__container-about">
+      <div className="content__container-about odd">
         <h3>{t('aboutPage.block1-title')}</h3>
         <span>{t('aboutPage.block1-span')}</span>
-      </p>
-      <div className="arrow__container">{ArrowAbout1()}</div>
-      <p className="content__container-about">{t('aboutPage.block2')}</p>
-      <div className="arrow__container">{ArrowAbout2()}</div>
-      <p className="content__container-about">
+      </div>
+      <div className="arrow__container odd">{ArrowAbout1()}</div>
+      <div className="content__container-about even">{t('aboutPage.block2')}</div>
+      <div className="arrow__container even">{ArrowAbout2()}</div>
+      <div className="content__container-about odd">
         <ul>
           <li>{t('aboutPage.block3-1')}</li>
           <li>{t('aboutPage.block3-2')}</li>
@@ -24,22 +26,22 @@ export const AboutPage = (): JSX.Element => {
           <li>{t('aboutPage.block3-5')}</li>
           <li>{t('aboutPage.block3-6')}</li>
         </ul>
-      </p>
-      <div className="arrow__container">{ArrowAbout1()}</div>
-      <p className="content__container-about">
+      </div>
+      <div className="arrow__container odd">{ArrowAbout1()}</div>
+      <div className="content__container-about even">
         <h4>{t('aboutPage.block4-title')}</h4>
         <ul>
           <li>{t('aboutPage.block4-1')}</li>
           <li>{t('aboutPage.block4-2')}</li>
           <li>{t('aboutPage.block4-3')}</li>
         </ul>
-      </p>
-      <div className="arrow__container">{ArrowAbout2()}</div>
-      <p className="content__container-about">{t('aboutPage.block5')}</p>
-      <div className="arrow__container">{ArrowAbout1()}</div>
-      <p className="content__container-about">{t('aboutPage.block6')}</p>
-      <div className="arrow__container">{ArrowAbout2()}</div>
-      <p className="content__container-about">{t('aboutPage.block7')}</p>
+      </div>
+      <div className="arrow__container even">{ArrowAbout2()}</div>
+      <div className="content__container-about odd">{t('aboutPage.block5')}</div>
+      <div className="arrow__container odd">{ArrowAbout1()}</div>
+      <div className="content__container-about even">{t('aboutPage.block6')}</div>
+      <div className="arrow__container even">{ArrowAbout2()}</div>
+      <div className="content__container-about odd">{t('aboutPage.block7')}</div>
       <div className="dev__container-about" id="dev">
         <h3>{t('aboutPage.dev')}</h3>
         <div className="dev__content-about">
@@ -49,7 +51,7 @@ export const AboutPage = (): JSX.Element => {
             className="dev__card"
             rel="noreferrer"
           >
-            <img src={photo} alt="" />
+            <img src={jen} alt="" />
             <span className="card-name">{t('aboutPage.jen')}</span>
             <span>{t('aboutPage.role1')}</span>
           </a>
@@ -59,7 +61,7 @@ export const AboutPage = (): JSX.Element => {
             className="dev__card"
             rel="noreferrer"
           >
-            <img src={photo} alt="" />
+            <img src={kris} alt="" />
             <span className="card-name">{t('aboutPage.kris')}</span>
             <span>{t('aboutPage.role2')}</span>
           </a>
@@ -69,7 +71,7 @@ export const AboutPage = (): JSX.Element => {
             className="dev__card"
             rel="noreferrer"
           >
-            <img src={photo} alt="" />
+            <img src={xenia} alt="" />
             <span className="card-name">{t('aboutPage.xenia')}</span>
             <span>{t('aboutPage.role2')}</span>
           </a>
