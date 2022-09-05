@@ -1,13 +1,10 @@
-@import '../constants.scss';
+@import "../constants.scss";
 
 .start-page ~ aside {
   display: none;
 }
 .start-page {
-  width: 100%;
   grid-column: 1/ 3;
-  padding-left: 0;
-  padding-right: 0;
   color: $grayText;
   text-align: center;
   h1 {
@@ -21,12 +18,58 @@
     font-size: 3.2rem;
     color: $grayLightText;
   }
+  .start__btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 120px;
+    position: relative;
+    z-index: 10;
+  }
   .start-btn {
     @include btnViolent();
-    margin-bottom: 120px;
     padding: 15px 90px;
   }
   .start-btn:hover {
     @include btnViolentHover();
+  }
+}
+.start-page.dark {
+  color: $lightBg;
+}
+.steps__container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  margin-top: -79vh;
+  z-index: 0;
+}
+.steps__icon {
+  position: absolute;
+}
+.step__left {
+  transform: rotate(-45deg);
+  left: 103px;
+  bottom: -179px;
+}
+.step__right {
+  transform: rotate(30deg);
+  right: 103px;
+  bottom: -179px;
+}
+
+@media (max-width: 768px) {
+  .start__btns {
+    flex-wrap: wrap;
+  }
+  .steps__icon {
+    max-height: 50%;
+  }
+}
+
+@media (max-width: 630px) {
+  .step__right {
+    display: none;
   }
 }

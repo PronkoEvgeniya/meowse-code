@@ -75,9 +75,7 @@ export const TranslatePage = (): JSX.Element => {
       </div>
       <div className="translator__output">
         {output.map((word, idx) => (
-          <span key={idx} style={{ border: '1px solid green', margin: '5px', padding: '5px' }}>
-            {word}
-          </span>
+          <span key={idx}>{word}</span>
         ))}
       </div>
     </div>

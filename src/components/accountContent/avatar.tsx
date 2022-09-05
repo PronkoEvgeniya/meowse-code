@@ -10,15 +10,19 @@ export const Avatar = ({
   };
 
   return (
-    <label>
-      <img src={`./avatars/${image}`} alt={image} />
-      <span>*</span>
+    <div>
       <input
+        id={image.slice(0, 7)}
         type="radio"
         value={image}
         checked={installedAvatar === image}
         onChange={inputHandler}
       />
-    </label>
+
+      <label htmlFor={image.slice(0, 7)}>
+        <img src={`./avatars/${image}`} alt={image} />
+        <span></span>
+      </label>
+    </div>
   );
 };

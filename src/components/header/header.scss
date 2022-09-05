@@ -1,4 +1,4 @@
-@import '../../constants.scss';
+@import "../../constants.scss";
 
 header {
   position: absolute;
@@ -19,6 +19,7 @@ header {
       .toggleTheme__container {
         button {
           @include btnToggle;
+          background-color: transparent;
           width: 55px;
           height: 55px;
           display: flex;
@@ -46,6 +47,10 @@ header {
     li {
       list-style: none;
       cursor: pointer;
+      img {
+        height: 55px;
+        margin-left: 15px;
+      }
     }
     .user-icon {
       width: 50px;
@@ -71,6 +76,10 @@ header ul > li:last-of-type {
   flex-direction: row-reverse;
   cursor: pointer;
   margin: 0 25px 0 auto;
+}
+header ul > li:last-of-type:hover {
+  padding-bottom: 5px;
+  border-bottom: 3px solid $violent;
 }
 header ul > li:first-of-type {
   width: 25.69%;

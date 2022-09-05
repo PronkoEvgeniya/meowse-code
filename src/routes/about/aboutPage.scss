@@ -1,4 +1,4 @@
-@import '../../constants.scss';
+@import "../../constants.scss";
 
 .about__container ~ aside {
   max-height: 680px;
@@ -21,21 +21,18 @@
       padding-left: 25px;
     }
   }
-  .content__container-about:nth-of-type(odd) {
-    margin-right: auto;
-  }
-  .content__container-about:nth-of-type(even) {
-    margin-left: auto;
-  }
   .arrow__container {
-    margin: 0 auto 0 0;
+    margin: 0;
     width: 70%;
     svg {
       max-width: 100%;
     }
   }
-  .arrow__container:nth-of-type(even) {
-    margin: 0 0 0 auto;
+  .odd {
+    margin-right: auto;
+  }
+  .even {
+    margin-left: auto;
   }
 }
 .dev__container-about {
@@ -45,6 +42,7 @@
   .dev__content-about {
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
     .dev__card {
       width: 30%;
       font-size: 2rem;
@@ -55,16 +53,19 @@
       flex-direction: column;
       text-align: center;
       gap: 20px;
-      padding: 200px 0 20px;
-      border-radius: 20px;
-      margin-top: 150px;
+      padding: 0 0 20px;
+      border-radius: 50% 50% 20px 20px;
       text-decoration: none;
       color: $grayText;
+      span {
+        display: block;
+        padding: 0 10px;
+      }
       img {
         border-radius: 50%;
         width: 100%;
         display: block;
-        margin: -300px auto 0;
+        margin: 0 auto 0;
       }
       .card-name {
         font-size: 2.6rem;

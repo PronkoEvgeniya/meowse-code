@@ -1,8 +1,7 @@
-@import '../../constants.scss';
+@import "../../constants.scss";
 
 .homepage__container {
   color: $grayText;
-  width: calc(100% - 40px);
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
