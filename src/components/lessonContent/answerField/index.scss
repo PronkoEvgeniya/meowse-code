@@ -1,8 +1,4 @@
-$grey: #5e5e5e;
-$ligth-grey: #e2dfdf;
-$violet: #9c56c7;
-$green: rgb(114, 214, 131);
-$red: rgb(245, 135, 135);
+@import '../../../constants.scss';
 
 .answer {
   display: flex;
@@ -13,22 +9,23 @@ $red: rgb(245, 135, 135);
   .field {
     max-width: 70px;
     padding: 10px;
-    border: 1px solid $grey;
+    border: 1px solid $grayBg;
     border-radius: 5px;
-    background: $ligth-grey;
+    background: $grayBg;
+    font-size: 0.9em;
     text-align: center;
 
     &:focus {
-      outline-color: $violet;
+      outline-color: $violent;
     }
 
     &.true {
-      background-color: $green;
-      border-color: $green;
+      background-color: $right-green;
+      border-color: $right-green;
     }
     &.false {
-      border-color: $red;
-      background-color: $red;
+      border-color: $wrong-red;
+      background-color: $wrong-red;
     }
 
     &.true:focus,
