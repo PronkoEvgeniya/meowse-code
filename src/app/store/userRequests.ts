@@ -7,6 +7,7 @@ import {
   IAuthError,
   IUser,
   IUpdateUser,
+  ILeaderBoard,
 } from '../../types/interfaces';
 
 export const registerUser = createAsyncThunk(
@@ -62,6 +63,18 @@ export const updateUser = createAsyncThunk(
           Authorization: `Bearer ${localStorage.getItem(LSParameters.token)}`,
         },
       });
+    } catch (err) {
+      return rejectWithValue((err as IAuthError).response.data.message);
+    }
+  }
+);
+
+export const getLeaders = createAsyncThunk(
+  ActionTypes.getLeaders,
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = (await axios.get(URL.liders)) as ILeaderBoard;
+      return data.map(({ name, score }) => ({ name, score }));
     } catch (err) {
       return rejectWithValue((err as IAuthError).response.data.message);
     }
