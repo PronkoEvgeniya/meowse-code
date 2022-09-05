@@ -1,0 +1,88 @@
+@import '../../constants.scss';
+
+.trainer {
+  .custom-select {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    width: max-content;
+    height: 2.5rem;
+    font-size: 0.8em;
+    color: $violent;
+
+    .value {
+      vertical-align: super;
+      transition: 0.1s;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover .value {
+      border-bottom: 2px solid $violent;
+    }
+
+    .arrow {
+      width: 1rem;
+      height: 1rem;
+      border-right: 2px solid $violent;
+      border-bottom: 2px solid $violent;
+      transform: rotate(45deg);
+    }
+
+    &.active .arrow {
+      transform: rotate(225deg);
+      align-self: flex-start;
+    }
+
+    .custom-options {
+      display: none;
+      position: absolute;
+      top: 5rem;
+      z-index: 1;
+      width: 100%;
+      max-height: 25rem;
+      overflow-y: scroll;
+      border: 1px solid $grayText;
+      border-radius: 3px;
+      background-color: $white;
+      transition: all 0.3s ease-out;
+
+      .label {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem 0;
+        transition: all 0.2s ease-out;
+        cursor: pointer;
+      }
+
+      .label:hover {
+        color: $white;
+        background-color: $violent;
+      }
+
+      .input {
+        display: none;
+      }
+
+      .input:disabled + label {
+        background-color: $grayText;
+        color: $white;
+      }
+
+      .input:disabled + label:hover {
+        cursor: auto;
+      }
+    }
+
+    &.active .custom-options {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

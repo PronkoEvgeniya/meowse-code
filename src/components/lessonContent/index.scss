@@ -1,0 +1,104 @@
+@import '../../constants.scss';
+
+.lesson {
+  line-height: 1.2;
+  .status {
+    padding: 0.5rem 2rem 2rem;
+    font-size: 0.5em;
+
+    &.true {
+      color: $right-green;
+    }
+    &.false {
+      color: $wrong-red;
+    }
+  }
+  .description {
+    @include catReplyBlock();
+    font-size: 0.8em;
+  }
+
+  .content {
+    display: grid;
+    gap: 0 20px;
+    padding: 20px 0;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: repeat(4, max-content);
+    align-items: center;
+    justify-items: center;
+
+    .symbols,
+    .tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      padding: 20px 0;
+      align-items: stretch;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .symbols {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+    }
+
+    .symbol-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      background-color: $grayText;
+      color: $white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 1.25rem;
+      line-height: 1.2;
+      width: 100%;
+
+      .code {
+        flex-grow: 2;
+        border: 2px solid $violent;
+        border-radius: 25px;
+        text-align: center;
+        letter-spacing: 0.3rem;
+      }
+
+      &.task {
+        background-color: $violent;
+
+        .code {
+          border-color: $white;
+          padding: 5px;
+        }
+      }
+    }
+
+    .tasks {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    .decorative-line {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      width: 100%;
+      max-width: 450px;
+      border: none;
+      border-top: 3px dashed $violent;
+    }
+
+    .answer {
+      grid-column: 1 / 2;
+      grid-row: 4 / 5;
+    }
+
+    .mascot {
+      grid-column: 2 / 3;
+      grid-row: 1 / 5;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

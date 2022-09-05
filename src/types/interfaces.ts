@@ -20,6 +20,7 @@ export interface IAvatarProps {
 export interface AudioBtnProps {
   value: string;
   src: string;
+  className?: string;
 }
 
 export interface ITimerProps {

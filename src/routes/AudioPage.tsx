@@ -5,6 +5,7 @@ import { LessonSelect } from '../components/lessonSelect';
 import { LessonContent } from '../components/lessonContent';
 import dataRu from '../data/audioRu.json';
 import dataEn from '../data/audioEn.json';
+import './trainerPage.scss';
 import { Lang, Modes, Trainers } from '../types/constants';
 
 export const AudioPage = (): JSX.Element => {
@@ -15,8 +16,8 @@ export const AudioPage = (): JSX.Element => {
   } = useTranslation();
   const data = lang === Lang.ru ? dataRu : dataEn;
   return mode === Modes.lesson ? (
-    <div>
-      <h2>{t('audio')}</h2>
+    <div className="trainer">
+      <h2 className="title">{t('audio')}</h2>
       <LessonSelect data={data} type={Trainers.audio} />
       <LessonContent data={data} type={Trainers.audio} />
     </div>
