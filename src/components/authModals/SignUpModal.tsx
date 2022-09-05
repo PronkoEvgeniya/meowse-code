@@ -1,21 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
 import {
-  registerUser,
   setConfirmPassword,
   setEmail,
   setName,
   setPassword,
-} from '../../app/store/reducers/appSlice';
+} from '../../app/store/reducers/userSlice';
+import { authorizeUser, registerUser } from '../../app/store/userRequests';
 
 export const SignUpModal = (): JSX.Element => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { name, email, password, confirmPassword, error, isAuthorized } = useAppSelector(
-    ({ app }) => app
+  const { name, email, password, confirmPassword, error, isRegistrated } = useAppSelector(
+    ({ user }) => user
   );
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,9 +39,11 @@ export const SignUpModal = (): JSX.Element => {
     dispatch(setConfirmPassword(value));
 
   useEffect(() => {
-    if (isAuthorized) navigate('/tutorial');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthorized]);
+    if (isRegistrated) {
+      dispatch(authorizeUser({ email, password }));
+      navigate('/tutorial');
+    }
+  }, [isRegistrated]);
 
   return (
     <>

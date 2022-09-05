@@ -10,16 +10,14 @@
   "encode": "text -> morse",
   "start": {
     "title": "Welcome to the <1 /> interactive <3>Morse</3> code course!",
-    "description": "Click to log in / sign up",
-    "startBtn": "Start",
+    "description": "Sign in to an existing account or register",
     "logIn": "Log in",
     "signUp": "Sign up",
     "backBtn": "Back",
     "email": "Email",
     "name": "Name",
     "password": "Password",
-    "confirmPassword": "Confirm password",
-    "remember": "Remember me"
+    "confirmPassword": "Confirm password"
   },
   "home": {
     "question1": "How are you, <1>{{name}}</1>?",
@@ -31,11 +29,11 @@
       "btn": "Hey, Meows!"
     },
     "1": {
-      "description": "In the profile you can see your achievements, as well as change information about yourself or the theme",
+      "description": "By clicking on your name next to the avatar you will be able to see your achievements, change your data. Be sure to try to choose an avatar!",
       "btn": "Okay"
     },
     "2": {
-      "description": "I suggest you start with practice, to open the simulator, expand the panel on the left",
+      "description": "In the panel on the left you can select a section and start learning. I suggest you start with a simulator!",
       "btn": "Well"
     }
   },
@@ -86,5 +84,36 @@
   "looser": {
     "description": "The accuracy is less than 70%, you should go through the lesson {{ lessonID }} again. Don't worry, I have paws too!",
     "againBtn": "Again!"
+  },
+  "aboutPage": {
+    "title-1": "About the course",
+    "block1-title": "What is Morse code?",
+    "block1-span": "Morse Code (Morse Code, Morse Code) is a method of encoding characters with a sequence of sound signals according to certain rules. The code allows to encode numbers, letters, punctuation marks, service characters by means of long signals (dashes) and short (dots).",
+    "block2": "The coding idea came from Samuel Morse; coding of letters and numbers was done by his colleague, Alfred Weilor. Later, Friedrich Hercke improved the code to international telegraph. The first message was sent in May 1844 between Washington and Baltimore with the text “This is what God does”.",
+    "block3-1": "two sound signals are used for coding: long (dash) and short (dot);",
+    "block3-2": "the length of the short signal (one point) is taken as a unit of time;",
+    "block3-3": "the length of the dash is equal to the length of three points;",
+    "block3-4": "pause between elements of one sign - one point;",
+    "block3-5": "pause between signs in the word - three points;",
+    "block3-6": "a pause between words - seven points.",
+    "block4-title": "Features of Morse code for Russian alphabet:",
+    "block4-1": "Russian letters E and Ё are represented by one code - point;",
+    "block4-2": "Often, instead of a solid sign, the code of the soft sign is transmitted;",
+    "block4-3": "Some letters of the Russian alphabet (Ш, Щ and others) have no analogues in English, so the international table is extended by «Russian» variants.",
+    "block5": "The numbers are denoted by 5 signals, where the dash is the absence and the dot is the presence of the number. Thus, 5 dashes are 0 and 5 dots are 5. The numbers from 1 to 5 are indicated by the required number of dots and by filling the dash of voids. And from six - on the contrary, first goes dashing, as the presence of the unity, emptiness are filled with dots. For illustration: three dots and two dashes - 3; three dashes and two dots - 8.",
+    "block6": "The punctuation marks are indicated by six symbols. The dot is 6 dots (this is the pun). Comma is the alternation of a dot and a dash. Question mark - two dots, two dashes, two dots.",
+    "block7": "The code everyone wants to know is the call for help - SOS. Its designation - three dots, three dashes, three dots. If you are a radio amateur, do not try to use his joke for fun!",
+    "dev": "Developers",
+    "jen": "Evgeniya",
+    "kris": "Kristina",
+    "xenia": "Xenia",
+    "role1": "Teamlead",
+    "role2": "Frontend-developer"
+  },
+  "account": {
+    "name": "Name",
+    "score": "Total score: {{score}}",
+    "sertificate": "Sertificate",
+    "signOut": "Sign Out"
   }
 }

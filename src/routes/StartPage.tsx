@@ -1,41 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../app/hooks/reduxHooks';
 import { AuthModal } from '../components/authModals';
-import { LogInModal } from '../components/authModals/LogInModal';
-import { SignUpModal } from '../components/authModals/SignUpModal';
-import { StartModal } from '../components/authModals/StartModal';
+import { Modals } from '../types/constants';
 import './startPage.scss';
 
 export const StartPage = (): JSX.Element => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const token = useAppSelector(({ app }) => app.token);
+  const isAuthorized = useAppSelector(({ user }) => user.isAuthorized);
   const [auth, setAuth] = useState('');
 
   const changeModal = (value: string) => () => setAuth(value);
 
-  const switchComponent = () => {
-    switch (auth) {
-      case 'login':
-        return <LogInModal />;
-      case 'signup':
-        return <SignUpModal />;
-      default:
-        return <StartModal setAuth={setAuth} />;
-    }
-  };
-
   useEffect(() => {
-    if (token) {
+    if (isAuthorized) {
       navigate('/home');
     }
   });
 
   return (
     <div className="start-page">
-      {auth && <AuthModal setAuth={setAuth}>{switchComponent()}</AuthModal>}
+      {auth && <AuthModal auth={auth} setAuth={setAuth} />}
       <h1>
         <Trans i18nKey={'start.title'}>
           Добро пожаловать <br /> на интерактивный курс изучения азбуки
@@ -43,9 +31,14 @@ export const StartPage = (): JSX.Element => {
         </Trans>
       </h1>
       <p>{t('start.description')} &#129106;</p>
-      <button className="start-btn" onClick={changeModal('start')}>
-        {t('start.startBtn')}
-      </button>
+      <div>
+        <button className="start-btn" onClick={changeModal(Modals.login)}>
+          {t('start.logIn')}
+        </button>
+        <button className="start-btn" onClick={changeModal(Modals.signup)}>
+          {t('start.signUp')}
+        </button>
+      </div>
     </div>
   );
 };

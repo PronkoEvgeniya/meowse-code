@@ -1,17 +1,20 @@
 import { TTrainers } from './types';
 
-export interface ModalProps {
+export interface AuthModalProps {
+  auth: string;
   setAuth: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export interface AuthModalProps extends ModalProps {
-  children: JSX.Element;
 }
 
 export interface TrainResultProps {
   answer: string;
   setAnswer: React.Dispatch<React.SetStateAction<string>>;
   setIsLessonCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IAvatarProps {
+  image: string;
+  installedAvatar: string | null;
+  setInstalledAvatar: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 export interface AudioBtnProps {
@@ -91,10 +94,23 @@ export interface IRegistration extends IAuthorization {
 }
 
 export interface IUser {
-  token: string;
-  user: {
-    name: string;
+  data: {
+    token: string;
+    user: {
+      email: string;
+      name: string;
+      score: number;
+      avatar: string;
+      sertificate: boolean;
+    };
   };
+}
+
+export interface IUpdateUser {
+  name?: string;
+  avatar?: string;
+  score?: number;
+  sertificate?: boolean;
 }
 
 export interface IAuthError {

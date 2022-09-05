@@ -27,6 +27,12 @@ export enum Lang {
   en = 'en',
 }
 
+export enum Modals {
+  start = 'start',
+  login = 'login',
+  signup = 'signup',
+}
+
 export enum Modes {
   lesson = 'lesson',
   result = 'result',
@@ -39,6 +45,12 @@ export enum Trainers {
   text = 'text',
 }
 
+export enum Theme {
+  light = 'light',
+  dark = 'dark',
+  theme = 'theme',
+}
+
 export enum LSParameters {
   ruTextLessons = 'ruTextLessons',
   enTextLessons = 'enTextLessons',
@@ -46,6 +58,8 @@ export enum LSParameters {
   enAudioLessons = 'enAudioLessons',
   token = 'token',
 }
+
+export const avatars = ['avatar1.png', 'avatar2.png', 'avatar3.png', 'avatar4.png'];
 
 export enum LessonResults {
   min = 70,
@@ -66,11 +80,14 @@ export enum RegExpTemplates {
 export enum URL {
   registration = 'https://ancient-spire-30393.herokuapp.com/api/auth/registration',
   authorization = 'https://ancient-spire-30393.herokuapp.com/api/auth/authorization',
+  user = 'https://ancient-spire-30393.herokuapp.com/api/auth/users',
 }
 
 export enum ActionTypes {
-  registration = 'app/registration',
-  authorization = 'app/authorization',
+  registration = 'user/registration',
+  authorization = 'user/authorization',
+  getUser = 'user/get',
+  updateUser = 'user/update',
 }
 
 export const MORSE_TABLE = {

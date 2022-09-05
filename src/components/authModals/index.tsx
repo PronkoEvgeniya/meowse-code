@@ -6,12 +6,15 @@ import {
   setError,
   setName,
   setPassword,
-} from '../../app/store/reducers/appSlice';
+} from '../../app/store/reducers/userSlice';
 import { IconStep } from '../../assets/Sprite';
+import { Modals } from '../../types/constants';
 import { AuthModalProps } from '../../types/interfaces';
+import { LogInModal } from './LogInModal';
+import { SignUpModal } from './SignUpModal';
 import './modal.scss';
 
-export const AuthModal = ({ setAuth, children }: AuthModalProps): JSX.Element => {
+export const AuthModal = ({ auth, setAuth }: AuthModalProps): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -31,7 +34,7 @@ export const AuthModal = ({ setAuth, children }: AuthModalProps): JSX.Element =>
   return (
     <div className="modal-bg">
       <div className="modal-container">
-        {children}
+        {auth === Modals.login ? <LogInModal /> : <SignUpModal />}
         <button className="btn-back" onClick={changeModal('')}>
           <IconStep />
           {t('start.backBtn')}

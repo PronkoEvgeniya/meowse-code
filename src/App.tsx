@@ -1,30 +1,34 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import { useAppDispatch, useAppSelector } from './app/hooks/reduxHooks';
-import { setAuthorization } from './app/store/reducers/appSlice';
 import { Footer } from './components/Footer';
 import { Header } from './components/header/Header';
-import { Sidebar } from './components/Sidebar';
+import { Sidebar } from './components/sidebar/Sidebar';
 import { AboutPage } from './routes/about/AboutPage';
 import { AudioPage } from './routes/AudioPage';
 import { HomePage } from './routes/HomePage';
 import { StartPage } from './routes/StartPage';
-import { TranslatePage } from './routes/TranslatePage';
+import { TranslatePage } from './routes/translatePage/TranslatePage';
 import { TextTrainerPage } from './routes/TextTrainerPage';
-import { TutorialPage } from './routes/TutorialPage';
+import { TutorialPage } from './routes/tutorialPage/TutorialPage';
 import { TestPage } from './routes/TestPage';
 import { GamePage } from './routes/GamePage';
 import { AccountPage } from './routes/AccountPage';
 import { NotFound } from './routes/NotFound';
+import { getUser } from './app/store/userRequests';
+import { LSParameters } from './types/constants';
+import { GuardedRoute } from './components/guardedRoute';
 
 export const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const token = useAppSelector(({ app }) => app.token);
+  const token = localStorage.getItem(LSParameters.token);
+  const auth = useAppSelector(({ user }) => user.isAuthorized);
+  const isRegistrated = useAppSelector(({ user }) => user.isRegistrated);
 
   useEffect(() => {
     if (token) {
-      dispatch(setAuthorization(true));
+      dispatch(getUser(token));
     }
   }, [dispatch, token]);
 
@@ -34,16 +38,26 @@ export const App = (): JSX.Element => {
       <main>
         <Routes>
           <Route path="/" element={<StartPage />} />
-          <Route path="/tutorial" element={<TutorialPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/audio/:id" element={<AudioPage />} />
-          <Route path="/text/:id" element={<TextTrainerPage />} />
-          <Route path="/game" element={<GamePage />} />
-          <Route path="/test" element={<TestPage />} />
-          <Route path="/translate" element={<TranslatePage />} />
+          <Route
+            path="/tutorial"
+            element={<GuardedRoute component={TutorialPage} auth={isRegistrated} />}
+          />
+          <Route path="/home" element={<GuardedRoute component={HomePage} auth={auth} />} />
+          <Route path="/audio/:id" element={<GuardedRoute component={AudioPage} auth={auth} />} />
+          <Route
+            path="/text/:id"
+            element={<GuardedRoute component={TextTrainerPage} auth={auth} />}
+          />
+          <Route path="/game" element={<GuardedRoute component={GamePage} auth={auth} />} />
+          <Route path="/test" element={<GuardedRoute component={TestPage} auth={auth} />} />
+          <Route
+            path="/translate"
+            element={<GuardedRoute component={TranslatePage} auth={auth} />}
+          />
+          <Route path="/account" element={<GuardedRoute component={AccountPage} auth={auth} />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/account" element={<AccountPage />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to={'/404'} />} />
         </Routes>
         <Sidebar />
       </main>
