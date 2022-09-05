@@ -40,7 +40,7 @@ export const AboutPage = (): JSX.Element => {
       <p className="content__container-about">{t('aboutPage.block6')}</p>
       <div className="arrow__container">{ArrowAbout2()}</div>
       <p className="content__container-about">{t('aboutPage.block7')}</p>
-      <div className="dev__container-about">
+      <div className="dev__container-about" id="dev">
         <h3>{t('aboutPage.dev')}</h3>
         <div className="dev__content-about">
           <a
