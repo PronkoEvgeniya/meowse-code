@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getSmallestUncompletedLesson } from '../../../helpers/getSmallestUncompletedLesson';
+import { Lang, LSParameters } from '../../../types/constants';
 import { ILeader } from '../../../types/interfaces';
 import { ISetLessonAction } from '../actionTypes';
-import { getLeaders } from '../userRequests';
+import { getLeaders, getUser } from '../userRequests';
 
 export interface IAppState {
   sidebarBtn: boolean;
@@ -30,9 +32,6 @@ export const appSlice = createSlice({
       state.sidebarBtn = false;
     },
     toggleLeadersVisibility: (state) => {
-      if (state.isVisibleLeaders) {
-        state.leaders = [];
-      }
       state.isVisibleLeaders = !state.isVisibleLeaders;
     },
     setLesson: (state, { payload: { id, type } }: PayloadAction<ISetLessonAction>) => {
@@ -52,7 +51,17 @@ export const appSlice = createSlice({
       })
       .addCase(getLeaders.rejected, (state, { payload }) => {
         alert(payload);
-      });
+      })
+      .addCase(
+        getUser.fulfilled,
+        (state, { payload: { lessonsAudioEn, lessonsAudioRu, lessonsTextEn, lessonsTextRu } }) => {
+          const lang = localStorage.getItem(LSParameters.lang);
+          const textLessons = lang === Lang.ru ? lessonsTextRu : lessonsTextEn;
+          const audioLessons = lang === Lang.ru ? lessonsAudioRu : lessonsAudioEn;
+          state.textLesson = getSmallestUncompletedLesson(JSON.parse(textLessons));
+          state.audioLesson = getSmallestUncompletedLesson(JSON.parse(audioLessons));
+        }
+      );
   },
 });
 

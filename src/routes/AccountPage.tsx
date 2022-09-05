@@ -10,6 +10,7 @@ import certEN from '../assets/images/certificateENG.jpg';
 import { pdf } from '../assets/certificates';
 import { getLeaders } from '../app/store/userRequests';
 import { toggleLeadersVisibility } from '../app/store/reducers/appSlice';
+import { useEffect } from 'react';
 
 export const AccountPage = (): JSX.Element => {
   const navigate = useNavigate();
@@ -28,10 +29,11 @@ export const AccountPage = (): JSX.Element => {
   const cert = lang === Lang.ru ? certRU : certEN;
   const pdfCert = lang === Lang.ru ? pdf.ru : pdf.en;
 
+  useEffect(() => {
+    dispatch(getLeaders());
+  });
+
   const getLeadersHandler = () => {
-    if (!isVisibleLeaders) {
-      dispatch(getLeaders());
-    }
     dispatch(toggleLeadersVisibility());
   };
 

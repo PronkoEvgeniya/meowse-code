@@ -49,6 +49,9 @@ export const userSlice = createSlice({
     setError: (state, { payload }) => {
       state.error = payload;
     },
+    setScore: (state, { payload }) => {
+      state.score = payload;
+    },
     setFailedToken: (state) => {
       state.isFailedToken = !state.isFailedToken;
     },
@@ -80,7 +83,7 @@ export const userSlice = createSlice({
           state.name = name;
           state.email = email;
           state.avatar = avatar ? avatar : null;
-          state.score = score ? score : 0;
+          state.score = score;
           state.sertificate = sertificate ? true : false;
         }
       )
@@ -94,7 +97,7 @@ export const userSlice = createSlice({
           state.name = name;
           state.email = email;
           state.avatar = avatar ? avatar : null;
-          state.score = score ? score : 0;
+          state.score = score;
           state.sertificate = sertificate ? true : false;
         }
       )
@@ -117,6 +120,7 @@ export const {
   setConfirmPassword,
   setSertificate,
   setError,
+  setScore,
   setFailedToken,
 } = userSlice.actions;
 
