@@ -77,6 +77,10 @@ header ul > li:last-of-type {
   cursor: pointer;
   margin: 0 25px 0 auto;
 }
+header ul > li:last-of-type:hover {
+  padding-bottom: 5px;
+  border-bottom: 3px solid $violent;
+}
 header ul > li:first-of-type {
   width: 25.69%;
   a {

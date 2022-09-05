@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks/reduxHooks';
 import { setAuthorization } from '../app/store/reducers/userSlice';
 import { FormUpdate } from '../components/accountContent/updateUser';
 import { LSParameters } from '../types/constants';
+import './accountPage.scss';
 
 export const AccountPage = (): JSX.Element => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export const AccountPage = (): JSX.Element => {
   };
 
   return (
-    <div>
+    <div className="account-page">
       <FormUpdate />
       <p>
         <Trans i18nKey={'account.score'} values={{ score }} />
@@ -31,7 +32,9 @@ export const AccountPage = (): JSX.Element => {
         {t('account.sertificate')}
         <div>{sertificate ? 'сертификат' : ':('}</div>
       </div>
-      <button onClick={signOutHandler}>{t('account.signOut')}</button>
+      <button className="logout__btn" onClick={signOutHandler}>
+        {t('account.signOut')}
+      </button>
     </div>
   );
 };
