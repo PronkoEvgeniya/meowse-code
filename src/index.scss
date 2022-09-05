@@ -33,14 +33,18 @@ body {
   max-width: 1440px;
   position: relative;
   font-family: $mulish;
-  background-color: $lightBg;
-  #root {
-    display: grid;
-    grid-template-rows: 1fr 80px;
-    min-height: 100vh;
-  }
 }
-
+.body {
+  background-color: $lightBg;
+  color: $grayText;
+  display: grid;
+  grid-template-rows: 1fr 80px;
+  min-height: 100vh;
+}
+.body.dark {
+  background-color: $darkBG;
+  color: $lightBg;
+}
 h2 {
   font-size: 3.6rem;
 }

@@ -13,10 +13,13 @@ import { AuthModalProps } from '../../types/interfaces';
 import { LogInModal } from './LogInModal';
 import { SignUpModal } from './SignUpModal';
 import './modal.scss';
+import { useContext } from 'react';
+import { DarkThemeContext } from '../../context/DarkModeContext';
 
 export const AuthModal = ({ auth, setAuth }: AuthModalProps): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const { darkTheme } = useContext(DarkThemeContext);
 
   const changeModal = (value: string) => () => {
     setAuth(value);
@@ -33,7 +36,7 @@ export const AuthModal = ({ auth, setAuth }: AuthModalProps): JSX.Element => {
 
   return (
     <div className="modal-bg">
-      <div className="modal-container">
+      <div className={darkTheme ? 'modal-container dark' : 'modal-container'}>
         {auth === Modals.login ? <LogInModal /> : <SignUpModal />}
         <button className="btn-back" onClick={changeModal('')}>
           <IconStep />

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import { useAppDispatch, useAppSelector } from './app/hooks/reduxHooks';
@@ -19,12 +19,14 @@ import { NotFound } from './routes/NotFound';
 import { getUser } from './app/store/userRequests';
 import { LSParameters } from './types/constants';
 import { GuardedRoute } from './components/guardedRoute';
+import { DarkThemeContext } from './context/DarkModeContext';
 
 export const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const token = localStorage.getItem(LSParameters.token);
   const auth = useAppSelector(({ user }) => user.isAuthorized);
   const isRegistrated = useAppSelector(({ user }) => user.isRegistrated);
+  const { darkTheme } = useContext(DarkThemeContext);
 
   useEffect(() => {
     if (token) {
@@ -34,34 +36,36 @@ export const App = (): JSX.Element => {
 
   return (
     <>
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<StartPage />} />
-          <Route
-            path="/tutorial"
-            element={<GuardedRoute component={TutorialPage} auth={isRegistrated} />}
-          />
-          <Route path="/home" element={<GuardedRoute component={HomePage} auth={auth} />} />
-          <Route path="/audio/:id" element={<GuardedRoute component={AudioPage} auth={auth} />} />
-          <Route
-            path="/text/:id"
-            element={<GuardedRoute component={TextTrainerPage} auth={auth} />}
-          />
-          <Route path="/game" element={<GuardedRoute component={GamePage} auth={auth} />} />
-          <Route path="/test" element={<GuardedRoute component={TestPage} auth={auth} />} />
-          <Route
-            path="/translate"
-            element={<GuardedRoute component={TranslatePage} auth={auth} />}
-          />
-          <Route path="/account" element={<GuardedRoute component={AccountPage} auth={auth} />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to={'/404'} />} />
-        </Routes>
-        <Sidebar />
-      </main>
-      <Footer />
+      <div className={darkTheme ? 'body dark' : 'body'}>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<StartPage />} />
+            <Route
+              path="/tutorial"
+              element={<GuardedRoute component={TutorialPage} auth={isRegistrated} />}
+            />
+            <Route path="/home" element={<GuardedRoute component={HomePage} auth={auth} />} />
+            <Route path="/audio/:id" element={<GuardedRoute component={AudioPage} auth={auth} />} />
+            <Route
+              path="/text/:id"
+              element={<GuardedRoute component={TextTrainerPage} auth={auth} />}
+            />
+            <Route path="/game" element={<GuardedRoute component={GamePage} auth={auth} />} />
+            <Route path="/test" element={<GuardedRoute component={TestPage} auth={auth} />} />
+            <Route
+              path="/translate"
+              element={<GuardedRoute component={TranslatePage} auth={auth} />}
+            />
+            <Route path="/account" element={<GuardedRoute component={AccountPage} auth={auth} />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<Navigate to={'/404'} />} />
+          </Routes>
+          <Sidebar />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 };

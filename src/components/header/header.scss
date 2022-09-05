@@ -19,6 +19,7 @@ header {
       .toggleTheme__container {
         button {
           @include btnToggle;
+          background-color: transparent;
           width: 55px;
           height: 55px;
           display: flex;
@@ -46,6 +47,10 @@ header {
     li {
       list-style: none;
       cursor: pointer;
+      img {
+        height: 55px;
+        margin-left: 15px;
+      }
     }
     .user-icon {
       width: 50px;
