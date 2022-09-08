@@ -1,5 +1,5 @@
-import React from 'react';
-import { useAppSelector } from '../../app/hooks/reduxHooks';
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
 import { IAudioLesson, ILesson, ILessonProps, ITextLesson } from '../../types/interfaces';
 import { AnswerField } from './answerField';
 import { tasks } from '../../assets/audio/tasks';
@@ -11,8 +11,11 @@ import textCat from '../../assets/images/text-meows.png';
 import { AudioBtn } from '../audioButton';
 import { Lang, nullAudioLesson, nullTextLesson, Trainers } from '../../types/constants';
 import './index.scss';
+import { getUser } from '../../app/store/userRequests';
+import { resetLessonState } from '../../app/store/reducers/trainerSlice';
 
 export const LessonContent = ({ data, type }: ILessonProps) => {
+  const dispatch = useAppDispatch();
   const { textLesson, audioLesson } = useAppSelector(({ app: { textLesson, audioLesson } }) => ({
     textLesson,
     audioLesson,
@@ -82,6 +85,11 @@ export const LessonContent = ({ data, type }: ILessonProps) => {
   }
 
   const { description, answer, score } = currentLesson as ILesson;
+
+  useEffect(() => {
+    dispatch(resetLessonState());
+    dispatch(getUser());
+  }, [dispatch, lang]);
 
   return (
     <div className="lesson">

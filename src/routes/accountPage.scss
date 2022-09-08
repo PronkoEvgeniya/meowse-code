@@ -11,6 +11,14 @@
   button:hover {
     @include btnViolentHover();
   }
+  button:disabled {
+    background-color: $grayText;
+    border-color: $grayText;
+    cursor: auto;
+    &:hover {
+      color: $white;
+    }
+  }
   form {
     padding: 40px 0;
     border-bottom: 5px dashed $violent;
@@ -126,7 +134,7 @@
   .leaderboard__container {
     margin: 20px auto;
     display: block;
-    padding: 20px 20px 20px 40px;
+    padding: 20px 20px 20px 50px;
     border: 3px solid $violent;
     border-radius: 20px;
     li {

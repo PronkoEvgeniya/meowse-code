@@ -34,7 +34,7 @@ export const App = (): JSX.Element => {
 
   useEffect(() => {
     if (token) {
-      dispatch(getUser(token));
+      dispatch(getUser());
     }
   }, [dispatch, token]);
 

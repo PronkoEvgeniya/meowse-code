@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getSmallestUncompletedLesson } from '../../../helpers/getSmallestUncompletedLesson';
-import { Lang, LSParameters } from '../../../types/constants';
+import { Lang, LSParameters, TrainersLength } from '../../../types/constants';
 import { ILeader } from '../../../types/interfaces';
 import { ISetLessonAction } from '../actionTypes';
 import { getLeaders, getUser } from '../userRequests';
@@ -56,14 +56,21 @@ export const appSlice = createSlice({
         getUser.fulfilled,
         (state, { payload: { lessonsAudioEn, lessonsAudioRu, lessonsTextEn, lessonsTextRu } }) => {
           const lang = localStorage.getItem(LSParameters.lang);
-          const textLessons = lang === Lang.ru ? lessonsTextRu : lessonsTextEn;
-          const audioLessons = lang === Lang.ru ? lessonsAudioRu : lessonsAudioEn;
-          state.textLesson = textLessons
-            ? getSmallestUncompletedLesson(JSON.parse(textLessons))
-            : 1;
-          state.audioLesson = audioLessons
-            ? getSmallestUncompletedLesson(JSON.parse(audioLessons))
-            : 1;
+          if (lang === Lang.ru) {
+            state.audioLesson = lessonsAudioRu
+              ? getSmallestUncompletedLesson(JSON.parse(lessonsAudioRu), TrainersLength.audioRU)
+              : 1;
+            state.textLesson = lessonsTextRu
+              ? getSmallestUncompletedLesson(JSON.parse(lessonsTextRu), TrainersLength.textRu)
+              : 1;
+          } else {
+            state.audioLesson = lessonsAudioEn
+              ? getSmallestUncompletedLesson(JSON.parse(lessonsAudioEn), TrainersLength.en)
+              : 1;
+            state.textLesson = lessonsTextEn
+              ? getSmallestUncompletedLesson(JSON.parse(lessonsTextEn), TrainersLength.en)
+              : 1;
+          }
         }
       );
   },

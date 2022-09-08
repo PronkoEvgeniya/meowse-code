@@ -27,6 +27,12 @@ export enum Lang {
   en = 'en',
 }
 
+export enum TrainersLength {
+  audioRU = 30,
+  textRu = 31,
+  en = 25,
+}
+
 export enum Modals {
   start = 'start',
   login = 'login',
