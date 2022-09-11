@@ -2,11 +2,16 @@ interface ICompletedLessons {
   [key: string]: number;
 }
 
-export const getSmallestUncompletedLesson = (lessons: ICompletedLessons): number => {
+export const getSmallestUncompletedLesson = (
+  lessons: ICompletedLessons,
+  totalLessons: number
+): number => {
   let uncompletedLesson = 0;
   const keys = Object.keys(lessons)
     .map((id) => Number(id))
     .sort((a, b) => a - b);
+
+  if (keys.length === totalLessons) return 1;
 
   for (let i = 0; i < keys.length; i++) {
     const current = keys[i];

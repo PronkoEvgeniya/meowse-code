@@ -4,6 +4,7 @@ import { authorizeUser, getUser, registerUser, updateUser } from '../userRequest
 
 export interface IUserState {
   name: string;
+  isValidName: boolean;
   email: string;
   password: string;
   score: number;
@@ -18,6 +19,7 @@ export interface IUserState {
 
 const initialState: IUserState = {
   name: '',
+  isValidName: true,
   email: '',
   password: '',
   score: 0,
@@ -39,6 +41,9 @@ export const userSlice = createSlice({
     },
     setName: (state, { payload }) => {
       state.name = payload;
+    },
+    setNameValidity: (state, { payload }) => {
+      state.isValidName = payload;
     },
     setEmail: (state, { payload }) => {
       state.email = payload;
@@ -114,6 +119,7 @@ export const userSlice = createSlice({
 export const {
   setAuthorization,
   setName,
+  setNameValidity,
   setEmail,
   setAvatar,
   setPassword,

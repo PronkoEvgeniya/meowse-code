@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
-import { setError } from '../../app/store/reducers/userSlice';
+import { setError, setNameValidity } from '../../app/store/reducers/userSlice';
 import { IconStep } from '../../assets/Sprite';
 import { Modals } from '../../types/constants';
 import { AuthModalProps } from '../../types/interfaces';
@@ -23,6 +23,7 @@ export const AuthModal = ({ auth, setAuth }: AuthModalProps): JSX.Element => {
     setAuth(value);
     clear();
     dispatch(setError(null));
+    dispatch(setNameValidity(true));
   };
 
   useEffect(() => {

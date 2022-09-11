@@ -9,6 +9,7 @@
   "failedToken": "The session timed out. Log in to continue",
   "decode": "morse -> text",
   "encode": "text -> morse",
+  "invalidName": "Enter your name",
   "start": {
     "title": "Welcome to the <1 /> interactive <3>Morse</3> code course!",
     "description": "Sign in to an existing account or register",

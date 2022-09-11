@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../app/hooks/reduxHooks';
-import { setName, setAvatar } from '../../app/store/reducers/userSlice';
-import { updateUser } from '../../app/store/userRequests';
+import { setName, setAvatar, setNameValidity } from '../../app/store/reducers/userSlice';
+import { getLeaders, updateUser } from '../../app/store/userRequests';
 import { avatars } from '../../types/constants';
 import { UserIcon } from '../header/UserIcon';
 import { Avatar } from './avatar';
@@ -10,25 +10,39 @@ import { Avatar } from './avatar';
 export const FormUpdate = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [name, avatar] = useAppSelector(({ user: { name, avatar } }) => [name, avatar]);
+  const [name, avatar, isValidName] = useAppSelector(({ user: { name, avatar, isValidName } }) => [
+    name,
+    avatar,
+    isValidName,
+  ]);
 
   const [installedAvatar, setInstalledAvatar] = useState(avatar);
   const [newName, setNewName] = useState(name);
   const isChecked = avatar !== installedAvatar;
-  const isChanged = name !== newName;
+  const isChanged = name !== newName && name !== newName.trim();
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isChanged || isChecked) {
-      dispatch(setName(newName));
+      const validName = newName.trim();
+      setNewName(validName);
+      dispatch(setName(validName));
       dispatch(setAvatar(installedAvatar));
-      dispatch(updateUser({ name: newName, avatar: installedAvatar as string }));
+      await dispatch(updateUser({ name: validName, avatar: installedAvatar as string }));
+      await dispatch(getLeaders());
     }
   };
 
   const inputHandler = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
     setNewName(value);
+    dispatch(setNameValidity(true));
   };
+
+  useEffect(() => {
+    if (!newName.trim()) {
+      dispatch(setNameValidity(false));
+    }
+  }, [dispatch, newName]);
 
   useEffect(() => {
     setNewName(name);
@@ -54,7 +68,11 @@ export const FormUpdate = (): JSX.Element => {
           />
         ))}
       </div>
-      {(isChanged || isChecked) && <button type="submit">{t('account.update')}</button>}
+      {(isChanged || isChecked) && (
+        <button disabled={!isValidName} type="submit">
+          {t('account.update')}
+        </button>
+      )}
     </form>
   );
 };

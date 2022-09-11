@@ -36,23 +36,20 @@ export const authorizeUser = createAsyncThunk(
   }
 );
 
-export const getUser = createAsyncThunk(
-  ActionTypes.getUser,
-  async (token: string, { rejectWithValue }) => {
-    try {
-      const {
-        data: { user },
-      } = (await axios.get(URL.user, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })) as IUser;
-      return user;
-    } catch (err) {
-      return rejectWithValue((err as IAuthError).response.data.message);
-    }
+export const getUser = createAsyncThunk(ActionTypes.getUser, async (_, { rejectWithValue }) => {
+  try {
+    const {
+      data: { user },
+    } = (await axios.get(URL.user, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(LSParameters.token)}`,
+      },
+    })) as IUser;
+    return user;
+  } catch (err) {
+    return rejectWithValue((err as IAuthError).response.data.message);
   }
-);
+});
 
 export const updateUser = createAsyncThunk(
   ActionTypes.updateUser,

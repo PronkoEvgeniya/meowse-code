@@ -7,6 +7,7 @@ import {
   setConfirmPassword,
   setEmail,
   setName,
+  setNameValidity,
   setPassword,
 } from '../../app/store/reducers/userSlice';
 import { authorizeUser, registerUser } from '../../app/store/userRequests';
@@ -15,19 +16,25 @@ export const SignUpModal = (): JSX.Element => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { name, email, password, confirmPassword, error, isRegistrated } = useAppSelector(
-    ({ user }) => user
-  );
+  const { name, email, password, confirmPassword, error, isRegistrated, isValidName } =
+    useAppSelector(({ user }) => user);
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      dispatch(registerUser({ name, email, password }));
+      const validName = name.trim();
+      if (validName) {
+        dispatch(registerUser({ name: validName, email, password }));
+      } else {
+        dispatch(setNameValidity(false));
+      }
     }
   };
 
-  const putName = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+  const putName = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setName(value));
+    dispatch(setNameValidity(true));
+  };
 
   const putEmail = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
     dispatch(setEmail(value));
@@ -62,6 +69,7 @@ export const SignUpModal = (): JSX.Element => {
           value={name}
           onChange={putName}
         />
+        {!isValidName && <span>{t('invalidName')}</span>}
         <input
           type="password"
           autoComplete="new-password"

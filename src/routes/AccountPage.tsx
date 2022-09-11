@@ -32,7 +32,7 @@ export const AccountPage = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(getLeaders());
-  });
+  }, [dispatch]);
 
   const getLeadersHandler = () => {
     dispatch(toggleLeadersVisibility());
