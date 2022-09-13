@@ -1,0 +1,154 @@
+@import '../../constants.scss';
+
+.modal-bg {
+  position: fixed;
+  top: -80px;
+  left: -20px;
+  z-index: 500;
+  width: calc(100% + 20px);
+  height: calc(100vh + 80px);
+  overflow: hidden;
+  background-color: rgba(94, 94, 94, 0.7);
+  backdrop-filter: blur(4px);
+  .modal-container {
+    margin: calc(50vh - 100px) auto 0;
+    border-radius: 20px;
+    background-color: $white;
+    width: 30%;
+    max-height: 520px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 30px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      input {
+        height: 50px;
+        width: 90%;
+        border: 2px solid $violent;
+        background-color: transparent;
+        color: $grayText;
+        padding: 0 10px;
+        display: flex;
+        vertical-align: middle;
+        font-size: 2.4rem;
+        outline: none;
+        border-radius: 20px;
+      }
+    }
+    button {
+      @include btnViolent();
+      padding: 15px 30px;
+    }
+    button:hover {
+      background-color: $grayText;
+      border-color: $grayText;
+    }
+    .btn-back {
+      margin: 0 auto;
+      border: none;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: $grayText;
+      border-radius: 0%;
+      background-image: linear-gradient($grayText, $grayText);
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: 0% 3px;
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+    .btn-back:hover {
+      background-color: transparent;
+      background-size: 100% 3px;
+    }
+  }
+}
+.modal-bg .modal-container.dark {
+  background-color: $grayText;
+  form {
+    input {
+      color: $lightBg;
+    }
+  }
+  button:hover {
+    border-color: $violent;
+  }
+  .btn-back {
+    color: $lightBg;
+    background-image: linear-gradient($violent, $violent);
+  }
+}
+@media (max-width: 768px) {
+  .modal-bg {
+    .modal-container {
+      width: 50%;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .modal-bg {
+    .modal-container {
+      width: 50%;
+      padding: 20px;
+      gap: 10px;
+    }
+  }
+  .modal-bg .modal-container form input {
+    height: 30px;
+  }
+  .modal-bg .modal-container button {
+    width: 100%;
+  }
+  .modal-bg .modal-container button {
+    padding: 5px 15px;
+  }
+  .modal-bg .modal-container .btn-back {
+    .icon-step {
+      width: 30px;
+    }
+  }
+}
+// @media (max-height: 1100px) {
+//   .modal-bg {
+//     height: calc(100vh + 154px);
+//   }
+// }
+// @media (max-height: 1000px) {
+//   .modal-bg {
+//     height: calc(100vh + 214px);
+//   }
+// }
+// @media (max-height: 920px) {
+//   .modal-bg {
+//     height: calc(100vh + 274px);
+//   }
+// }
+// @media (max-height: 820px) {
+//   .modal-bg {
+//     height: calc(100vh + 334px);
+//   }
+// }
+// @media (max-height: 720px) {
+//   .modal-bg {
+//     height: calc(100vh + 434px);
+//   }
+// }
+// @media (max-height: 620px) {
+//   .modal-bg {
+//     height: calc(100vh + 574px);
+//   }
+// }
+// @media (max-height: 450px) {
+//   .modal-bg {
+//     height: calc(100vh + 734px);
+//   }
+// }

@@ -1,0 +1,128 @@
+@import "../../constants.scss";
+
+header {
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  z-index: 50;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px 0 0;
+
+    .toggle__container {
+      display: flex;
+      gap: 15px;
+      .toggleLang__container,
+      .toggleTheme__container {
+        button {
+          @include btnToggle;
+          background-color: transparent;
+          width: 55px;
+          height: 55px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2.8rem;
+        }
+        button:hover {
+          @include btnViolent;
+          text-align: center;
+          padding: 0;
+          svg,
+          circle,
+          line,
+          path {
+            stroke: $white;
+          }
+        }
+      }
+    }
+    button:hover {
+      @include btnViolentHover;
+    }
+
+    li {
+      list-style: none;
+      cursor: pointer;
+      img {
+        height: 55px;
+        margin-left: 15px;
+      }
+    }
+    .user-icon {
+      width: 50px;
+      height: 50px;
+      background-color: $violent;
+      border: 2.5px solid $violent;
+      display: flex;
+      justify-content: center;
+      border-radius: 50%;
+      align-items: center;
+    }
+    .user-icon:hover {
+      background-color: transparent;
+      border-color: $grayText;
+    }
+  }
+}
+header ul > li:last-of-type {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  font-size: 3.8rem;
+  flex-direction: row-reverse;
+  cursor: pointer;
+  margin: 0 25px 0 auto;
+}
+header ul > li:last-of-type:hover {
+  padding-bottom: 5px;
+  border-bottom: 3px solid $violent;
+}
+header ul > li:first-of-type {
+  width: 25.69%;
+  a {
+    width: 100%;
+    display: block;
+    text-align: center;
+    svg {
+      width: 92%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  header ul > li:first-of-type {
+    width: 300px;
+  }
+  header ul > li:last-of-type {
+    font-size: 2.6rem;
+    margin-right: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  header ul .toggle__container {
+    flex-direction: column;
+    gap: 5px;
+  }
+  header ul .toggle__container .toggleLang__container button,
+  header ul .toggle__container .toggleTheme__container button {
+    width: 30px;
+    height: 30px;
+    svg {
+      width: 20px;
+    }
+  }
+  header ul li img {
+    margin-left: 0;
+    height: 30px;
+  }
+}
+@media (max-width: 410px) {
+  header ul > li:first-of-type {
+    width: calc(100% - 110px);
+  }
+}

@@ -1,0 +1,43 @@
+@import "../../constants.scss";
+
+.tutorial__container {
+  color: $grayText;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  p {
+    padding: 20px;
+    background-color: $grayBg;
+    border-radius: 40px;
+    width: 90%;
+    margin: 40px auto 0;
+    font-size: 4.6rem;
+    &::after {
+      position: absolute;
+      bottom: -10px;
+      right: 50px;
+      display: block;
+      content: "";
+      background-color: #c5c5c5;
+      transform: rotate(45deg);
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+.tutorial__content {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin: 40px;
+  gap: 60px;
+  button {
+    @include btnViolent;
+    width: 30%;
+    margin-top: 60px;
+  }
+  button:hover {
+    @include btnViolentHover;
+  }
+}

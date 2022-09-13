@@ -1,0 +1,36 @@
+@import '../../../constants.scss';
+
+.answer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  .field {
+    max-width: 70px;
+    padding: 10px;
+    border: 1px solid $grayBg;
+    border-radius: 5px;
+    background: $grayBg;
+    font-size: 0.9em;
+    text-align: center;
+
+    &:focus {
+      outline-color: $violent;
+    }
+
+    &.true {
+      background-color: $right-green;
+      border-color: $right-green;
+    }
+    &.false {
+      border-color: $wrong-red;
+      background-color: $wrong-red;
+    }
+
+    &.true:focus,
+    &.false:focus {
+      outline: none;
+    }
+  }
+}
