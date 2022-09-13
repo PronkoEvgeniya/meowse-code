@@ -2,12 +2,12 @@
 
 .test-page__container {
     h2 {
-        color: $grayText;
         width: 100%;
     }
     p {
         padding: 20px;
         background-color: $grayBg;
+        color: $grayText;
         border-radius: 40px;
         width: 90%;
         margin: 40px auto 0;
@@ -38,9 +38,10 @@
         background-color: transparent;
         border-radius: 20px;
         font-size: 2.8rem;
-        color: $grayText;
+        color: inherit;
         outline: none;
         height: 80px;
+        resize: none;
     }
     button {
         @include btnViolent();
@@ -53,5 +54,31 @@
     img {
         margin-top: 20px;
         width: 50%;
+    }
+}
+
+@media (max-width: 758px) {
+    .test-page__container img {
+        order: -1;
+    }
+}
+@media (max-width: 480px) {
+    .test-page__container p {
+        width: auto;
+    }
+    .test-page__container button {
+        flex-direction: column;
+        max-width: 280px;
+        audio {
+            max-width: 260px;
+        }
+    }
+}
+@media (max-width: 330px) {
+    .test-page__container button {
+        max-width: 240px;
+        audio {
+            max-width: 200px;
+        }
     }
 }

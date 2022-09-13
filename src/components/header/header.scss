@@ -1,4 +1,4 @@
-@import '../../constants.scss';
+@import "../../constants.scss";
 
 header {
   position: absolute;
@@ -119,5 +119,10 @@ header ul > li:first-of-type {
   header ul li img {
     margin-left: 0;
     height: 30px;
+  }
+}
+@media (max-width: 410px) {
+  header ul > li:first-of-type {
+    width: calc(100% - 110px);
   }
 }

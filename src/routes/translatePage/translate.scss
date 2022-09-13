@@ -1,4 +1,4 @@
-@import '../../constants.scss';
+@import "../../constants.scss";
 
 .translator__input,
 .translator__output {
@@ -9,12 +9,12 @@
   padding: 20px;
   background-color: transparent;
   outline: none;
-  font-size: 2.6rem;
+  font-size: 3.6rem;
   font-family: $mulish;
-  color: $grayText;
+  color: inherit;
+  resize: none;
 }
 .translator__container {
-  color: $grayText;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

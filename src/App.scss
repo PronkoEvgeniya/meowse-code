@@ -1,4 +1,4 @@
-@import './constants.scss';
+@import "./constants.scss";
 
 main {
   box-sizing: border-box;
@@ -48,39 +48,3 @@ main > div {
 .disable-events {
   pointer-events: none;
 }
-
-// @media (max-height: 890px) {
-//   .reauthorizate__modal {
-//     height: calc(100vh + 100px);
-//   }
-// }
-// @media (max-height: 790px) {
-//   .reauthorizate__modal {
-//     height: calc(100vh + 200px);
-//   }
-// }
-// @media (max-height: 690px) {
-//   .reauthorizate__modal {
-//     height: calc(100vh + 300px);
-//   }
-// }
-// @media (max-height: 590px) {
-//   .reauthorizate__modal {
-//     height: calc(100vh + 400px);
-//   }
-// }
-// @media (max-height: 490px) {
-//   .reauthorizate__modal {
-//     height: calc(100vh + 500px);
-//   }
-// }
-// @media (max-width: 400px) {
-//   .reauthorizate__modal {
-//     > div {
-//       width: 70%;
-//       button {
-//         width: 70%;
-//       }
-//     }
-//   }
-// }

@@ -1,6 +1,6 @@
-$mulish: 'Mulish', sans-serif;
-$pacifico: 'Pacifico', cursive;
-$roboto: 'Roboto', sans-serif;
+$mulish: "Mulish", sans-serif;
+$pacifico: "Pacifico", cursive;
+$roboto: "Roboto", sans-serif;
 $violent: #9c56c7;
 $white: #ffffff;
 $darkBG: #2e2e2e;
@@ -37,8 +37,6 @@ $wrong-red: rgb(245, 135, 135);
 }
 
 @mixin sectionTitle {
-  font-weight: 700;
-  color: $grayText;
   margin-bottom: 2rem;
 }
 
@@ -47,6 +45,7 @@ $wrong-red: rgb(245, 135, 135);
   padding: 2rem;
   text-indent: 2rem;
   background-color: $grayBg;
+  color: $grayText;
   border-radius: 20px;
 
   &::after {
@@ -54,7 +53,7 @@ $wrong-red: rgb(245, 135, 135);
     bottom: -10px;
     right: 50px;
     display: block;
-    content: '';
+    content: "";
     background-color: $grayBg;
     transform: rotate(45deg);
     width: 20px;

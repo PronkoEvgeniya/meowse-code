@@ -1,4 +1,4 @@
-@import '../constants.scss';
+@import "../constants.scss";
 
 .account-page {
   > p {
@@ -134,7 +134,7 @@
   .leaderboard__container {
     margin: 20px auto;
     display: block;
-    padding: 20px 20px 20px 50px;
+    padding: 20px 20px 20px 70px;
     border: 3px solid $violent;
     border-radius: 20px;
     li {
@@ -173,6 +173,11 @@
       img {
         width: 90%;
       }
+    }
+  }
+  .account-page {
+    .leaderboard__container {
+      padding-left: 50px;
     }
   }
 }
