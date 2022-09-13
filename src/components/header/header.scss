@@ -121,3 +121,8 @@ header ul > li:first-of-type {
     height: 30px;
   }
 }
+@media (max-width: 410px) {
+  header ul > li:first-of-type {
+    width: calc(100% - 110px);
+  }
+}

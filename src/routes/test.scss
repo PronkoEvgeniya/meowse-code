@@ -68,5 +68,17 @@
     }
     .test-page__container button {
         flex-direction: column;
+        max-width: 280px;
+        audio {
+            max-width: 260px;
+        }
+    }
+}
+@media (max-width: 330px) {
+    .test-page__container button {
+        max-width: 240px;
+        audio {
+            max-width: 200px;
+        }
     }
 }

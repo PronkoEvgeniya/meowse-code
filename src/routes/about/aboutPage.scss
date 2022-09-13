@@ -88,3 +88,8 @@
     margin: 10px;
   }
 }
+@media (max-width: 410px) {
+  .about__container .arrow__container svg {
+    height: 20px;
+  }
+}
