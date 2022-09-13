@@ -45,7 +45,7 @@ export const App = (): JSX.Element => {
   }, [clear, isFailedToken]);
 
   return (
-    <>
+    <div className={darkTheme ? 'html-wrapper dark' : 'html-wrapper'}>
       <div className={darkTheme ? 'body dark' : 'body'}>
         {isFailedToken && <ReauthorizePopup />}
         <Header />
@@ -77,6 +77,6 @@ export const App = (): JSX.Element => {
         </main>
         <Footer />
       </div>
-    </>
+    </div>
   );
 };

@@ -14,6 +14,17 @@ aside {
   nav {
     height: 100%;
   }
+  .aside-nav.dark {
+    li {
+      a:hover,
+      a:focus,
+      a.active {
+        color: $white;
+        background-color: $darkBG;
+      }
+    }
+  }
+
   ul {
     display: flex;
     flex-direction: column;
@@ -38,12 +49,11 @@ aside {
     a:focus,
     a.active {
       color: $grayText;
-      background-color: $white;
+      background-color: $lightBg;
       border-radius: 0 20px 20px 0;
     }
   }
 }
-
 @media (min-height: 945px) {
   aside {
     max-height: 945px;
@@ -60,7 +70,6 @@ aside {
     font-size: 3.2rem;
     padding-top: 120px;
     z-index: 20;
-    animation-name: sidebarOn;
     button {
       position: absolute;
       top: 100px;
@@ -78,5 +87,11 @@ aside {
   }
   .sidebar__closed {
     transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 410px) {
+  aside {
+    width: calc(100% - 110px);
   }
 }
