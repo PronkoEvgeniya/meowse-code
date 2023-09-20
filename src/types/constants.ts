@@ -90,10 +90,10 @@ export enum RegExpTemplates {
 }
 
 export enum URL {
-  registration = 'https://ancient-spire-30393.herokuapp.com/api/auth/registration',
-  authorization = 'https://ancient-spire-30393.herokuapp.com/api/auth/authorization',
-  user = 'https://ancient-spire-30393.herokuapp.com/api/auth/users',
-  liders = 'https://ancient-spire-30393.herokuapp.com/api/auth/allusers',
+  authorization = 'http://meowse-backend-env-1.eba-rypmqdzv.eu-north-1.elasticbeanstalk.com/api/auth/authorization',
+  user = 'http://meowse-backend-env-1.eba-rypmqdzv.eu-north-1.elasticbeanstalk.com/api/auth/users',
+  registration = 'http://meowse-backend-env-1.eba-rypmqdzv.eu-north-1.elasticbeanstalk.com/api/auth/registration',
+  liders = 'http://meowse-backend-env-1.eba-rypmqdzv.eu-north-1.elasticbeanstalk.com/api/auth/allusers',
 }
 
 export enum ActionTypes {
