@@ -1,11 +1,10 @@
-@import '../../constants.scss';
+@import "../../constants.scss";
 
 .about__container ~ aside {
   max-height: 680px;
 }
 
 .about__container {
-  color: $grayText;
   .content__container-about {
     h3 {
       font-size: 2.6rem;
@@ -17,6 +16,7 @@
     border-radius: 20px;
     padding: 20px;
     font-size: 2.4rem;
+    color: $grayText;
     ul {
       padding-left: 25px;
     }
@@ -47,7 +47,7 @@
       width: 30%;
       font-size: 2rem;
       word-break: break-all;
-      background-color: $grayBg;
+      background: linear-gradient(180deg, transparent, transparent, $grayBg);
       font-style: italic;
       display: flex;
       flex-direction: column;
@@ -56,10 +56,11 @@
       padding: 0 0 20px;
       border-radius: 50% 50% 20px 20px;
       text-decoration: none;
-      color: $grayText;
+      color: inherit;
       span {
         display: block;
         padding: 0 10px;
+        word-break: break-word;
       }
       img {
         border-radius: 50%;
@@ -85,5 +86,10 @@
   }
   .dev__container-about .dev__content-about .dev__card {
     margin: 10px;
+  }
+}
+@media (max-width: 410px) {
+  .about__container .arrow__container svg {
+    height: 20px;
   }
 }

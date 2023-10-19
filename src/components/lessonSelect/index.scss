@@ -1,4 +1,4 @@
-@import '../../constants.scss';
+@import "../../constants.scss";
 
 .trainer {
   .custom-select {
@@ -56,7 +56,7 @@
         display: flex;
         align-items: center;
         width: 100%;
-        padding: 0.5rem 0;
+        padding: 0.5rem 0 0.5rem 5px;
         transition: all 0.2s ease-out;
         cursor: pointer;
       }

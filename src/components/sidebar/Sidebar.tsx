@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../app/hooks/reduxHooks';
 import { closeSidebar, setSidebarBtnState } from '../../app/store/reducers/appSlice';
+import { DarkThemeContext } from '../../context/DarkModeContext';
 import { SidebarButtons } from '../../types/constants';
 import './sidebar.scss';
 
@@ -19,13 +21,14 @@ export const Sidebar = (): JSX.Element => {
   const sidebarToggleHandler = () => dispatch(setSidebarBtnState());
   const sidebarClose = () => dispatch(closeSidebar());
   const addActive = ({ isActive }: { isActive: boolean }) => (isActive ? 'active' : '');
+  const { darkTheme } = useContext(DarkThemeContext);
 
   return (
     <aside className={!sidebarState ? 'sidebar__closed' : ''}>
       <button onClick={sidebarToggleHandler}>
         {sidebarState ? SidebarButtons.close : SidebarButtons.open}
       </button>
-      <nav>
+      <nav className={darkTheme ? 'aside-nav dark' : 'aside-nav'}>
         <ul>
           <li>
             <NavLink className={addActive} onClick={sidebarClose} to={`/audio/${audioLesson}`}>
