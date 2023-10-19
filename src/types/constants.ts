@@ -90,10 +90,10 @@ export enum RegExpTemplates {
 }
 
 export enum URL {
-  authorization = 'http://meowse-backend-env-1.eba-rypmqdzv.eu-north-1.elasticbeanstalk.com/api/auth/authorization',
-  user = 'http://meowse-backend-env-1.eba-rypmqdzv.eu-north-1.elasticbeanstalk.com/api/auth/users',
-  registration = 'http://meowse-backend-env-1.eba-rypmqdzv.eu-north-1.elasticbeanstalk.com/api/auth/registration',
-  liders = 'http://meowse-backend-env-1.eba-rypmqdzv.eu-north-1.elasticbeanstalk.com/api/auth/allusers',
+  authorization = 'https://meowse-backend.onrender.com/api/auth/authorization',
+  user = 'https://meowse-backend.onrender.com/api/auth/users',
+  registration = 'https://meowse-backend.onrender.com/api/auth/registration',
+  liders = 'https://meowse-backend.onrender.com/api/auth/allusers',
 }
 
 export enum ActionTypes {
