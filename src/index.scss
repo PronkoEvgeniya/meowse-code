@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400&family=Pacifico&family=Roboto&display=swap");
+@import "./constants.scss";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  transition: 0.3s;
+}
+
+html {
+  font-size: 10px;
+}
+@media (max-width: 1367px) {
+  html {
+    font-size: 8px;
+  }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 6px;
+  }
+}
+@media (max-width: 468px) {
+  html {
+    font-size: 4px;
+  }
+}
+.html-wrapper {
+  width: 100%;
+  background-color: $lightBg;
+}
+.html-wrapper.dark {
+  background-color: $darkBG;
+}
+.body {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1440px;
+  position: relative;
+  font-family: $mulish;
+  background-color: $lightBg;
+  color: $grayText;
+  display: grid;
+  grid-template-rows: 1fr 80px;
+  min-height: 100vh;
+}
+.body.dark {
+  background-color: $darkBG;
+  color: $lightBg;
+}
+h2 {
+  font-size: 3.6rem;
+}
+
+button:focus {
+  outline: none;
+}

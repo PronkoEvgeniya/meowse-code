@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "description": "Hello! Let me introduce our great text trainer! In this lesson, we will study the code of the two most popular letters - K and M. Your task is to remember their visual code. When you would be ready, take a look at the panel with text below and enter the code in the required fields (remember that each letter needs its own \"house\"). As characters, use \"-\" dash and \".\" dot. In order to get the result, you need to fill in all the fields. Each field is a letter from the task (don't worry, everything goes in the same order). You can start while I'm murmuring.",
+    "symbols": ["k", "m"],
+    "code": ["-.-", "--"],
+    "task": "kkmkmmkmkk",
+    "answer": ["-.-", "-.-", "--", "-.-", "--", "--", "-.-", "--", "-.-", "-.-"],
+    "score": 100
+  },
+  {
+    "id": 2,
+    "description": "I pay my respect to your interest in the Meowse code. For today, I have prepared another interesting letter - U. This letter is the first step on the way to summoning a unicorn using Morse code. What for? How? Answers to these questions are unnecessary now, the main aim is to learn the letter!. Nothing lasts forever, except for the rules of our simulator: memorize a new code for a letter and show your power by completing the exercise below. In order to get the result, fill in all the fields, use \"-\" dash and \".\" dot. I'm always here if you need help.",
+    "symbols": ["u"],
+    "code": ["..-"],
+    "task": "umukmukkum",
+    "answer": ["..-", "--", "..-", "-.-", "--", "..-", "-.-", "-.-", "..-", "--"],
+    "score": 100
+  },
+  {
+    "id": 3,
+    "description": "So, today on our table is a gourmet dish from Chef Gordon Meowsay - the symbol R. I have no doubt that you are already an experienced chef of our kitchen, but I remind you that your task is to complete the exercise below. In our restaurant, it is necessary to fill in all empty plates (fields), and use not anything for this, but \"-\" dash and \".\" dot. The answer will be checked automatically (after you would fill in all fields), and correct / incorrect fields will be highlighted. Prove that you are a worthy student of Gordon Meowsay and complete this exercise :)",
+    "symbols": ["r"],
+    "code": [".-."],
+    "task": "rumkrukmur",
+    "answer": [".-.", "..-", "--", "-.-", ".-.", "..-", "-.-", "--", "..-", ".-."],
+    "score": 100
+  },
+  {
+    "id": 4,
+    "description": "After complicated tasks of previous lessons, let's get some rest. You still need to study, of course. I've chosen a simple letter for you - E. It is, of course, simple, but don't forget about the previously studied letters. As always, to avoid trouble, use \"-\" dash and \".\" dot. In order to complete the exercise, you must fill in every single field, then the answer will be automatically sent, and we will enjoy the completed lesson together. You will study here, while I'll snore a little... Hggh-Ppww...",
+    "symbols": ["e"],
+    "code": ["."],
+    "task": "kremurekme",
+    "answer": ["-.-", ".-.", ".", "--", "..-", ".-.", ".", "-.-", "--", "."],
+    "score": 100
+  },
+  {
+    "id": 5,
+    "description": "Great, you're already in lesson 5, and there are 32 in total. Damn, it seems I don't know how to cheer up someone :( Our symbol for this lesson is S. How many good words begin with this letter: sausage, salmon... You've already learned, what you should do: memorize the character and do the exercise below. Very important: use \"-\" dash and \".\" dot as symbols, and remember: to earn points, you need to fill in all the fields! While you would do the exercise, I'm going to eat tasty sausage. Meow luck! (just don't do it quickly, please let me enjoy the sausage!)",
+    "symbols": ["s"],
+    "code": ["..."],
+    "task": "skrumesurk",
+    "answer": ["...", "-.-", ".-.", "..-", "--", ".", "...", "..-", ".-.", "-.-"],
+    "score": 100
+  },
+  {
+    "id": 6,
+    "description": "It's rainy in the dark N.-city today. Along its quiet streets, in the twilight that covers its space, the letter N makes its way to our student. He doesn’t suspect anything, he plays with his old friends: the letters A, M, U, K, P, T, C and O. The letter N creeps up with quiet steps from the back, it breathes into the back of our student’s head, another second and... She pounces on him with shouts: \"Do the exercise!!!\". The student is confused, but he knows what to do. And I'll just remind you: to defeat this monster, fill in all the proposed fields using \"-\" dash and \".\" dot. Who will win this fight? We'll know when you complete the exercise...",
+    "symbols": ["n"],
+    "code": ["-."],
+    "task": "mensureken",
+    "answer": ["--", ".", "-.", "...", "..-", ".-.", ".", "-.-", ".", "-."],
+    "score": 100
+  },
+  {
+    "id": 7,
+    "description": "Hey-hey-hey, I'll find you anyway... Oh, you're already here :) Well, now the letter A is next in our schedule. It is also quite popular, like your humble servant. Don't forget that you've already learned K and M letters (if not, you can always go back to lesson 1). The rules are the same: get acquainted with the code for the letter, and then do the exercise below. And remember, to get the result, you must fill in all the fields, and use \"-\" dash and \".\" dot as characters. Good luck, I'll be waiting :)",
+    "symbols": ["a"],
+    "code": [".-"],
+    "task": "armusekana",
+    "answer": [".-", ".-.", "--", "..-", "...", ".", "-.-", ".-", "-.", ".-"],
+    "score": 100
+  },
+  {
+    "id": 8,
+    "description": "My creativity in creating descriptions to lessons has fallen down to 0. Maybe I should retell memes to make repeating the rules a little bit more fun? Don't make me behave in such way, and, please, complete the task. I hope you remember how the allowed symbols look like and how you should fill in all fields :) If your memory fails, you can look at any other lesson. Meow luck to you!",
+    "symbols": ["p"],
+    "code": [".--."],
+    "task": "puresupakm",
+    "answer": [".--.", "..-", ".-.", ".", "...", "..-", ".--.", ".-", "-.-", "--"],
+    "score": 100
+  },
+  {
+    "id": 9,
+    "description": "Oh, It's only a sixth lesson, and I'm already tired... How have you coped with it? I don't understand... Well, yes, because of constantly repetition of the rules, I'm probably wrapped up... Knock-knock! Who is there? This is the letter T! Well, can you deal with it? Don't look at me like that! I'm a cat and I have paws, so I'll go to rest :). Deal with the letter T by doing the exercise below. Be sure to use \"-\" dash and \".\" dot, and fill in all the fields - this is the only way you can get your desired points. We deny buttons here, so the response to the check will be sent automatically.",
+    "symbols": ["t"],
+    "code": ["-"],
+    "task": "trueparent",
+    "answer": ["-", ".-.", "..-", ".", ".--.", ".-", ".-.", ".", "-.", "-"],
+    "score": 100
+  },
+  {
+    "id": 10,
+    "description": "That's half way. Almost. Still, I never learned to cheer up someone. But, I have prepared another letter. I have not learned to cheer up, but I will learn the Meowse code. Our guest today is letter L - an elegant and sophisticated lady. No, in order to conquer her, you don’t have to sing serenades under the window at 3 am (only I can do this), just complete the exercise. To do this, fill in all the fields (preferably with the correct answers), and remember one field - one letter. As a reminder, the characters we use here are \"-\" dash and \".\" dot. The answer will be sent automatically as soon as you do it. I'll go sing serenades under the windows of people, maybe they would decide to throw me a sausage...",
+    "symbols": ["l"],
+    "code": [".-.."],
+    "task": "letterpuma",
+    "answer": [".-..", ".", "-", "-", ".", ".-.", ".--.", "..-", "--", ".-"],
+    "score": 100
+  },
+  {
+    "id": 11,
+    "description": "Oh, Lord, who is that sad man? - I'm Dr. Watson, or rather I used to be. The letter W has left me, and now I'm a pathetic Dr. Atson... Damn, that sounds really sad, I think we need to find this parasite and conquer her by completion of the exercise. \"-\" Dash and \".\" dot will help you, but use them wisely. All fields must be filled in order to receive points and complete the lesson (the answer will be sent automatically). Can you help poor Dr. Atson become Watson again?",
+    "symbols": ["w"],
+    "code": [".--"],
+    "task": "weakestpur",
+    "answer": [".--", ".", ".-", "-.-", ".", "...", "-", ".--.", "..-", ".-."],
+    "score": 100
+  },
+  {
+    "id": 12,
+    "description": "And, It's a sector prize on the wheel of fortune! Please, say your chosen letter! Oh, yes, I’m a virtual cat and I won’t hear you, so I’ll decide for you (and I’ll also get the prize for you): the letter I. You have your own prize: knowledge and points for the lesson you would complete. I got my prize easily, but you still have to try a bit harder than me. I will help only by reminding you of the rules: use \"-\" dash and \".\" dot, and fill in all empty fields with them! Each field is a one letter from the task, and you must complete them all in order to complete the lesson. Everything will go automatically when you're done, and I'll be looking forward to it.",
+    "symbols": ["i"],
+    "code": [".."],
+    "task": "ispumatest",
+    "answer": ["..", "...", ".--.", "..-", "--", ".-", "-", ".", "...", "-"],
+    "score": 100
+  },
+  {
+    "id": 13,
+    "description": "Guess, what creatures does Sponge Bob like to catch? Of course, it is jellyfish. I don't like jelly, but I'm in love with fish :) Why am I talking about it? Because we need to learn the next letter - J! So the rules are the same: fill in the fields below with our good friends \".\" dots and \"-\" dashes. Hurry up!",
+    "symbols": ["j"],
+    "code": [".---"],
+    "task": "jestkupral",
+    "answer": [".---", ".", "...", "-", "-.-", "..-", ".--.", ".-.", ".-", ".-.."],
+    "score": 100
+  },
+  {
+    "id": 14,
+    "description": "Let's take a little nap. Oh, or rather, I'll take a nap, and you will study the letter that will help you tell everyone, using Morse code, what a sleeping couch potato I am. It's letter Z! You're welcome! A brief reference on what to do: learn the letter, perform the exercise, use \".\" dots and \"-\" dashes, fill in all the fields! Zzz...",
+    "symbols": ["z"],
+    "code": ["--.."],
+    "task": "zmuzjwakiz",
+    "answer": ["--..", "--", "..-", "--..", ".---", ".--", ".-", "-.-", "..", "--.."],
+    "score": 100
+  },
+  {
+    "id": 15,
+    "description": "I believe in you my young padawan. Remember, symbols except \"-\" dash and \".\" dots move you towards the dark power. In order to come to the light power, you need to fill in the entire field. As you do this, they will go for verification, and you will receive points. Each field is equivalent to one letter. May the force be with you in comprehending the Meowse code!",
+    "symbols": ["f"],
+    "code": ["..-."],
+    "task": "falsefunit",
+    "answer": ["..-.", ".-", ".-..", "...", ".", "..-.", "..-", "-.", "..", "-"],
+    "score": 100
+  },
+  {
+    "id": 16,
+    "description": "Wow, here is the letter O. I did not expect to see it here, just as I did not expect that again I would have to repeat the rules. What you can't do for your favorite student :) So, get acquainted with the letter O, there are only 3 dashes, so the acquaintance will be short. Remember that we've already learned the letters K, M, R, U, and T! Complete the exercise by filling in all the fields. Use \"-\" dash and \".\" dot. You do not need to click any button: as soon as you fill in all the fields, the answer will be sent for verification automatically.",
+    "symbols": ["o"],
+    "code": ["---"],
+    "task": "opensourse",
+    "answer": ["---", ".--.", ".", "-.", "...", "---", "..-", ".-.", "...", "."],
+    "score": 100
+  },
+  {
+    "id": 17,
+    "description": "When someone tries to pet me, I remember the lyrics MС Hummer's song: you can't touch this. We've already learned all the letters from this phrase except one - Y. Hurry up to learn it, and then you will be able to defend your personal boundaries also in Morse code format. Complete the exercise below (remember to fill in all fields with \".\" dots and \"-\" dashes, and one field - one letter). When you would dealt with it, your answer would be sent for evaluation automatically",
+    "symbols": ["y"],
+    "code": ["-.--"],
+    "task": "yestoyjoyz",
+    "answer": ["-.--", ".", "...", "-", "---", "-.--", ".---", "---", "-.--", "--.."],
+    "score": 100
+  },
+  {
+    "id": 18,
+    "description": "V means vendetta... Oh, I'm not going to take revenge, just explain the rules: use \".\" dot and \"-\" dash, fill in all the fields with them (each field represents one letter from the task). Filled fields are highlighted with colors depending on correct or incorrect filling. There is no need to press special buttons - as soon as you fill in the fields, the answer will be sent for verification automatically :)",
+    "symbols": ["v"],
+    "code": ["...-"],
+    "task": "vapeormust",
+    "answer": ["...-", ".-", ".--.", ".", "---", ".-.", "--", "..-", "...", "-"],
+    "score": 100
+  },
+  {
+    "id": 19,
+    "description": "I goat you, babe! Now I've just remembered the song of Sony & Cher. Or it was not sung about a goat? Never mind. I'm already running out of ideas on how to recall the rules in an original way. In general, you know what to do, and if you don’t know, then look at any other lesson - I already told you there :) You should use \"-\" dash and \".\" dot characters. You don't need to click on any button - everything is sent automatically, and I went on to read the other jokes about goats. Oh, Lord, what am I doing...",
+    "symbols": ["g"],
+    "code": ["--."],
+    "task": "goalputegg",
+    "answer": ["--.", "---", ".-", ".-..", ".--.", "..-", "-", ".", "--.", "--."],
+    "score": 100
+  },
+  {
+    "id": 20,
+    "description": "Don't keep The British Queen waiting and learn the letter Q. To cope with this task, fill in all the \".\" fields with dots and \"-\" dashes. Remember that one field is one letter (all fields go in the same order as the letters in the task). I believe that this attempt will be crowned with success :) To prepare for success after you fill in the fields, nothing needs to be done - our automatic check will do everything for you.",
+    "symbols": ["q"],
+    "code": ["--.-"],
+    "task": "quietqueen",
+    "answer": ["--.-", "..-", "..", ".", "-", "--.-", "..-", ".", ".", "-."],
+    "score": 100
+  },
+  {
+    "id": 21,
+    "description": "Do you remember how you did a good deed? You helped Dr. Atson become Watson again, but his friend, Sherlock Olmes (earlier Holmes), also needs your help. Help him regain his glory. To do this, complete the exercise by filling in all the fields. \"-\" dash and \".\" dot are allowed. The answer will be sent automatically as soon as you cope with all the fields. Correctly and incorrectly filled fields are highlighted. Meow luck!",
+    "symbols": ["h"],
+    "code": ["...."],
+    "task": "howhashell",
+    "answer": ["....", "---", ".--", "....", ".-", "...", "....", ".", ".-..", ".-.."],
+    "score": 100
+  },
+  {
+    "id": 22,
+    "description": "Do you love boy bands? Personally, I'm not, I'm too old for all the K-POP stuff, but too young to learn Meowse code. Don't slow down, fill in all the fields! (each field is responsible for only one letter from the proposed task). To fill them in use \".\" dot and \"-\" dash. The task will be sent for verification automatically as soon as you fill in the last field. And I’ll do in what i good enough: I’ll ask someone for sausage...",
+    "symbols": ["b"],
+    "code": ["-..."],
+    "task": "bigbuywarn",
+    "answer": ["-...", "..", "--.", "-...", "..-", "-.--", ".--", ".-", ".-.", "-."],
+    "score": 100
+  },
+  {
+    "id": 23,
+    "description": "I know you're tired, but there are only a few letters left on our path. Our guest for today is quite popular letter. She tried for a long time to get to our table - meet the unique letter C!. Don't hurt her efforts and complete the exercise below (remember to fill in all fields with our favorite \".\" dots and \"-\" dashes). When you're done, your answer will be sent for evaluation automatically :)",
+    "symbols": ["c"],
+    "code": ["-.-."],
+    "task": "catceilcur",
+    "answer": ["-.-.", ".-", "-", "-.-.", ".", "..", ".-..", "-.-.", "..-", ".-."],
+    "score": 100
+  },
+  {
+    "id": 24,
+    "description": "What is a beautiful morning? As in The Rascals' song :) I don't know, when you decide to learn our Meowse Code, in the morning or not, but it's a wonderful song. So, I offer you to learn another letter. It is in front of your eyes, bravery in your heart and knowledge in your head. When you would ready, fill in all the empty fields (each field is the letter of the task). Repetition is the mother of learning: use \"-\" dash and \".\" dot. And finally, the wisdom: the road is taken by walking... Prrr.",
+    "symbols": ["d"],
+    "code": ["-.."],
+    "task": "dogduckdaf",
+    "answer": ["-..", "---", "--.", "-..", "..-", "-.-.", "-.-", "-..", ".-", "..-."],
+    "score": 100
+  },
+  {
+    "id": 25,
+    "description": "Ernest Hemingway once bet that he could write the shortest story that could make cry anyone. He wrote: \"This is the last lesson of the Meowse code text trainer.\" Everyone, who read this, was crying... Don't cry, but rather do the exercise (and don't forget to fill in with our good friends \".\" dots and \"-\" dashes all the fields) :)",
+    "symbols": ["x"],
+    "code": ["-..-"],
+    "task": "hexluxroad",
+    "answer": ["....", ".", "-..-", ".-..", "..-", "-..-", ".-.", "---", ".-", "-.."],
+    "score": 100
+  }
+]
